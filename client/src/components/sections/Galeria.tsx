@@ -3,18 +3,17 @@ import { FadeIn } from '../ui/FadeIn';
 import { AnimatePresence, motion } from 'framer-motion';
 import { X } from 'lucide-react';
 
-export function Galeria() {
-    const images = [
-        { src: "/images/world-physiotherapy-congress.jpg", alt: "Congreso Internacional World Physiotherapy", type: "wide" },
-        { src: "/images/ipapt.png", alt: "Logo IOAPT Reconocimiento", type: "tall" },
-        { src: "/images/home.jpeg", alt: "Fisioterapia Acuática", type: "wide" },
-        { src: "/images/LOGO.jpeg", alt: "Logo UFAAL Secundario", type: "square" },
-        { src: "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&q=80&w=500", alt: "Terapia acuática adulto mayor", type: "square" },
-        { src: "https://images.unsplash.com/photo-1519340241574-2c61ce34d3d3?auto=format&fit=crop&q=80&w=600", alt: "Evento UFAAL 2023", type: "tall" },
-        { src: "https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&q=80&w=800", alt: "Certificación Halliwick", type: "wide" }
-    ];
+export function Galeria({ data }: { data: any }) {
+    if (!data) return null;
 
-    const [selectedImage, setSelectedImage] = useState<typeof images[0] | null>(null);
+    const rawImages = data.imagenes || [];
+    const images = rawImages.map((img: any) => ({
+        src: img.url.startsWith('http') || img.url.startsWith('/') ? img.url : `http://localhost:5000${img.url}`,
+        alt: img.alt || "Imagen de galería",
+        type: img.tipo || "square"
+    }));
+
+    const [selectedImage, setSelectedImage] = useState<any>(null);
 
     // Bloquear scroll al abrir el modal (lightbox)
     useEffect(() => {
@@ -34,15 +33,15 @@ export function Galeria() {
 
                 <div className="text-center mb-16">
                     <FadeIn direction="up">
-                        <h2 className="text-3xl md:text-5xl font-bold text-ufaal-blue mb-6 tracking-tight">Galería</h2>
+                        <h2 className="text-3xl md:text-5xl font-bold text-ufaal-blue mb-6 tracking-tight">{data.titulo}</h2>
                         <div className="w-24 h-1 bg-ufaal-blue-light mx-auto rounded-full mb-6"></div>
                     </FadeIn>
                 </div>
 
                 {/* Masonry Layout Basico via Tailwind columns */}
                 <div className="columns-1 sm:columns-2 lg:columns-3 gap-6 space-y-6">
-                    {images.map((img, index) => (
-                        <FadeIn key={index} delay={0.1 + (index * 0.05)} direction="up" className="break-inside-avoid">
+                    {images.map((img: any, index: number) => (
+                        <FadeIn key={img.src + index} delay={0.1 + (index * 0.05)} direction="up" className="break-inside-avoid">
                             <div
                                 onClick={() => setSelectedImage(img)}
                                 className="group relative overflow-hidden rounded-2xl shadow-sm border border-gray-100 cursor-pointer"
@@ -63,6 +62,12 @@ export function Galeria() {
                         </FadeIn>
                     ))}
                 </div>
+
+                {images.length === 0 && (
+                    <div className="text-center py-20">
+                        <p className="text-gray-500 text-lg">No hay imágenes en la galería actualmente.</p>
+                    </div>
+                )}
 
             </div>
 
@@ -101,8 +106,8 @@ export function Galeria() {
                             />
 
                             {/* Opcional: Mostrar el alt text como caption */}
-                            <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-6 text-center transform translate-y-full opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300 hidden md:block">
-                                <span className="text-white/90 text-sm font-medium tracking-wide">
+                            <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-6 text-center transform translate-y-full opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300 hidden md:block z-20">
+                                <span className="text-white/90 text-sm font-medium tracking-wide drop-shadow-md">
                                     {selectedImage.alt}
                                 </span>
                             </div>

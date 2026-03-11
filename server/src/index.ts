@@ -4,8 +4,10 @@ import helmet from 'helmet';
 import rateLimit from 'express-rate-limit';
 import dotenv from 'dotenv';
 import morgan from 'morgan';
+import path from 'path';
 import contactRoutes from './routes/contact';
 import downloadRoutes from './routes/downloads';
+import adminRoutes from './routes/admin';
 import { mailQueue } from './utils/mailQueue';
 
 dotenv.config();
@@ -20,25 +22,32 @@ mailQueue.start();
 app.use(morgan('dev'));
 
 // Security Middleware
-app.use(helmet());
+app.use(helmet({
+    crossOriginResourcePolicy: false, // Permitir que las imágenes se carguen en el frontend
+}));
 app.use(cors({ 
     origin: process.env.CORS_ORIGIN || 'http://localhost:5173',
-    methods: ['GET', 'POST']
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    allowedHeaders: ['Content-Type', 'Authorization']
 }));
+
+// Servir archivos estáticos (Imágenes subidas)
+app.use('/uploads', express.static(path.join(__dirname, '../public/uploads')));
 
 const apiLimiter = rateLimit({
     windowMs: 15 * 60 * 1000, // 15 minutos
-    max: 100, // Limitar cada IP a 100 peticiones por ventana
+    max: 200, // Aumentado para el dashboard
     message: 'Demasiadas peticiones desde esta IP, intente de nuevo más tarde.',
     standardHeaders: true,
     legacyHeaders: false,
 });
 app.use('/api/', apiLimiter);
 
-app.use(express.json({ limit: '10kb' })); // Prevenir payload demasiado grande
+app.use(express.json({ limit: '1mb' })); // Aumentado para contenido JSON de la página
 
 app.use('/api/contact', contactRoutes);
 app.use('/api/downloads', downloadRoutes);
+app.use('/api/admin', adminRoutes);
 
 // Global Error Handler (Centralized Debugging)
 app.use((err: any, req: express.Request, res: express.Response, next: express.NextFunction) => {

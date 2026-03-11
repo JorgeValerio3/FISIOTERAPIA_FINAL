@@ -1,40 +1,26 @@
-
 import { FadeIn } from '../ui/FadeIn';
-import { FileText, Download, FileArchive, Search, Network, CheckCircle } from 'lucide-react';
+import { FileText, Download, FileArchive, Search, Network, CheckCircle, File } from 'lucide-react';
 
-export function Investigacion() {
-    const resources = [
-        {
-            category: "Guías Clínicas",
-            icon: <FileText className="w-6 h-6 text-ufaal-blue" />,
-            items: [
-                { title: "Protocolo UFAAL 2024: Manejo Acuático del Paciente Neurológico", type: "PDF", size: "2.4 MB" },
-                { title: "Consenso Latinoamericano de Dosimetría en Hidroterapia", type: "PDF", size: "1.8 MB" }
-            ]
-        },
-        {
-            category: "Documentos Técnicos",
-            icon: <FileArchive className="w-6 h-6 text-ufaal-blue" />,
-            items: [
-                { title: "Lineamientos Éticos para la Práctica Acuática en la Región", type: "PDF", size: "1.1 MB" },
-                { title: "Requisitos de Infraestructura para Piscinas Terapéuticas", type: "Normativa", size: "3.5 MB" }
-            ]
-        },
-        {
-            category: "Últimas Publicaciones",
-            icon: <Search className="w-6 h-6 text-ufaal-blue" />,
-            items: [
-                { title: "Impacto del método Halliwick en niños con parálisis cerebral: Revisión sistemática", type: "DOI", size: "Enlace externo" },
-                { title: "Eficacia de la terapia acuática en dolor lumbar crónico en adultos mayores", type: "Artículo", size: "Revista SciELO" }
-            ]
-        }
-    ];
+export function Investigacion({ data }: { data: any }) {
+    if (!data) return null;
 
-    const handleDownload = (filename: string) => {
-        if (filename === 'estatutos.pdf') {
-            window.open('/docs/ESTATUTOS_UFAAL_Formato_Institucional_Editable.pdf', '_blank');
+    const categorias = data.categorias || [];
+
+    const getIcon = (iconName: string) => {
+        const i = String(iconName).toLowerCase();
+        if (i.includes('archive') || i.includes('tecnico')) return <FileArchive className="w-6 h-6 text-ufaal-blue" />;
+        if (i.includes('search') || i.includes('publica')) return <Search className="w-6 h-6 text-ufaal-blue" />;
+        if (i.includes('text') || i.includes('guia')) return <FileText className="w-6 h-6 text-ufaal-blue" />;
+        return <File className="w-6 h-6 text-ufaal-blue" />;
+    };
+
+    const handleDownload = (item: any) => {
+        const url = item.archivo || item.enlace;
+        if (url) {
+            const finalUrl = url.startsWith('http') || url.startsWith('/') ? url : `http://localhost:5000${url}`;
+            window.open(finalUrl, '_blank', 'noopener,noreferrer');
         } else {
-            alert('El documento no existe o se encuentra en actualización.');
+            alert('El documento no tiene un enlace configurado.');
         }
     };
 
@@ -45,10 +31,10 @@ export function Investigacion() {
                 <div className="flex flex-col lg:flex-row justify-between items-end mb-16 gap-8">
                     <div className="max-w-2xl">
                         <FadeIn direction="up">
-                            <h2 className="text-3xl md:text-5xl font-bold text-ufaal-blue mb-6 tracking-tight">Investigación y Ciencia</h2>
+                            <h2 className="text-3xl md:text-5xl font-bold text-ufaal-blue mb-6 tracking-tight">{data.titulo}</h2>
                             <div className="w-24 h-1 bg-ufaal-blue-light rounded-full mb-6"></div>
                             <p className="text-gray-600 font-light text-lg leading-relaxed">
-                                Fundamentamos nuestra práctica en la evidencia científica. Accede a nuestra biblioteca de publicaciones, guías clínicas y documentos oficiales.
+                                {data.descripcion}
                             </p>
                         </FadeIn>
                     </div>
@@ -66,30 +52,30 @@ export function Investigacion() {
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    {resources.map((resourceGroup, index) => (
-                        <FadeIn key={resourceGroup.category} delay={0.3 + (index * 0.1)} direction="up" className="h-full">
+                    {categorias.map((resourceGroup: any, index: number) => (
+                        <FadeIn key={resourceGroup.nombre || index} delay={0.3 + (index * 0.1)} direction="up" className="h-full">
                             <div className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden h-full flex flex-col hover:border-ufaal-blue-light/30 transition-colors">
 
                                 <div className="p-6 border-b border-gray-50 flex items-center gap-4 bg-gray-50/50">
                                     <div className="bg-white p-2 rounded-lg shadow-sm">
-                                        {resourceGroup.icon}
+                                        {getIcon(resourceGroup.icono || resourceGroup.nombre)}
                                     </div>
-                                    <h3 className="text-lg font-bold text-ufaal-text">{resourceGroup.category}</h3>
+                                    <h3 className="text-lg font-bold text-ufaal-text">{resourceGroup.nombre}</h3>
                                 </div>
 
                                 <div className="p-6 flex-grow flex flex-col gap-4">
-                                    {resourceGroup.items.map((item, idx) => (
-                                        <div key={idx} className="group border border-gray-100 rounded-xl p-4 hover:bg-ufaal-blue/5 transition-colors cursor-pointer" onClick={() => handleDownload('documento_ejemplo.pdf')}>
+                                    {resourceGroup.items?.map((item: any, idx: number) => (
+                                        <div key={idx} className="group border border-gray-100 rounded-xl p-4 hover:bg-ufaal-blue/5 transition-colors cursor-pointer" onClick={() => handleDownload(item)}>
                                             <h4 className="text-sm font-medium text-gray-800 leading-snug mb-3 group-hover:text-ufaal-blue transition-colors title-min-h-small">
-                                                {item.title}
+                                                {item.titulo}
                                             </h4>
                                             <div className="flex items-center justify-between mt-auto">
-                                                <span className="text-xs font-semibold px-2 py-1 bg-gray-100 text-gray-600 rounded">
-                                                    {item.type}
+                                                <span className="text-xs font-semibold px-2 py-1 bg-gray-100 text-gray-600 rounded truncate max-w-[80px]">
+                                                    {item.tipo || 'Enlace'}
                                                 </span>
                                                 <div className="flex items-center gap-2 text-xs text-gray-400 group-hover:text-ufaal-blue transition-colors">
-                                                    {item.size}
-                                                    <Download className="w-3.5 h-3.5" />
+                                                    {item.tamaño || item.tamano || 'N/A'}
+                                                    <Download className="w-3.5 h-3.5 shrink-0" />
                                                 </div>
                                             </div>
                                         </div>

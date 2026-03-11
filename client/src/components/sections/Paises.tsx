@@ -1,10 +1,8 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { FadeIn } from '../ui/FadeIn';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import L from 'leaflet';
-import { Mail, Phone } from 'lucide-react';
-import { countriesData } from '../../data/membersData';
 
 // Solución rápida para iconos de Leaflet en React
 delete (L.Icon.Default.prototype as any)._getIconUrl;
@@ -22,8 +20,17 @@ const randomCountryImages = [
     "https://images.unsplash.com/photo-1600881333168-2ef49b341f30?auto=format&fit=crop&q=80&w=300",
 ];
 
-export function Paises() {
-    const [selectedCountry, setSelectedCountry] = useState(countriesData[0]);
+export function Paises({ data }: { data: any }) {
+    const paisesLista = data?.paises_lista || [];
+    const [selectedCountry, setSelectedCountry] = useState<any>(null);
+
+    useEffect(() => {
+        if (paisesLista.length > 0 && !selectedCountry) {
+            setSelectedCountry(paisesLista[0]);
+        }
+    }, [paisesLista, selectedCountry]);
+
+    if (!data || paisesLista.length === 0 || !selectedCountry) return null;
 
     return (
         <section id="paises" className="py-24 bg-white">
@@ -31,10 +38,10 @@ export function Paises() {
 
                 <div className="text-center mb-16">
                     <FadeIn direction="up">
-                        <h2 className="text-3xl md:text-5xl font-bold text-ufaal-blue mb-6 tracking-tight">Miembros y Países</h2>
+                        <h2 className="text-3xl md:text-5xl font-bold text-ufaal-blue mb-6 tracking-tight">{data.titulo}</h2>
                         <div className="w-24 h-1 bg-ufaal-blue-light mx-auto rounded-full mb-6"></div>
                         <p className="text-gray-600 font-light max-w-2xl mx-auto text-lg">
-                            Identidad Latinoamericana. Explora los representantes e instituciones que conforman nuestra red regional.
+                            {data.descripcion}
                         </p>
                     </FadeIn>
                 </div>
@@ -54,10 +61,10 @@ export function Paises() {
                                     attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
                                     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                                 />
-                                {countriesData.map((country) => (
+                                {paisesLista.map((country: any) => (
                                     <Marker
                                         key={country.id}
-                                        position={country.coords}
+                                        position={[country.latitud, country.longitud]}
                                         eventHandlers={{
                                             click: () => setSelectedCountry(country)
                                         }}
@@ -65,14 +72,14 @@ export function Paises() {
                                         <Popup>
                                             <div className="text-center font-sans p-1">
                                                 <div className="w-10 h-6 mx-auto mb-2 rounded shadow-sm border border-gray-200 overflow-hidden">
-                                                    <img 
-                                                        src={`https://flagcdn.com/w80/${country.id}.png`} 
-                                                        alt="" 
+                                                    <img
+                                                        src={`https://flagcdn.com/w80/${country.id}.png`}
+                                                        alt=""
                                                         className="w-full h-full object-cover"
                                                     />
                                                 </div>
-                                                <p className="font-bold text-ufaal-blue mt-1 leading-tight">{country.name}</p>
-                                                <p className="text-xs text-ufaal-text font-semibold">{country.rep.name}</p>
+                                                <p className="font-bold text-ufaal-blue mt-1 leading-tight">{country.nombre}</p>
+                                                <p className="text-xs text-ufaal-text font-semibold">{country.representante}</p>
                                                 <p className="text-[10px] text-gray-500 mt-1 cursor-pointer underline hover:text-ufaal-blue-light" onClick={() => setSelectedCountry(country)}>Ver perfil en panel</p>
                                             </div>
                                         </Popup>
@@ -89,9 +96,9 @@ export function Paises() {
                                 {/* Bandera Estilizada de Fondo (Technical Business style) */}
                                 <div className="absolute -top-4 -right-4 w-48 h-32 transition-all duration-700 group-hover:scale-110 group-hover:-rotate-3 opacity-20 lg:opacity-30">
                                     <div className="absolute inset-0 bg-gradient-to-br from-white/40 to-transparent z-10 rounded-3xl"></div>
-                                    <img 
-                                        src={`https://flagcdn.com/w320/${selectedCountry.id}.png`} 
-                                        alt="" 
+                                    <img
+                                        src={`https://flagcdn.com/w320/${selectedCountry.id}.png`}
+                                        alt=""
                                         className="w-full h-full object-cover rounded-3xl blur-[2px]"
                                     />
                                 </div>
@@ -100,15 +107,15 @@ export function Paises() {
                                     <div className="flex items-center justify-between mb-8">
                                         <div className="flex items-center gap-4">
                                             <div className="w-12 h-8 rounded shadow-sm border border-white/50 overflow-hidden shrink-0">
-                                                <img 
-                                                    src={`https://flagcdn.com/w80/${selectedCountry.id}.png`} 
-                                                    alt={`Bandera de ${selectedCountry.name}`} 
+                                                <img
+                                                    src={`https://flagcdn.com/w80/${selectedCountry.id}.png`}
+                                                    alt={`Bandera de ${selectedCountry.nombre}`}
                                                     className="w-full h-full object-cover"
                                                 />
                                             </div>
-                                            <h3 className="text-3xl font-bold text-ufaal-blue tracking-tight">{selectedCountry.name}</h3>
+                                            <h3 className="text-3xl font-bold text-ufaal-blue tracking-tight">{selectedCountry.nombre}</h3>
                                         </div>
-                                        
+
                                         {/* Insignia Técnica (Empresarial) */}
                                         <div className="hidden sm:flex flex-col items-end">
                                             <span className="text-[10px] uppercase tracking-widest font-bold text-ufaal-blue-light/60 mb-1">Miembro Regional</span>
@@ -119,58 +126,35 @@ export function Paises() {
                                     <div className="flex flex-col md:flex-row gap-6 mb-8 items-start">
                                         <div className="relative shrink-0">
                                             <img
-                                                src={selectedCountry.rep.photo}
-                                                alt={selectedCountry.rep.name}
+                                                src={selectedCountry.imagen || `https://ui-avatars.com/api/?name=${selectedCountry.representante}&background=random`}
+                                                alt={selectedCountry.representante}
                                                 className="w-32 h-32 md:w-36 md:h-36 rounded-2xl object-cover border-4 border-white shadow-md relative z-10 bg-white"
                                                 loading="lazy"
                                             />
                                             <div className="absolute -bottom-2 -right-2 w-10 h-10 bg-ufaal-blue rounded-xl flex items-center justify-center border-2 border-white shadow-lg z-20">
-                                                <img 
-                                                    src={`https://flagcdn.com/w40/${selectedCountry.id}.png`} 
-                                                    className="w-6 h-4 object-cover rounded-[1px]" 
+                                                <img
+                                                    src={`https://flagcdn.com/w40/${selectedCountry.id}.png`}
+                                                    className="w-6 h-4 object-cover rounded-[1px]"
                                                     alt=""
                                                 />
                                             </div>
                                         </div>
                                         <div>
-                                            <h4 className="text-xl font-bold text-ufaal-text mb-1">{selectedCountry.rep.name}</h4>
-                                            <p className="text-sm font-medium text-ufaal-blue-light mb-4">Representante Nacional</p>
-                                            <p className="text-gray-600 font-light text-sm leading-relaxed text-justify line-clamp-[10]">
-                                                {selectedCountry.rep.profile}
-                                            </p>
+                                            <h4 className="text-xl font-bold text-ufaal-text mb-1">{selectedCountry.representante}</h4>
+                                            <p className="text-sm font-medium text-ufaal-blue-light mb-4">{selectedCountry.cargo}</p>
                                         </div>
                                     </div>
 
-                                    {(selectedCountry.rep.contact || (selectedCountry.rep as any).phone) && (
-                                        <div className="bg-white rounded-xl p-5 shadow-sm border border-gray-50 mb-8">
-                                            <h5 className="text-sm font-semibold text-gray-800 mb-3 uppercase tracking-wider">Contacto Institucional</h5>
-                                            <div className="flex flex-col gap-3">
-                                                {selectedCountry.rep.contact && (
-                                                    <a href={`mailto:${selectedCountry.rep.contact}`} className="flex items-center gap-3 text-gray-600 hover:text-ufaal-blue transition-colors text-sm break-all">
-                                                        <Mail className="w-5 h-5 text-ufaal-blue-light shrink-0" />
-                                                        {selectedCountry.rep.contact}
-                                                    </a>
-                                                )}
-                                                {(selectedCountry.rep as any).phone && (
-                                                    <p className="flex items-center gap-3 text-gray-600 text-sm">
-                                                        <Phone className="w-5 h-5 text-ufaal-blue-light shrink-0" />
-                                                        {(selectedCountry.rep as any).phone}
-                                                    </p>
-                                                )}
-                                            </div>
-                                        </div>
-                                    )}
-
                                     {/* 5 placeholder images below */}
                                     <div className="mb-4">
-                                        <h5 className="text-xs font-semibold text-gray-500 mb-3 uppercase tracking-wider">Actividades en {selectedCountry.name}</h5>
+                                        <h5 className="text-xs font-semibold text-gray-500 mb-3 uppercase tracking-wider">Actividades en {selectedCountry.nombre}</h5>
                                         <div className="grid grid-cols-5 gap-2">
                                             {randomCountryImages.map((img, i) => (
-                                                <img 
-                                                    key={i} 
-                                                    src={`${img}&seed=${selectedCountry.id}-${i}`} 
-                                                    className="w-full h-16 md:h-20 object-cover rounded-lg shadow-sm hover:scale-105 transition-transform" 
-                                                    alt={`Actividad ${i+1}`}
+                                                <img
+                                                    key={i}
+                                                    src={`${img}&seed=${selectedCountry.id}-${i}`}
+                                                    className="w-full h-16 md:h-20 object-cover rounded-lg shadow-sm hover:scale-105 transition-transform"
+                                                    alt={`Actividad ${i + 1}`}
                                                 />
                                             ))}
                                         </div>
@@ -181,7 +165,7 @@ export function Paises() {
                                 <div className="mt-8 pt-6 border-t border-gray-200">
                                     <p className="text-xs text-center text-gray-500 mb-4 font-medium uppercase tracking-widest">Selecciona otro país</p>
                                     <div className="flex flex-wrap gap-2 justify-center">
-                                        {countriesData.map(c => (
+                                        {paisesLista.map((c: any) => (
                                             <button
                                                 key={c.id}
                                                 onClick={() => setSelectedCountry(c)}
@@ -190,12 +174,12 @@ export function Paises() {
                                                         ? 'bg-ufaal-blue text-white shadow-md'
                                                         : 'bg-white text-gray-600 border border-gray-200 hover:bg-gray-50'}`}
                                             >
-                                                <img 
-                                                    src={`https://flagcdn.com/w40/${c.id}.png`} 
-                                                    className="w-5 h-3.5 object-cover rounded-[1px] shadow-sm" 
+                                                <img
+                                                    src={`https://flagcdn.com/w40/${c.id}.png`}
+                                                    className="w-5 h-3.5 object-cover rounded-[1px] shadow-sm"
                                                     alt=""
                                                 />
-                                                {c.name}
+                                                {c.nombre}
                                             </button>
                                         ))}
                                     </div>

@@ -1,48 +1,22 @@
-
 import { FadeIn } from '../ui/FadeIn';
 import { Download, Users, Award, MapPin, ShieldCheck } from 'lucide-react';
 
-export function Organizacion() {
-    const sections = [
-        {
-            title: "Comité Directivo",
-            icon: <ShieldCheck className="w-6 h-6 text-white" />,
-            members: [
-                { name: "Dr. Carlos Silva", role: "Presidente", country: "Brasil" },
-                { name: "Lic. María Gómez", role: "Vicepresidenta", country: "Colombia" },
-                { name: "Lic. Javier López", role: "Secretario General", country: "México" }
-            ]
-        },
-        {
-            title: "Fundadores",
-            icon: <Award className="w-6 h-6 text-white" />,
-            members: [
-                { name: "Dra. Ana Reyes", role: "Miembro Honorario", country: "Argentina" },
-                { name: "Lic. Roberto Paz", role: "Miembro Honorario", country: "Chile" }
-            ]
-        },
-        {
-            title: "Coordinadores Académicos",
-            icon: <Users className="w-6 h-6 text-white" />,
-            members: [
-                { name: "Lic. Pedro Suárez", role: "Investigación", country: "Perú" },
-                { name: "Dra. Elena Costa", role: "Educación Continua", country: "Uruguay" }
-            ]
-        },
-        {
-            title: "Coordinaciones Regionales",
-            icon: <MapPin className="w-6 h-6 text-white" />,
-            members: [
-                { name: "Región Andina", role: "Representante Zonal", country: "" },
-                { name: "Cono Sur", role: "Representante Zonal", country: "" },
-                { name: "Centroamérica", role: "Representante Zonal", country: "" }
-            ]
-        }
+export function Organizacion({ data }: { data: any }) {
+    if (!data) return null;
+
+    const icons = [
+        <ShieldCheck className="w-6 h-6 text-white" />,
+        <Award className="w-6 h-6 text-white" />,
+        <Users className="w-6 h-6 text-white" />,
+        <MapPin className="w-6 h-6 text-white" />
     ];
 
     const handleDownload = () => {
-        // Apunta al archivo local en public/docs
-        window.open('/docs/ESTATUTOS_UFAAL_Formato_Institucional_Editable.pdf', '_blank', 'noopener,noreferrer');
+        if (data.estatutos_pdf) {
+            window.open(data.estatutos_pdf.startsWith('http') || data.estatutos_pdf.startsWith('/') ? data.estatutos_pdf : `http://localhost:5000${data.estatutos_pdf}`, '_blank', 'noopener,noreferrer');
+        } else {
+            console.error("No se encontró el PDF de estatutos");
+        }
     };
 
     return (
@@ -51,25 +25,27 @@ export function Organizacion() {
 
                 <div className="text-center mb-16">
                     <FadeIn direction="down">
-                        <h2 className="text-3xl md:text-5xl font-bold text-ufaal-blue mb-6 tracking-tight">Estructura Organizativa</h2>
+                        <h2 className="text-3xl md:text-5xl font-bold text-ufaal-blue mb-6 tracking-tight">
+                            {data.titulo}
+                        </h2>
                         <div className="w-24 h-1 bg-ufaal-blue-light mx-auto rounded-full mb-6"></div>
                         <p className="text-gray-600 font-light max-w-2xl mx-auto text-lg">
-                            Transparencia Institucional y Liderazgo Académico
+                            {data.descripcion}
                         </p>
                     </FadeIn>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
-                    {sections.map((section, index) => (
-                        <FadeIn key={section.title} delay={0.2 + (index * 0.1)} direction="up">
-                            <div className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden h-full">
+                    {data.secciones?.map((section: any, index: number) => (
+                        <FadeIn key={section.title || index} delay={0.2 + (index * 0.1)} direction="up">
+                            <div className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden h-full flex flex-col">
                                 <div className="bg-ufaal-blue p-4 flex items-center gap-3">
-                                    {section.icon}
+                                    {icons[index % icons.length]}
                                     <h3 className="text-lg font-bold text-white">{section.title}</h3>
                                 </div>
-                                <div className="p-6">
+                                <div className="p-6 flex-1">
                                     <ul className="space-y-4">
-                                        {section.members.map((member, idx) => (
+                                        {section.members?.map((member: any, idx: number) => (
                                             <li key={idx} className="flex justify-between items-center border-b border-gray-50 pb-3 last:border-0 last:pb-0">
                                                 <div>
                                                     <p className="font-semibold text-ufaal-text">{member.name}</p>

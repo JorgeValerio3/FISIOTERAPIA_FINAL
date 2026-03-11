@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { FadeIn } from '../ui/FadeIn';
-import { Mail, Send, Facebook, Instagram, Loader2, CheckCircle2 } from 'lucide-react';
+import { Mail, Send, Facebook, Instagram, Loader2, CheckCircle2, MapPin } from 'lucide-react';
 
-export function Contacto() {
+export function Contacto({ data }: { data: any }) {
     const [formData, setFormData] = useState({
         name: '',
         email: '',
@@ -13,6 +13,10 @@ export function Contacto() {
 
     const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
     const [errorMessage, setErrorMessage] = useState('');
+
+    if (!data) return null;
+
+    const correo = data.correo || 'ufaal2020@gmail.com';
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -32,7 +36,7 @@ export function Contacto() {
                 body: JSON.stringify(formData),
             });
 
-            const data = await response.json();
+            const resData = await response.json();
 
             if (response.ok) {
                 setStatus('success');
@@ -41,7 +45,7 @@ export function Contacto() {
                 setTimeout(() => setStatus('idle'), 5000);
             } else {
                 setStatus('error');
-                setErrorMessage(data.error || 'Ocurrió un error al enviar el mensaje.');
+                setErrorMessage(resData.error || 'Ocurrió un error al enviar el mensaje.');
             }
         } catch (error) {
             setStatus('error');
@@ -57,10 +61,10 @@ export function Contacto() {
 
                 <div className="text-center mb-16 lg:text-left">
                     <FadeIn direction="up">
-                        <h2 className="text-3xl md:text-5xl font-bold text-ufaal-blue mb-6 tracking-tight">Contacto</h2>
+                        <h2 className="text-3xl md:text-5xl font-bold text-ufaal-blue mb-6 tracking-tight">{data.titulo}</h2>
                         <div className="w-24 h-1 bg-ufaal-blue-light mx-auto lg:mx-0 rounded-full mb-6"></div>
                         <p className="text-gray-600 font-light text-lg">
-                            Conéctate con nuestra red. Si tienes consultas institucionales, escríbenos directamente.
+                            {data.descripcion}
                         </p>
                     </FadeIn>
                 </div>
@@ -183,37 +187,44 @@ export function Contacto() {
                                     </div>
                                     <div>
                                         <h4 className="text-lg font-bold text-ufaal-text mb-1">Correo Electrónico</h4>
-                                        <a href="mailto:ufaal2020@gmail.com" className="text-gray-600 hover:text-ufaal-blue transition-colors font-light">
-                                            ufaal2020@gmail.com
+                                        <a href={`mailto:${correo}`} className="text-gray-600 hover:text-ufaal-blue transition-colors font-light">
+                                            {correo}
                                         </a>
                                         <p className="text-gray-500 text-sm mt-1">Lunes a Viernes - Horario hábil</p>
                                     </div>
                                 </div>
 
-                                {/* <div className="flex items-start gap-4">
-                                    <div className="p-3 bg-white rounded-full text-ufaal-blue shadow-sm border border-gray-100 shrink-0">
-                                        <MapPin className="w-6 h-6" />
+                                {data.direccion && (
+                                    <div className="flex items-start gap-4">
+                                        <div className="p-3 bg-white rounded-full text-ufaal-blue shadow-sm border border-gray-100 shrink-0">
+                                            <MapPin className="w-6 h-6" />
+                                        </div>
+                                        <div>
+                                            <h4 className="text-lg font-bold text-ufaal-text mb-1">Sede Administrativa</h4>
+                                            <p className="text-gray-600 font-light leading-relaxed whitespace-pre-wrap">
+                                                {data.direccion}
+                                            </p>
+                                        </div>
                                     </div>
-                                    <div>
-                                        <h4 className="text-lg font-bold text-ufaal-text mb-1">Sede Administrativa</h4>
-                                        <p className="text-gray-600 font-light leading-relaxed">
-                                            Sede Central UFAAL<br />
-                                            Ciudad de México, México.<br />
-                                            (Con coordinaciones activas en toda la región)
-                                        </p>
-                                    </div>
-                                </div> */}
+                                )}
                             </div>
 
                             <div>
                                 <h4 className="text-lg font-bold text-ufaal-text mb-6">Redes Sociales</h4>
                                 <div className="flex gap-4">
-                                    <a href="#" target="_blank" rel="noopener noreferrer" className="p-3 bg-white rounded-full text-gray-500 hover:text-white hover:bg-[#1877F2] transition-colors shadow-sm border border-gray-100">
-                                        <Facebook className="w-6 h-6" />
-                                    </a>
-                                    <a href="#" target="_blank" rel="noopener noreferrer" className="p-3 bg-white rounded-full text-gray-500 hover:text-white hover:bg-[#E4405F] transition-colors shadow-sm border border-gray-100">
-                                        <Instagram className="w-6 h-6" />
-                                    </a>
+                                    {data.facebook && (
+                                        <a href={data.facebook} target="_blank" rel="noopener noreferrer" className="p-3 bg-white rounded-full text-gray-500 hover:text-white hover:bg-[#1877F2] transition-colors shadow-sm border border-gray-100">
+                                            <Facebook className="w-6 h-6" />
+                                        </a>
+                                    )}
+                                    {data.instagram && (
+                                        <a href={data.instagram} target="_blank" rel="noopener noreferrer" className="p-3 bg-white rounded-full text-gray-500 hover:text-white hover:bg-[#E4405F] transition-colors shadow-sm border border-gray-100">
+                                            <Instagram className="w-6 h-6" />
+                                        </a>
+                                    )}
+                                    {(!data.facebook && !data.instagram) && (
+                                        <span className="text-gray-400 text-sm">No hay redes sociales configuradas.</span>
+                                    )}
                                 </div>
                             </div>
 

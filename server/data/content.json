@@ -1,0 +1,418 @@
+{
+  "hero": {
+    "subtitulo": "Unidad de Fisioterapia Acuática",
+    "titulo_principal": "Revolucionando la Terapia en el Agua",
+    "descripcion": "Somos la red líder de profesionales en fisioterapia acuática de Latinoamérica.",
+    "video_id": "8zR4z8C5XjU",
+    "cta_primario": "Afiliarme Ahora",
+    "cta_secundario": "Ver Actividades",
+    "estadisticas": [
+      {
+        "valor": "+15",
+        "etiqueta": "Países Miembros"
+      },
+      {
+        "valor": "+500",
+        "etiqueta": "Profesionales"
+      },
+      {
+        "valor": "+50",
+        "etiqueta": "Investigaciones"
+      }
+    ]
+  },
+  "quienes_somos": {
+    "titulo": "Quiénes Somos",
+    "historia": "La Unidad de Fisioterapia Acuática de América Latina (UFAAL) nace ante la necesidad de...",
+    "mision": "Fomentar la excelencia en la práctica clínica y la investigación...",
+    "vision": "Ser el principal ente rector e integrador de la especialización...",
+    "imagen_destacada": "/uploads/portada_quienes_somos.jpg"
+  },
+  "organizacion": {
+    "titulo": "Estructura Organizativa",
+    "descripcion": "Transparencia Institucional y Liderazgo Académico",
+    "estatutos_pdf": "/docs/ESTATUTOS_UFAAL_Formato_Institucional_Editable.pdf",
+    "secciones": [
+      {
+        "title": "Comité Directivo",
+        "members": [
+          {
+            "name": "Dr. Carlos Silva",
+            "role": "Presidente",
+            "country": "Brasil"
+          },
+          {
+            "name": "Lic. María Gómez",
+            "role": "Vicepresidenta",
+            "country": "Colombia"
+          },
+          {
+            "name": "Lic. Javier López",
+            "role": "Secretario General",
+            "country": "México"
+          }
+        ]
+      },
+      {
+        "title": "Fundadores",
+        "members": [
+          {
+            "name": "Dra. Ana Reyes",
+            "role": "Miembro Honorario",
+            "country": "Argentina"
+          },
+          {
+            "name": "Lic. Roberto Paz",
+            "role": "Miembro Honorario",
+            "country": "Chile"
+          }
+        ]
+      },
+      {
+        "title": "Coordinadores Académicos",
+        "members": [
+          {
+            "name": "Lic. Pedro Suárez",
+            "role": "Investigación",
+            "country": "Perú"
+          },
+          {
+            "name": "Dra. Elena Costa",
+            "role": "Educación Continua",
+            "country": "Uruguay"
+          }
+        ]
+      },
+      {
+        "title": "Coordinaciones Regionales",
+        "members": [
+          {
+            "name": "Región Andina",
+            "role": "Representante Zonal",
+            "country": ""
+          },
+          {
+            "name": "Cono Sur",
+            "role": "Representante Zonal",
+            "country": ""
+          },
+          {
+            "name": "Centroamérica",
+            "role": "Representante Zonal",
+            "country": ""
+          }
+        ]
+      }
+    ]
+  },
+  "paises": {
+    "titulo": "Miembros y Países",
+    "descripcion": "Nuestra Red Regional en Expansión",
+    "paises_lista": [
+      {
+        "id": "ar",
+        "nombre": "Argentina",
+        "latitud": -38.416097,
+        "longitud": -63.616672,
+        "representante": "Dra. Valentina Ross",
+        "cargo": "Delegada Nacional",
+        "imagen": "https://randomuser.me/api/portraits/women/44.jpg"
+      },
+      {
+        "id": "br",
+        "nombre": "Brasil",
+        "latitud": -14.235004,
+        "longitud": -51.92528,
+        "representante": "Dr. Joao Santos",
+        "cargo": "Delegado Nacional",
+        "imagen": "https://randomuser.me/api/portraits/men/32.jpg"
+      },
+      {
+        "id": "co",
+        "nombre": "Colombia",
+        "latitud": 4.570868,
+        "longitud": -74.297333,
+        "representante": "Lic. Camila Mendoza",
+        "cargo": "Delegada Nacional",
+        "imagen": "https://randomuser.me/api/portraits/women/68.jpg"
+      },
+      {
+        "id": "mx",
+        "nombre": "México",
+        "latitud": 23.634501,
+        "longitud": -102.552784,
+        "representante": "Dr. Alejandro Fuentes",
+        "cargo": "Delegado Nacional",
+        "imagen": "https://randomuser.me/api/portraits/men/46.jpg"
+      },
+      {
+        "id": "cl",
+        "nombre": "Chile",
+        "latitud": -35.675147,
+        "longitud": -71.542969,
+        "representante": "Lic. Sofia Vargas",
+        "cargo": "Delegada Nacional",
+        "imagen": "https://randomuser.me/api/portraits/women/91.jpg"
+      },
+      {
+        "id": "pe",
+        "nombre": "Perú",
+        "latitud": -9.189967,
+        "longitud": -75.015152,
+        "representante": "Lic. Diego Castillo",
+        "cargo": "Delegado Nacional",
+        "imagen": "https://randomuser.me/api/portraits/men/22.jpg"
+      }
+    ]
+  },
+  "actividades": {
+    "titulo": "Nuestras Actividades",
+    "descripcion": "Descubre las iniciativas y programas que promovemos",
+    "items": [
+      {
+        "id": 1,
+        "titulo": "Congreso Latinoamericano Bi-Anual",
+        "categoria": "Eventos",
+        "descripcion": "El encuentro más grande de especialistas en medio acuático, con talleres pre-congreso y ponencias internacionales.",
+        "fecha": "Próxima edición: 2024",
+        "icono": "calendario"
+      },
+      {
+        "id": 2,
+        "titulo": "Comités de Investigación",
+        "categoria": "Ciencia",
+        "descripcion": "Grupos de trabajo multicéntricos dedicados a publicar evidencia sobre los beneficios del agua en distintas patologías.",
+        "fecha": "Reuniones Mensuales",
+        "icono": "ciencia"
+      },
+      {
+        "id": 3,
+        "titulo": "Certificación en Técnicas Acuáticas",
+        "categoria": "Educación",
+        "descripcion": "Programas estandarizados para avalar competencias profesionales en métodos como Halliwick, Bad Ragaz o Watsu.",
+        "fecha": "Inscripciones Abiertas",
+        "icono": "educacion"
+      },
+      {
+        "id": 4,
+        "titulo": "Foro Regional Online",
+        "categoria": "Networking",
+        "descripcion": "Sesiones virtuales bimensuales para discutir casos clínicos complejos y compartir resoluciones terapéuticas.",
+        "fecha": "Bimensual",
+        "icono": "redes"
+      }
+    ]
+  },
+  "formacion": {
+    "titulo": "Ruta de Formación",
+    "descripcion": "Un camino estructurado hacia la excelencia profesional en el medio acuático",
+    "niveles": [
+      {
+        "id": "basico",
+        "titulo": "Nivel Básico: Inmersión",
+        "descripcion": "Fundamentos hidrodinámicos y principios de la flotación aplicados a la rehabilitación.",
+        "duracion": "40 horas",
+        "requisitos": "Estudiantes de último año o titulados"
+      },
+      {
+        "id": "intermedio",
+        "titulo": "Nivel Intermedio: Terapia Acuática Específica",
+        "descripcion": "Manejo de patologías ortopédicas y neurológicas comunes en piscinas terapéuticas.",
+        "duracion": "80 horas",
+        "requisitos": "Certificación Nivel Básico"
+      },
+      {
+        "id": "avanzado",
+        "titulo": "Nivel Avanzado: Técnicas Especiales",
+        "descripcion": "Profundización en métodos específicos (Halliwick, Ai Chi, Watsu Clínico) y prescripción avanzada del ejercicio.",
+        "duracion": "120 horas",
+        "requisitos": "Certificación Nivel Intermedio y práctica clínica demostrable"
+      }
+    ]
+  },
+  "investigacion": {
+    "titulo": "Investigación y Publicaciones",
+    "descripcion": "Nuestra base de evidencia científica para respaldar intervenciones en el medio acuático",
+    "articulos": [
+      {
+        "id": 1,
+        "titulo": "Efectos de la Terapia Acuática en Pacientes con Fibromialgia: Una Revisión Sistemática",
+        "autores": "Dr. Carlos Silva, Lic. María Gómez",
+        "fecha": "Octubre 2023",
+        "revista": "Revista Latinoamericana de Fisioterapia",
+        "doi": "10.1234/rlf.2023.045",
+        "pdf_url": "/docs/ejemplo_articulo_1.pdf"
+      },
+      {
+        "id": 2,
+        "titulo": "Protocolo de Ai-Chi Clínico para la Mejora del Equilibrio en Adultos Mayores",
+        "autores": "Lic. Pedro Suárez, Dra. Elena Costa",
+        "fecha": "Febrero 2023",
+        "revista": "Journal of Aquatic Physical Therapy",
+        "doi": "10.5678/japt.2023.112",
+        "pdf_url": "/docs/ejemplo_articulo_2.pdf"
+      },
+      {
+        "id": 3,
+        "titulo": "Consenso Regional sobre Contraindicaciones Absolutas y Relativas en Hidroterapia",
+        "autores": "Comité Científico UFAAL",
+        "fecha": "Noviembre 2022",
+        "revista": "Documentos Oficiales UFAAL",
+        "doi": "",
+        "pdf_url": "/docs/consenso_contraindicaciones_2022.pdf"
+      }
+    ]
+  },
+  "galeria": {
+    "titulo": "Galería de Actividades",
+    "descripcion": "Momentos destacados de nuestros congresos, formaciones y prácticas en toda Latinoamérica.",
+    "imagenes": [
+      {
+        "id": 1,
+        "url": "https://images.unsplash.com/photo-1543857778-c4a1a3e0b2eb?q=80&w=1000&auto=format&fit=crop",
+        "titulo": "Práctica Clínica",
+        "descripcion": "Sesión de Ai Chi Clínico en Sao Paulo, Brasil",
+        "categoria": "formacion"
+      },
+      {
+        "id": 2,
+        "url": "https://images.unsplash.com/photo-1576089332561-267566085a86?q=80&w=1000&auto=format&fit=crop",
+        "titulo": "Congreso Regional",
+        "descripcion": "3er Encuentro Latinoamericano en Bogotá",
+        "categoria": "eventos"
+      },
+      {
+        "id": 3,
+        "url": "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?q=80&w=1000&auto=format&fit=crop",
+        "titulo": "Trabajo en Equipo",
+        "descripcion": "Taller de integración terapéutica infantil",
+        "categoria": "formacion"
+      },
+      {
+        "id": 4,
+        "url": "https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?q=80&w=1000&auto=format&fit=crop",
+        "titulo": "Investigación Práctica",
+        "descripcion": "Análisis biomecánico en medio acuático, Chile",
+        "categoria": "investigacion"
+      },
+      {
+        "id": 5,
+        "url": "https://images.unsplash.com/photo-1620608678099-2a2ec96ee463?q=80&w=1000&auto=format&fit=crop",
+        "titulo": "Asamblea Anual",
+        "descripcion": "Reunión de delegados regionales",
+        "categoria": "eventos"
+      },
+      {
+        "id": 6,
+        "url": "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=1000&auto=format&fit=crop",
+        "titulo": "Certificación Halliwick",
+        "descripcion": "Nuevo grupo de profesionales certificados",
+        "categoria": "formacion"
+      }
+    ]
+  },
+  "noticias": {
+    "titulo": "Últimas Noticias",
+    "descripcion": "Mantente informado sobre las novedades de la Fisioterapia Acuática en la región",
+    "items": [
+      {
+        "id": 1,
+        "titulo": "Apertura de Convocatoria para el Congreso UFAAL 2024",
+        "fecha": "15 Mayo, 2024",
+        "resumen": "Se abre el plazo para la presentación de resúmenes de investigación para nuestro próximo encuentro bi-anual. Los tópicos principales este año incluirán neuro-rehabilitación pediátrica y abordaje temprano en lesionados medulares.",
+        "imagen": "https://images.unsplash.com/photo-1540575467063-178a50c2df87?q=80&w=800&auto=format&fit=crop",
+        "autor": "Comité Organizador",
+        "enlace": "#"
+      },
+      {
+        "id": 2,
+        "titulo": "Nuevo Convenio de Colaboración Internacional",
+        "fecha": "02 Abril, 2024",
+        "resumen": "La UFAAL ha firmado un histórico acuerdo marco con las principales asociaciones europeas para el intercambio de docentes y acceso preferencial a certificaciones internacionales para todos los miembros activos.",
+        "imagen": "https://images.unsplash.com/photo-1552502808-7bb79e5e78ea?q=80&w=800&auto=format&fit=crop",
+        "autor": "Secretaría General",
+        "enlace": "#"
+      },
+      {
+        "id": 3,
+        "titulo": "Resultados del Primer Censo Latinoamericano de Instalaciones",
+        "fecha": "20 Marzo, 2024",
+        "resumen": "Publicamos los resultados de nuestra investigación demográfica sobre la distribución e infraestructura de piscinas con fines terapéuticos en la región andina y el cono sur, identificando áreas críticas de desarrollo.",
+        "imagen": "https://images.unsplash.com/photo-1576089155708-3165b6eb9319?q=80&w=800&auto=format&fit=crop",
+        "autor": "Dpto. de Investigación",
+        "enlace": "#"
+      }
+    ]
+  },
+  "afiliacion": {
+    "titulo": "Alianzas Estratégicas",
+    "descripcion": "Consolidamos un ecosistema de excelencia regional. Actualmente gestionamos nuestra expansión a través de vínculos directos con líderes e instituciones del sector.",
+    "mensaje_expansion": "Estamos optimizando nuestros procesos institucionales para ofrecer una plataforma de membresía de estándar global. Buscamos organizaciones pioneras que deseen liderar la integración de la fisiatría y la acupuntura en Latinoamérica.",
+    "beneficios": [
+      "Reconocimiento Regional",
+      "Networking B2B",
+      "Propuesta de Valor",
+      "Optimización Clínica"
+    ],
+    "email_contacto": "ufaal2020@gmail.com"
+  },
+  "contacto": {
+    "titulo": "Contacto Directo",
+    "descripcion": "Estamos a su disposición para consultas institucionales.",
+    "email": "ufaal2020@gmail.com",
+    "telefono": "+1 (555) 123-4567",
+    "direccion": "Sede Virtual Regional, Ciudad de México, LATAM",
+    "redes_sociales": {
+      "facebook": "https://facebook.com/ufaal",
+      "instagram": "https://instagram.com/ufaal",
+      "linkedin": "https://linkedin.com/company/ufaal"
+    }
+  },
+  "colaboradores": {
+    "titulo": "Nuestros Aliados y Colaboradores",
+    "logos": [
+      {
+        "nombre": "Universidad Nacional",
+        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/Escudo_de_la_Universidad_Nacional_Aut%C3%B3noma_de_M%C3%A9xico.svg/200px-Escudo_de_la_Universidad_Nacional_Aut%C3%B3noma_de_M%C3%A9xico.svg.png"
+      },
+      {
+        "nombre": "Asociación Brasileña",
+        "url": "https://placeholder.com/wp-content/uploads/2018/10/placeholder.com-logo1.png"
+      },
+      {
+        "nombre": "Colegio de Kinesiólogos",
+        "url": "https://placeholder.com/wp-content/uploads/2018/10/placeholder.com-logo1.png"
+      },
+      {
+        "nombre": "Sociedad de Fisiatría",
+        "url": "https://placeholder.com/wp-content/uploads/2018/10/placeholder.com-logo1.png"
+      },
+      {
+        "nombre": "Ministerio de Salud",
+        "url": "https://placeholder.com/wp-content/uploads/2018/10/placeholder.com-logo1.png"
+      }
+    ]
+  },
+  "footer": {
+    "descripcion": "La mayor red de profesionales de Fisioterapia Acuática en Latinoamérica. Comprometidos con el desarrollo académico y la excelencia terapéutica.",
+    "enlaces": [
+      {
+        "titulo": "Quiénes Somos",
+        "url": "#quienes-somos"
+      },
+      {
+        "titulo": "Organización",
+        "url": "#organizacion"
+      },
+      {
+        "titulo": "Formación",
+        "url": "#formacion"
+      },
+      {
+        "titulo": "Contacto",
+        "url": "#contacto"
+      }
+    ],
+    "copyright": "2024 UFAAL. Todos los derechos reservados."
+  }
+}

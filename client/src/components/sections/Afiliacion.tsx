@@ -2,14 +2,18 @@ import { FadeIn } from '../ui/FadeIn';
 import { ShieldCheck, Mail, Send, ArrowRight, ClipboardCheck } from 'lucide-react';
 import { useState } from 'react';
 
-export function Afiliacion() {
+export function Afiliacion({ data }: { data: any }) {
     const [copied, setCopied] = useState(false);
+
+    if (!data) return null;
 
     const copyToClipboard = () => {
         navigator.clipboard.writeText('ufaal2020@gmail.com');
         setCopied(true);
         setTimeout(() => setCopied(false), 3000);
     };
+
+    const beneficios = data.beneficios || [];
 
     return (
         <section id="afiliacion" className="py-24 bg-white relative overflow-hidden">
@@ -28,11 +32,11 @@ export function Afiliacion() {
                             </span>
                         </div>
                         <h2 className="text-3xl md:text-5xl font-bold text-ufaal-text mb-6 tracking-tight">
-                            Alianzas <span className="text-ufaal-blue">Estratégicas</span>
+                            {data.titulo}
                         </h2>
                         <div className="w-24 h-1 bg-ufaal-blue-light mx-auto rounded-full mb-6"></div>
                         <p className="text-gray-600 font-light text-lg leading-relaxed">
-                            Consolidamos un ecosistema de excelencia regional. Actualmente gestionamos nuestra expansión a través de vínculos directos con líderes e instituciones del sector.
+                            {data.descripcion}
                         </p>
                     </FadeIn>
                 </div>
@@ -44,36 +48,20 @@ export function Afiliacion() {
                                 {/* Lado Izquierdo: Información y Valor */}
                                 <div className="p-8 md:p-12 lg:w-3/5">
                                     <div className="mb-8">
-                                        <h3 className="text-2xl font-bold text-ufaal-text mb-4">Fase de Expansión Tecnológica</h3>
-                                        <p className="text-gray-600 leading-relaxed font-light mb-6">
-                                            Estamos optimizando nuestros procesos institucionales para ofrecer una plataforma de membresía de estándar global. Buscamos organizaciones pioneras que deseen liderar la integración de la fisiatría y la acupuntura en Latinoamérica.
+                                        <h3 className="text-2xl font-bold text-ufaal-text mb-4">{data.subtitulo || "Fase de Expansión Tecnológica"}</h3>
+                                        <p className="text-gray-600 leading-relaxed font-light mb-6 whitespace-pre-wrap">
+                                            {data.texto_principal}
                                         </p>
                                         
                                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-8">
-                                            <div className="flex items-center gap-3 p-4 bg-ufaal-gray rounded-2xl border border-gray-100 group-hover:bg-white transition-colors">
-                                                <div className="w-10 h-10 bg-ufaal-blue/10 rounded-xl flex items-center justify-center shrink-0">
-                                                    <ArrowRight className="w-5 h-5 text-ufaal-blue" />
+                                            {beneficios.map((beneficio: string, idx: number) => (
+                                                <div key={idx} className="flex items-center gap-3 p-4 bg-ufaal-gray rounded-2xl border border-gray-100 group-hover:bg-white transition-colors">
+                                                    <div className="w-10 h-10 bg-ufaal-blue/10 rounded-xl flex items-center justify-center shrink-0">
+                                                        <ArrowRight className="w-5 h-5 text-ufaal-blue" />
+                                                    </div>
+                                                    <span className="text-sm font-semibold text-ufaal-text line-clamp-2">{beneficio}</span>
                                                 </div>
-                                                <span className="text-sm font-semibold text-ufaal-text">Reconocimiento Regional</span>
-                                            </div>
-                                            <div className="flex items-center gap-3 p-4 bg-ufaal-gray rounded-2xl border border-gray-100 group-hover:bg-white transition-colors">
-                                                <div className="w-10 h-10 bg-ufaal-blue/10 rounded-xl flex items-center justify-center shrink-0">
-                                                    <ArrowRight className="w-5 h-5 text-ufaal-blue" />
-                                                </div>
-                                                <span className="text-sm font-semibold text-ufaal-text">Networking B2B</span>
-                                            </div>
-                                            <div className="flex items-center gap-3 p-4 bg-ufaal-gray rounded-2xl border border-gray-100 group-hover:bg-white transition-colors">
-                                                <div className="w-10 h-10 bg-ufaal-blue/10 rounded-xl flex items-center justify-center shrink-0">
-                                                    <ArrowRight className="w-5 h-5 text-ufaal-blue" />
-                                                </div>
-                                                <span className="text-sm font-semibold text-ufaal-text">Propuesta de Valor</span>
-                                            </div>
-                                            <div className="flex items-center gap-3 p-4 bg-ufaal-gray rounded-2xl border border-gray-100 group-hover:bg-white transition-colors">
-                                                <div className="w-10 h-10 bg-ufaal-blue/10 rounded-xl flex items-center justify-center shrink-0">
-                                                    <ArrowRight className="w-5 h-5 text-ufaal-blue" />
-                                                </div>
-                                                <span className="text-sm font-semibold text-ufaal-text">Optimización Clínica</span>
-                                            </div>
+                                            ))}
                                         </div>
                                     </div>
                                 </div>

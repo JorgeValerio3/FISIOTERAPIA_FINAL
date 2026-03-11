@@ -1,30 +1,19 @@
-
 import { FadeIn } from '../ui/FadeIn';
 import { BookOpen, Laptop, Landmark } from 'lucide-react';
 
-export function Formacion() {
-    const formationItems = [
-        {
-            title: "Cursos Internacionales",
-            icon: <Laptop className="w-8 h-8 text-ufaal-blue" />,
-            desc: "Programas de educación continua avalados por expertos regionales en diversas especialidades de la rehabilitación."
-        },
-        {
-            title: "Certificaciones Integrales",
-            icon: <AwardIcon className="w-8 h-8 text-ufaal-blue" />,
-            desc: "Avales clínicos en terapia acuática bajo estándares globales reconocidos por la WP."
-        },
-        {
-            title: "Programas Educativos",
-            icon: <BookOpen className="w-8 h-8 text-ufaal-blue" />,
-            desc: "Módulos formativos para pregrado y posgrado buscando estandarizar el currículo académico latinoamericano."
-        },
-        {
-            title: "Alianzas Universitarias",
-            icon: <Landmark className="w-8 h-8 text-ufaal-blue" />,
-            desc: "Convenios con instituciones de educación superior para el desarrollo de diplomados y especializaciones."
-        }
-    ];
+export function Formacion({ data }: { data: any }) {
+    if (!data) return null;
+
+    const items = data.items || [];
+
+    const getIcon = (iconName: string) => {
+        const i = String(iconName).toLowerCase();
+        if (i.includes('laptop') || i.includes('curso')) return <Laptop className="w-8 h-8 text-ufaal-blue" />;
+        if (i.includes('award') || i.includes('certifica')) return <AwardIcon className="w-8 h-8 text-ufaal-blue" />;
+        if (i.includes('book') || i.includes('educa') || i.includes('programa')) return <BookOpen className="w-8 h-8 text-ufaal-blue" />;
+        if (i.includes('landmark') || i.includes('alianza') || i.includes('universidad')) return <Landmark className="w-8 h-8 text-ufaal-blue" />;
+        return <BookOpen className="w-8 h-8 text-ufaal-blue" />;
+    };
 
     return (
         <section id="formacion" className="py-24 bg-white relative overflow-hidden">
@@ -35,25 +24,25 @@ export function Formacion() {
 
                 <div className="text-left mb-16 max-w-2xl">
                     <FadeIn direction="right">
-                        <h2 className="text-3xl md:text-5xl font-bold text-ufaal-blue mb-6 tracking-tight">Formación Académica</h2>
+                        <h2 className="text-3xl md:text-5xl font-bold text-ufaal-blue mb-6 tracking-tight">{data.titulo}</h2>
                         <div className="w-24 h-1 bg-ufaal-blue-light rounded-full mb-6"></div>
                         <p className="text-gray-600 font-light text-lg leading-relaxed">
-                            El posicionamiento y crecimiento de la fisioterapia acuática require educación de vanguardia y excelencia. Brindamos plataformas para el desarrollo profesional.
+                            {data.descripcion}
                         </p>
                     </FadeIn>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    {formationItems.map((item, index) => (
-                        <FadeIn key={item.title} delay={0.2 + (index * 0.1)} direction="up">
-                            <div className="flex gap-6 items-start p-8 rounded-2xl bg-white shadow-sm border border-gray-100 hover:shadow-md hover:border-ufaal-blue-light/30 transition-all group">
+                    {items.map((item: any, index: number) => (
+                        <FadeIn key={item.titulo || index} delay={0.2 + (index * 0.1)} direction="up">
+                            <div className="flex gap-6 items-start p-8 rounded-2xl bg-white shadow-sm border border-gray-100 hover:shadow-md hover:border-ufaal-blue-light/30 transition-all group h-full">
                                 <div className="p-4 bg-ufaal-gray rounded-xl group-hover:bg-ufaal-blue/5 transition-colors shrink-0">
-                                    {item.icon}
+                                    {getIcon(item.icono || item.titulo)}
                                 </div>
-                                <div>
-                                    <h3 className="text-xl font-bold text-ufaal-text mb-3">{item.title}</h3>
+                                <div className="flex-1">
+                                    <h3 className="text-xl font-bold text-ufaal-text mb-3">{item.titulo}</h3>
                                     <p className="text-gray-600 font-light leading-relaxed">
-                                        {item.desc}
+                                        {item.descripcion}
                                     </p>
                                 </div>
                             </div>
