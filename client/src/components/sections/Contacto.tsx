@@ -6,6 +6,7 @@ export function Contacto() {
     const [formData, setFormData] = useState({
         name: '',
         email: '',
+        phone: '',
         subject: '',
         message: ''
     });
@@ -35,7 +36,7 @@ export function Contacto() {
 
             if (response.ok) {
                 setStatus('success');
-                setFormData({ name: '', email: '', subject: '', message: '' });
+                setFormData({ name: '', email: '', phone: '', subject: '', message: '' });
                 // Reset success message after 5 seconds
                 setTimeout(() => setStatus('idle'), 5000);
             } else {
@@ -103,18 +104,32 @@ export function Contacto() {
                                     </div>
                                 </div>
 
-                                <div className="space-y-2">
-                                    <label htmlFor="subject" className="text-sm font-medium text-gray-700">Asunto</label>
-                                    <input
-                                        type="text"
-                                        id="subject"
-                                        name="subject"
-                                        required
-                                        value={formData.subject}
-                                        onChange={handleChange}
-                                        className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-ufaal-blue-light/20 focus:border-ufaal-blue-light outline-none transition-all placeholder-gray-400"
-                                        placeholder="Consulta sobre afiliación institucional"
-                                    />
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                    <div className="space-y-2">
+                                        <label htmlFor="phone" className="text-sm font-medium text-gray-700">Teléfono (WhatsApp)</label>
+                                        <input
+                                            type="tel"
+                                            id="phone"
+                                            name="phone"
+                                            value={formData.phone}
+                                            onChange={handleChange}
+                                            className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-ufaal-blue-light/20 focus:border-ufaal-blue-light outline-none transition-all placeholder-gray-400"
+                                            placeholder="Ej. +52 55 1234 5678"
+                                        />
+                                    </div>
+                                    <div className="space-y-2">
+                                        <label htmlFor="subject" className="text-sm font-medium text-gray-700">Asunto</label>
+                                        <input
+                                            type="text"
+                                            id="subject"
+                                            name="subject"
+                                            required
+                                            value={formData.subject}
+                                            onChange={handleChange}
+                                            className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-ufaal-blue-light/20 focus:border-ufaal-blue-light outline-none transition-all placeholder-gray-400"
+                                            placeholder="Consulta sobre tratamiento"
+                                        />
+                                    </div>
                                 </div>
 
                                 <div className="space-y-2">
