@@ -41,8 +41,8 @@ export function Organizacion() {
     ];
 
     const handleDownload = () => {
-        // Apunta al backend en Express para descargar el PDF
-        window.open('http://localhost:5000/api/downloads/estatutos.pdf', '_blank', 'noopener,noreferrer');
+        // Apunta al archivo local en public/docs
+        window.open('/docs/ESTATUTOS_UFAAL_Formato_Institucional_Editable.pdf', '_blank', 'noopener,noreferrer');
     };
 
     return (

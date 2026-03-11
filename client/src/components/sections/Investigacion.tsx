@@ -31,8 +31,11 @@ export function Investigacion() {
     ];
 
     const handleDownload = (filename: string) => {
-        // Apunta al backend en Express para descargas genéricas
-        window.open(`http://localhost:5000/api/downloads/${filename}`, '_blank');
+        if (filename === 'estatutos.pdf') {
+            window.open('/docs/ESTATUTOS_UFAAL_Formato_Institucional_Editable.pdf', '_blank');
+        } else {
+            alert('El documento no existe o se encuentra en actualización.');
+        }
     };
 
     return (

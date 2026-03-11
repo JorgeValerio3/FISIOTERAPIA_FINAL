@@ -1,86 +1,133 @@
 
 import { FadeIn } from '../ui/FadeIn';
-import { Target, Eye, Heart, Clock } from 'lucide-react';
+import { Target, Eye, Heart, Globe, TestTube, Users, ShieldCheck, Lightbulb, HandHeart } from 'lucide-react';
 
 export function QuienesSomos() {
-    const cards = [
+    const valores = [
         {
-            icon: <Clock className="w-8 h-8 text-ufaal-blue" />,
-            title: "Historia",
-            desc: "Surgimos como una iniciativa de articulación regional ante la necesidad de consolidar un espacio formal de cooperación técnica y estandarización de buenas prácticas."
+            icon: <Globe className="w-6 h-6 text-ufaal-blue" />,
+            title: "Colaboración intercultural",
+            desc: "Promovemos la cooperación entre profesionales, instituciones y países de América Latina, valorando la diversidad cultural y el intercambio de conocimientos."
         },
         {
-            icon: <Target className="w-8 h-8 text-ufaal-blue" />,
-            title: "Misión",
-            desc: "Promover la integración latinoamericana como eje estratégico para elevar la calidad de la rehabilitación acuática, fomentando la educación continua y la ética profesional."
+            icon: <TestTube className="w-6 h-6 text-ufaal-blue" />,
+            title: "Excelencia académica y científica",
+            desc: "Impulsamos la formación continua, la investigación y la actualización profesional para garantizar prácticas terapéuticas fundamentadas en evidencia científica."
         },
         {
-            icon: <Eye className="w-8 h-8 text-ufaal-blue" />,
-            title: "Visión",
-            desc: "Ser un espacio de liderazgo científico, integración regional y proyección internacional, posicionando a la fisioterapia acuática de América Latina en escenarios globales."
+            icon: <ShieldCheck className="w-6 h-6 text-ufaal-blue" />,
+            title: "Compromiso bioético",
+            desc: "Actuamos con responsabilidad ética, respeto por los principios de la bioética y compromiso con el bienestar de los pacientes y las comunidades."
         },
         {
-            icon: <Heart className="w-8 h-8 text-ufaal-blue" />,
-            title: "Valores",
-            desc: "Ética, rigor científico, cooperación interinstitucional, integración regional y responsabilidad social."
+            icon: <Lightbulb className="w-6 h-6 text-ufaal-blue" />,
+            title: "Innovación terapéutica",
+            desc: "Fomentamos el desarrollo de nuevas estrategias, metodologías y tecnologías aplicadas a la fisioterapia acuática para mejorar los resultados clínicos."
+        },
+        {
+            icon: <HandHeart className="w-6 h-6 text-ufaal-blue" />,
+            title: "Respeto por la dignidad humana",
+            desc: "Reconocemos el valor intrínseco de cada persona, promoviendo una atención centrada en el paciente, inclusiva y humanizada."
+        },
+        {
+            icon: <Users className="w-6 h-6 text-ufaal-blue" />,
+            title: "Transparencia y responsabilidad",
+            desc: "Promovemos una gestión institucional clara, ética y responsable, basada en la confianza, la integridad y el compromiso profesional."
         }
     ];
 
     return (
-        <section id="quienes-somos" className="py-24 bg-white">
+        <section id="quienes-somos" className="py-24 bg-gradient-to-b from-white to-gray-50">
             <div className="max-w-7xl mx-auto px-6">
 
-                <div className="text-center mb-16">
+                {/* Main Intro: Quiénes Somos & Filosofía */}
+                <div className="mb-24">
                     <FadeIn direction="up">
-                        <h2 className="text-3xl md:text-5xl font-bold text-ufaal-blue mb-6 tracking-tight">Quiénes Somos</h2>
-                        <div className="w-24 h-1 bg-ufaal-blue-light mx-auto rounded-full"></div>
+                        <div className="text-center max-w-4xl mx-auto">
+                            <h2 className="text-4xl md:text-6xl font-extrabold text-ufaal-blue tracking-tight mb-8">Quiénes Somos</h2>
+                            <p className="text-lg md:text-xl text-gray-600 font-light leading-relaxed mb-6">
+                                La Unión de Fisioterapia Acuática de América Latina (UFAAL) es una organización que integra a profesionales, académicos e instituciones comprometidas con el desarrollo y la promoción de la fisioterapia acuática en la región latinoamericana.
+                            </p>
+                            <p className="text-lg md:text-xl text-gray-600 font-light leading-relaxed mb-6">
+                                Nuestro propósito es fomentar la colaboración científica, la formación profesional y el intercambio de conocimientos, impulsando el crecimiento de la fisioterapia acuática como herramienta terapéutica basada en evidencia.
+                            </p>
+                            <p className="text-lg md:text-xl text-gray-600 font-light leading-relaxed">
+                                UFAAL trabaja para fortalecer la educación, la investigación y la práctica clínica en el medio acuático, promoviendo la integración regional hispano parlante y el avance de la rehabilitación física en beneficio de la salud y la calidad de vida de las personas.
+                            </p>
+                        </div>
                     </FadeIn>
                 </div>
 
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
-                    {/* Official Text Column */}
-                    <div className="space-y-6 text-gray-700 leading-relaxed font-light text-lg">
-                        <FadeIn delay={0.1} direction="left">
-                            <p>
-                                <strong className="text-ufaal-blue font-semibold">La Unión de Fisioterapia Acuática de América Latina (UFAAL)</strong> es una organización científica regional que integra a profesionales, académicos e instituciones comprometidas con el desarrollo, fortalecimiento y posicionamiento de la fisioterapia acuática en el ámbito clínico, académico y comunitario en América Latina.
-                            </p>
-                        </FadeIn>
+                <div className="mb-32">
+                    <FadeIn direction="up" delay={0.2}>
+                        <div className="bg-white p-10 md:p-16 rounded-[2.5rem] shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-gray-100 max-w-5xl mx-auto">
+                            <h3 className="text-3xl md:text-4xl font-bold text-ufaal-blue mb-8 text-center tracking-tight">Filosofía Institucional</h3>
+                            <div className="space-y-6 text-gray-600 font-light text-lg leading-relaxed columns-1 md:columns-2 gap-12">
+                                <p>
+                                    La Unión de Fisioterapia Acuática de América Latina (UFAAL) sustenta su filosofía en el principio de que el agua constituye un medio terapéutico de alto valor científico y humano para la rehabilitación, la prevención y la optimización de la función física.
+                                </p>
+                                <p>
+                                    Nuestra visión filosófica se fundamenta en la integración del conocimiento científico, la práctica clínica basada en evidencia y la cooperación regional, promoviendo una fisioterapia acuática desarrollada bajo principios de excelencia profesional, ética, responsabilidad social y compromiso con la salud de las poblaciones.
+                                </p>
+                                <p>
+                                    La UFAAL concibe la diversidad cultural, social y sanitaria de América Latina como una fuente de enriquecimiento para el intercambio de conocimientos y el crecimiento de la disciplina, fomentando el diálogo académico, la innovación terapéutica y la formación continua de los profesionales de la rehabilitación.
+                                </p>
+                                <p>
+                                    A través del trabajo colaborativo entre países, instituciones académicas y profesionales de la salud, la Unión impulsa el fortalecimiento de la fisioterapia acuática como un campo especializado de la fisioterapia contemporánea, orientado a mejorar la funcionalidad, la calidad de vida y el bienestar de las personas en toda la región latinoamericana.
+                                </p>
+                                <p className="font-medium text-ufaal-blue break-inside-avoid">
+                                    Nuestra filosofía se expresa en el compromiso permanente con la excelencia científica, la práctica ética y el desarrollo sostenible de la fisioterapia acuática, consolidando una comunidad profesional que trabaja de manera integrada para avanzar en la rehabilitación y la salud en América Latina.
+                                </p>
+                            </div>
+                        </div>
+                    </FadeIn>
+                </div>
 
-                        <FadeIn delay={0.2} direction="left">
-                            <p>
-                                Surge como una iniciativa de articulación regional ante la necesidad de consolidar un espacio formal de cooperación técnica, intercambio de conocimientos y estandarización de buenas prácticas basadas en la evidencia científica. La Unión promueve la integración latinoamericana como eje estratégico para elevar la calidad de la rehabilitación acuática y fortalecer la representación de la región en escenarios internacionales.
+                {/* Misión y Visión Cards */}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-24 max-w-5xl mx-auto">
+                    <FadeIn direction="left" delay={0.3} className="h-full">
+                        <div className="bg-gradient-to-br from-ufaal-blue to-blue-800 p-10 rounded-[2.5rem] h-full text-white shadow-xl hover:-translate-y-2 transition-transform duration-500">
+                            <div className="bg-white/10 p-4 rounded-2xl w-fit mb-8 backdrop-blur-md">
+                                <Target className="w-10 h-10 text-white" />
+                            </div>
+                            <h3 className="text-3xl font-bold mb-6 tracking-tight">Misión</h3>
+                            <p className="text-white/90 leading-relaxed font-light text-lg">
+                                Promover el desarrollo, fortalecimiento y posicionamiento de la fisioterapia acuática en América Latina, impulsando la educación continua, la investigación científica y la práctica profesional ética. La UFAAL fomenta la colaboración entre profesionales, instituciones y organizaciones de la región, respetando la diversidad cultural y contribuyendo al mejoramiento de la salud, la rehabilitación y la calidad de vida de las comunidades.
                             </p>
-                        </FadeIn>
+                        </div>
+                    </FadeIn>
 
-                        <FadeIn delay={0.3} direction="left">
-                            <p>
-                                La Unión forma parte de la <strong>Organización Internacional de Fisioterapeutas Acuáticos (OIAPT)</strong>, grupo especializado reconocido como subgrupo oficial de <strong>World Physiotherapy (WP)</strong>, organismo mundial que representa a la profesión a nivel global. En este marco, la Unión actúa como estructura regional de coordinación, promoviendo los lineamientos científicos, éticos y profesionales establecidos por la comunidad internacional de la fisioterapia.
+                    <FadeIn direction="right" delay={0.4} className="h-full">
+                        <div className="bg-white p-10 rounded-[2.5rem] h-full shadow-[0_8px_30px_rgb(0,0,0,0.06)] border border-gray-100 hover:-translate-y-2 transition-transform duration-500">
+                            <div className="bg-blue-50 p-4 rounded-2xl w-fit mb-8">
+                                <Eye className="w-10 h-10 text-ufaal-blue" />
+                            </div>
+                            <h3 className="text-3xl font-bold text-ufaal-blue mb-6 tracking-tight">Visión</h3>
+                            <p className="text-gray-600 leading-relaxed font-light text-lg">
+                                Ser una red latinoamericana de referencia internacional en fisioterapia acuática, reconocida por impulsar la formación especializada, la investigación científica y la práctica clínica basada en evidencia, promoviendo estándares de excelencia, responsabilidad social y compromiso bioético en el ámbito de la rehabilitación en el medio acuático.
                             </p>
-                        </FadeIn>
+                        </div>
+                    </FadeIn>
+                </div>
 
-                        <FadeIn delay={0.4} direction="left">
-                            <p>
-                                Nuestra organización funciona como plataforma de articulación académica y científica, fomentando la educación continua, la generación de documentos técnicos y el desarrollo de programas formativos que contribuyen al crecimiento profesional de los fisioterapeutas acuáticos en América Latina. Está conformada por representantes nacionales, comités técnicos y profesionales especializados que trabajan bajo principios de ética, rigor científico, cooperación interinstitucional, integración regional y responsabilidad social.
-                            </p>
-                        </FadeIn>
+                {/* Valores */}
+                <div className="max-w-6xl mx-auto">
+                    <FadeIn direction="up">
+                        <div className="text-center mb-16">
+                            <Heart className="w-12 h-12 text-ufaal-blue mx-auto mb-6" />
+                            <h3 className="text-3xl md:text-5xl font-bold text-ufaal-blue tracking-tight">Nuestros Valores</h3>
+                        </div>
+                    </FadeIn>
 
-                        <FadeIn delay={0.5} direction="left">
-                            <p className="font-medium text-ufaal-blue-light border-l-4 border-ufaal-blue-light pl-4 py-2 bg-gray-50 rounded-r-lg">
-                                La Unión de Fisioterapia Acuática de América Latina (UFAAL) constituye un espacio de liderazgo científico, integración regional y proyección internacional, orientado al fortalecimiento de la fisioterapia acuática como área especializada dentro de la profesión.
-                            </p>
-                        </FadeIn>
-                    </div>
-
-                    {/* Cards Column */}
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
-                        {cards.map((card, index) => (
-                            <FadeIn key={card.title} delay={0.2 + (index * 0.1)} direction="right" className="h-full">
-                                <div className="bg-ufaal-gray p-8 rounded-2xl h-full border border-gray-100 hover:shadow-xl transition-shadow duration-300 group">
-                                    <div className="p-4 bg-white rounded-xl inline-block mb-6 shadow-sm group-hover:scale-110 transition-transform">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        {valores.map((card, index) => (
+                            <FadeIn key={card.title} delay={0.1 + (index * 0.1)} direction="up" className="h-full">
+                                <div className="bg-white p-8 rounded-3xl h-full border border-gray-100 hover:shadow-lg transition-all duration-300 hover:border-blue-100 group">
+                                    <div className="p-4 bg-gray-50 rounded-2xl inline-block mb-6 group-hover:bg-blue-50 transition-colors">
                                         {card.icon}
                                     </div>
-                                    <h3 className="text-xl font-bold text-ufaal-blue mb-4">{card.title}</h3>
-                                    <p className="text-gray-600 font-light leading-relaxed">
+                                    <h4 className="text-xl font-bold text-gray-900 mb-4">{card.title}</h4>
+                                    <p className="text-gray-600 font-light leading-relaxed text-sm">
                                         {card.desc}
                                     </p>
                                 </div>

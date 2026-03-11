@@ -1,17 +1,24 @@
 import { Router, Request, Response, NextFunction } from 'express';
 import nodemailer from 'nodemailer';
+import { body, validationResult } from 'express-validator';
 
 const router = Router();
 
 // Endpoint para recibir formulario de contacto
-router.post('/', async (req: Request, res: Response, next: NextFunction): Promise<void> => {
+router.post('/', [
+    body('name').trim().notEmpty().withMessage('Nombre es obligatorio').escape(),
+    body('email').isEmail().withMessage('Email inválido').normalizeEmail(),
+    body('subject').optional().trim().escape(),
+    body('message').trim().notEmpty().withMessage('El mensaje es obligatorio').escape()
+], async (req: Request, res: Response, next: NextFunction): Promise<void> => {
     try {
-        const { name, email, subject, message } = req.body;
-
-        if (!name || !email || !message) {
-            res.status(400).json({ error: 'Nombre, email y mensaje son campos obligatorios.' });
-            return;
+        const errors = validationResult(req);
+        if (!errors.isEmpty()) {
+             res.status(400).json({ error: 'Errores en la validación de los datos.', details: errors.array() });
+             return;
         }
+
+        const { name, email, subject, message } = req.body;
 
         // Configuración para el MVP
         let transporter;

@@ -4,6 +4,7 @@ import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import L from 'leaflet';
 import { Mail, Phone } from 'lucide-react';
+import { countriesData } from '../../data/membersData';
 
 // Solución rápida para iconos de Leaflet en React
 delete (L.Icon.Default.prototype as any)._getIconUrl;
@@ -13,59 +14,12 @@ L.Icon.Default.mergeOptions({
     shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-shadow.png',
 });
 
-const countriesData = [
-    {
-        id: "ar",
-        name: "Argentina",
-        flag: "🇦🇷",
-        coords: [-34.6037, -58.3816] as [number, number],
-        rep: {
-            name: "Lic. Martina Suárez",
-            photo: "https://i.pravatar.cc/150?u=m_suarez",
-            profile: "Especialista en neurorrehabilitación acuática con más de 15 años de experiencia. Investigadora destacada en la Universidad Nacional y coordinadora de programas de formación continua en terapia acuática para la región sur. Autora de múltiples artículos sobre los beneficios del medio acuático en pacientes con lesiones modulares.",
-            contact: "argentina@ufaal.org",
-            phone: "+54 9 11 1234-5678"
-        }
-    },
-    {
-        id: "br",
-        name: "Brasil",
-        flag: "🇧🇷",
-        coords: [-15.7801, -47.9292] as [number, number],
-        rep: {
-            name: "Dr. Carlos Silva",
-            photo: "https://i.pravatar.cc/150?u=c_silva",
-            profile: "Pionero en la implementación de protocolos de rehabilitación acuática en hospitales de alta complejidad en São Paulo. Docente investigador y Presidente del comité directivo de UFAAL, impulsando la estandarización de prácticas clínicas basadas en la evidencia en toda Latinoamérica.",
-            contact: "brasil@ufaal.org",
-            phone: "+55 11 98765-4321"
-        }
-    },
-    {
-        id: "mx",
-        name: "México",
-        flag: "🇲🇽",
-        coords: [19.4326, -99.1332] as [number, number],
-        rep: {
-            name: "Lic. Javier López",
-            photo: "https://i.pravatar.cc/150?u=j_lopez",
-            profile: "Fisioterapeuta enfocado en ortopedia y pediatría acuática. Posee certificaciones internacionales Watsu y Halliwick. Dirige uno de los centros de fisioterapia acuática más innovadores en la Ciudad de México. Trabaja activamente en la inclusión de terapias acuáticas en el sistema de salud público.",
-            contact: "mexico@ufaal.org",
-            phone: "+52 55 1234 5678"
-        }
-    },
-    {
-        id: "co",
-        name: "Colombia",
-        flag: "🇨🇴",
-        coords: [4.6097, -74.0817] as [number, number],
-        rep: {
-            name: "Lic. María Gómez",
-            photo: "https://i.pravatar.cc/150?u=m_gomez",
-            profile: "Experta en acondicionamiento acuático para deportistas de alto rendimiento. Participó en la creación del manual latinoamericano de fisioterapia preventiva en piscinas terapéuticas. Gran promotora de alianzas universitarias para la docencia en hidroterapia en la región andina.",
-            contact: "colombia@ufaal.org",
-            phone: "+57 300 123 4567"
-        }
-    }
+const randomCountryImages = [
+    "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&q=80&w=300",
+    "https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&q=80&w=300",
+    "https://images.unsplash.com/photo-1519340241574-2c61ce34d3d3?auto=format&fit=crop&q=80&w=300",
+    "https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?auto=format&fit=crop&q=80&w=300",
+    "https://images.unsplash.com/photo-1600881333168-2ef49b341f30?auto=format&fit=crop&q=80&w=300",
 ];
 
 export function Paises() {
@@ -109,10 +63,11 @@ export function Paises() {
                                         }}
                                     >
                                         <Popup>
-                                            <div className="text-center">
+                                            <div className="text-center font-sans">
                                                 <span className="text-xl ml-1">{country.flag}</span>
                                                 <p className="font-bold text-ufaal-blue mt-1">{country.name}</p>
-                                                <p className="text-xs text-gray-500 mt-1 cursor-pointer underline">Ver perfil completo</p>
+                                                <p className="text-xs text-ufaal-text font-semibold">{country.rep.name}</p>
+                                                <p className="text-[10px] text-gray-500 mt-1 cursor-pointer underline hover:text-ufaal-blue-light" onClick={() => setSelectedCountry(country)}>Ver perfil en panel</p>
                                             </div>
                                         </Popup>
                                     </Marker>
@@ -133,33 +88,54 @@ export function Paises() {
                                         <h3 className="text-3xl font-bold text-ufaal-blue">{selectedCountry.name}</h3>
                                     </div>
 
-                                    <div className="flex flex-col sm:flex-row gap-6 mb-8">
+                                    <div className="flex flex-col md:flex-row gap-6 mb-8 items-start">
                                         <img
                                             src={selectedCountry.rep.photo}
                                             alt={selectedCountry.rep.name}
-                                            className="w-24 h-24 rounded-full object-cover border-4 border-white shadow-md"
+                                            className="w-32 h-32 md:w-36 md:h-36 rounded-2xl object-cover border-4 border-white shadow-md flex-shrink-0 bg-white"
                                             loading="lazy"
                                         />
                                         <div>
                                             <h4 className="text-xl font-bold text-ufaal-text mb-1">{selectedCountry.rep.name}</h4>
                                             <p className="text-sm font-medium text-ufaal-blue-light mb-4">Representante Nacional</p>
-                                            <p className="text-gray-600 font-light text-sm leading-relaxed text-justify">
+                                            <p className="text-gray-600 font-light text-sm leading-relaxed text-justify line-clamp-[10]">
                                                 {selectedCountry.rep.profile}
                                             </p>
                                         </div>
                                     </div>
 
-                                    <div className="bg-white rounded-xl p-5 shadow-sm border border-gray-50">
-                                        <h5 className="text-sm font-semibold text-gray-800 mb-3 uppercase tracking-wider">Contacto Institucional</h5>
-                                        <div className="flex flex-col gap-3">
-                                            <a href={`mailto:${selectedCountry.rep.contact}`} className="flex items-center gap-3 text-gray-600 hover:text-ufaal-blue transition-colors text-sm">
-                                                <Mail className="w-5 h-5 text-ufaal-blue-light" />
-                                                {selectedCountry.rep.contact}
-                                            </a>
-                                            <p className="flex items-center gap-3 text-gray-600 text-sm">
-                                                <Phone className="w-5 h-5 text-ufaal-blue-light" />
-                                                {selectedCountry.rep.phone}
-                                            </p>
+                                    {(selectedCountry.rep.contact || (selectedCountry.rep as any).phone) && (
+                                        <div className="bg-white rounded-xl p-5 shadow-sm border border-gray-50 mb-8">
+                                            <h5 className="text-sm font-semibold text-gray-800 mb-3 uppercase tracking-wider">Contacto Institucional</h5>
+                                            <div className="flex flex-col gap-3">
+                                                {selectedCountry.rep.contact && (
+                                                    <a href={`mailto:${selectedCountry.rep.contact}`} className="flex items-center gap-3 text-gray-600 hover:text-ufaal-blue transition-colors text-sm break-all">
+                                                        <Mail className="w-5 h-5 text-ufaal-blue-light shrink-0" />
+                                                        {selectedCountry.rep.contact}
+                                                    </a>
+                                                )}
+                                                {(selectedCountry.rep as any).phone && (
+                                                    <p className="flex items-center gap-3 text-gray-600 text-sm">
+                                                        <Phone className="w-5 h-5 text-ufaal-blue-light shrink-0" />
+                                                        {(selectedCountry.rep as any).phone}
+                                                    </p>
+                                                )}
+                                            </div>
+                                        </div>
+                                    )}
+
+                                    {/* 5 placeholder images below */}
+                                    <div className="mb-4">
+                                        <h5 className="text-xs font-semibold text-gray-500 mb-3 uppercase tracking-wider">Actividades en {selectedCountry.name}</h5>
+                                        <div className="grid grid-cols-5 gap-2">
+                                            {randomCountryImages.map((img, i) => (
+                                                <img 
+                                                    key={i} 
+                                                    src={`${img}&seed=${selectedCountry.id}-${i}`} 
+                                                    className="w-full h-16 md:h-20 object-cover rounded-lg shadow-sm hover:scale-105 transition-transform" 
+                                                    alt={`Actividad ${i+1}`}
+                                                />
+                                            ))}
                                         </div>
                                     </div>
                                 </div>

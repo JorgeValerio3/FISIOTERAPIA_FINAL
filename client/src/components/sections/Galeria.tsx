@@ -7,11 +7,11 @@ export function Galeria() {
     const images = [
         { src: "/images/world-physiotherapy-congress.jpg", alt: "Congreso Internacional World Physiotherapy", type: "wide" },
         { src: "/images/ipapt.png", alt: "Logo IOAPT Reconocimiento", type: "tall" },
-        { src: "https://images.unsplash.com/photo-1519340241574-2c61ce34d3d3?auto=format&fit=crop&q=80&w=600", alt: "Evento UFAAL 2023", type: "tall" },
-        { src: "https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&q=80&w=800", alt: "Certificación Halliwick", type: "wide" },
-        { src: "/images/world-physiotherapy-congress.jpg", alt: "Participación en congresos globales", type: "tall" },
+        { src: "/images/home.jpeg", alt: "Fisioterapia Acuática", type: "wide" },
+        { src: "/images/LOGO.jpeg", alt: "Logo UFAAL Secundario", type: "square" },
         { src: "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&q=80&w=500", alt: "Terapia acuática adulto mayor", type: "square" },
-        { src: "/images/ipapt.png", alt: "Alianza Estratégica", type: "square" }
+        { src: "https://images.unsplash.com/photo-1519340241574-2c61ce34d3d3?auto=format&fit=crop&q=80&w=600", alt: "Evento UFAAL 2023", type: "tall" },
+        { src: "https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&q=80&w=800", alt: "Certificación Halliwick", type: "wide" }
     ];
 
     const [selectedImage, setSelectedImage] = useState<typeof images[0] | null>(null);

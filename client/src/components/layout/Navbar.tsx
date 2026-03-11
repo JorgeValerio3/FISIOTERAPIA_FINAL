@@ -39,49 +39,69 @@ export function Navbar() {
                 )
             )}
         >
-            <div className="max-w-7xl mx-auto flex items-center w-full">
-                {/* Animated Logo */}
-                <div
-                    className={clsx(
-                        "flex items-center transition-all duration-1000 ease-[cubic-bezier(0.16,1,0.3,1)] overflow-hidden shrink-0",
-                        isScrolled ? "w-24 lg:w-32 opacity-100 translate-x-0" : "w-0 opacity-0 -translate-x-8 pointer-events-none"
-                    )}
-                >
-                    <a href="#inicio" className="flex items-center w-24 lg:w-32 shrink-0">
+            <div className="max-w-7xl mx-auto flex items-center justify-between w-full relative">
+                
+                {/* Desktop Nav */}
+                <div className="hidden lg:flex items-center justify-center w-full gap-8 z-10">
+                    {/* Left Items */}
+                    <div className="flex flex-1 justify-end items-center gap-6">
+                        {navItems.slice(0, 5).map((item) => (
+                            <a
+                                key={item.label}
+                                href={item.href}
+                                className={clsx(
+                                    "text-sm font-medium transition-colors hover:text-ufaal-blue whitespace-nowrap",
+                                    isScrolled ? "text-gray-600" : "text-gray-200 hover:text-white"
+                                )}
+                            >
+                                {item.label}
+                            </a>
+                        ))}
+                    </div>
+
+                    {/* Center Logo */}
+                    <div
+                        className={clsx(
+                            "flex items-center justify-center shrink-0 transition-all duration-300",
+                            isScrolled ? "scale-90" : "scale-100"
+                        )}
+                    >
+                        <a href="#inicio" className="flex items-center justify-center bg-white/90 backdrop-blur-sm rounded-2xl p-2.5 shadow-md border border-gray-100 transition-all hover:shadow-lg hover:-translate-y-0.5">
+                            <img
+                                src="/images/ufal.png?v=3"
+                                alt="Logo UFAAL"
+                                className="h-14 w-auto object-contain"
+                            />
+                        </a>
+                    </div>
+
+                    {/* Right Items */}
+                    <div className="flex flex-1 justify-start items-center gap-6">
+                        {navItems.slice(5).map((item) => (
+                            <a
+                                key={item.label}
+                                href={item.href}
+                                className={clsx(
+                                    "text-sm font-medium transition-colors hover:text-ufaal-blue whitespace-nowrap",
+                                    isScrolled ? "text-gray-600" : "text-gray-200 hover:text-white"
+                                )}
+                            >
+                                {item.label}
+                            </a>
+                        ))}
+                    </div>
+                </div>
+
+                {/* Mobile Logo & Spacer */}
+                <div className="lg:hidden flex items-center bg-white rounded-2xl p-1.5 shadow-sm">
+                    <a href="#inicio">
                         <img
                             src="/images/ufal.png?v=3"
                             alt="Logo UFAAL"
-                            className="h-12 w-auto object-contain"
+                            className="h-10 w-auto object-contain"
                         />
                     </a>
                 </div>
-
-                {/* Left Flexible Spacer (Always pushes to the right) */}
-                <div className="flex-1 transition-all duration-1000 ease-[cubic-bezier(0.16,1,0.3,1)]"></div>
-
-                {/* Desktop Nav */}
-                <div className="hidden lg:flex items-center gap-6 shrink-0 z-10">
-                    {navItems.map((item) => (
-                        <a
-                            key={item.label}
-                            href={item.href}
-                            className={clsx(
-                                "text-sm font-medium transition-colors hover:text-ufaal-blue",
-                                isScrolled ? "text-gray-600" : "text-gray-200 hover:text-white"
-                            )}
-                        >
-                            {item.label}
-                        </a>
-                    ))}
-                </div>
-
-                {/* Right Flexible Spacer (Centers the nav initially, shrinks to 0 on scroll to let it slide right) */}
-                <div
-                    className={clsx(
-                        "hidden lg:block transition-all duration-1000 ease-[cubic-bezier(0.16,1,0.3,1)]",
-                        isScrolled ? "flex-none w-0" : "flex-1"
-                    )}
-                ></div>
 
                 {/* Mobile menu button */}
                 <button

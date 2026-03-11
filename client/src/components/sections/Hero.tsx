@@ -8,12 +8,12 @@ export function Hero() {
             {/* Background Image Placeholder */}
             <div className="absolute inset-0 z-0">
                 <img
-                    src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?q=80&w=2620&auto=format&fit=crop"
+                    src="/images/home.jpeg"
                     alt="Terapia Acuática"
                     className="w-full h-full object-cover"
                 />
                 {/* A subtle gradient from black to transparent just to ensure white text is always readable over any image color profile, without completely altering the image hue */}
-                <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/20 to-transparent"></div>
+                <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/30 to-black/10"></div>
             </div>
 
             <div className="relative z-10 text-center px-4 max-w-4xl mx-auto mt-20">
