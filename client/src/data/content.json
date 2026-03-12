@@ -109,12 +109,12 @@
         }
       ]
     },
-    "imagen_destacada": "/images/home.jpeg"
+    "imagen_destacada": "./images/home.jpeg"
   },
   "organizacion": {
     "titulo": "Estructura Organizativa",
     "descripcion": "Transparencia Institucional y Liderazgo Académico",
-    "estatutos_pdf": "/docs/ESTATUTOS_UFAAL_Formato_Institucional_Editable.pdf",
+    "estatutos_pdf": "./docs_proyecto/ESTATUTOS_UFAAL_Formato_Institucional_Editable.pdf",
     "secciones": [
       {
         "title": "Comité Directivo",
@@ -225,7 +225,7 @@
         "cargo": "Delegada Nacional",
         "contacto": "kesiamesc@bol.com.br",
         "descripcion": "Fisioterapeuta , Prof Educação Física, Presidente da ABFA, CEO Aquatop e Fisiotop Pós Graduada en Ortopedia e Traumatologia , Especialista em Fisioterapia Aquática Palestrante Internacional, Experiência em Fisio  Aquática há 38 anos",
-        "imagen": "/images/kesya_castro.jpeg",
+        "imagen": "./images/kesya_castro.jpeg",
         "galeria": []
       },
       {
@@ -297,7 +297,7 @@
         "cargo": "Delegada Nacional",
         "contacto": "in_fisiotheros@hotmail.com",
         "descripcion": "Licenciada en Terapia Física de la Universidad Santa Paula, Costa Rica. Monography for Licentiate in Physical Therapy.AQUATIC THERAPY EFFECT ON TREATMENT FOR PATIENTS WITH PARKINSON. University Santa Paula, Costa Rica. 2024.Master in Health and Sports Science, Athletic division Máster in Sports. Universidad de Tsukuba, Japón. Graduation thesis: COMPARISON OF MUSCULAR ACTIVATION ON LAND AND IN WATER WITH ELECTROMYOGRAPHY. University of Tsukuba, Japan. 2003.Máster en Ciencias de la Salud y Movimiento Humano Univerdad Nacional de Costa Rica.Postgraduate Studies System National University, Costa Rica. Graduation work for a Master's degree professional modality. EFFECT OF WALKING IN THE SWIMMING POOL ON THE GAIT PATTERN AND QUALITY OF LIFE IN PATIENTS WITH PARKINSON'S DISEASE. 2018",
-        "imagen": "/images/karen_morales.jpeg",
+        "imagen": "./images/karen_morales.jpeg",
         "galeria": []
       },
       {
@@ -321,7 +321,7 @@
         "cargo": "Delegada Nacional",
         "contacto": "",
         "descripcion": "Lic. en Terapia física y rehabilitación egresada de la universidad San Pedro, Chimbote\nformación en Equino terapia\nFormación en Fisioterapia acuática\nTerapia Manual",
-        "imagen": "/images/nohely_rodriguez.jpeg",
+        "imagen": "./images/nohely_rodriguez.jpeg",
         "galeria": []
       },
       {
@@ -333,7 +333,7 @@
         "cargo": "Delegada Nacional",
         "contacto": "yarahumaran@gmail.com",
         "descripcion": "",
-        "imagen": "/images/yara_humaran.jpeg",
+        "imagen": "./images/yara_humaran.jpeg",
         "galeria": []
       },
       {
@@ -345,7 +345,7 @@
         "cargo": "Delegado Nacional",
         "contacto": "Edgar1967arias@gmail.com",
         "descripcion": "",
-        "imagen": "/images/edgard_ricardo.jpeg",
+        "imagen": "./images/edgard_ricardo.jpeg",
         "galeria": []
       },
       {
@@ -412,7 +412,7 @@
         "fecha": "Octubre 2023",
         "revista": "Revista Latinoamericana de Fisioterapia",
         "doi": "10.1234/rlf.2023.045",
-        "pdf_url": "/docs/ESTATUTOS_UFAAL_Formato_Institucional_Editable.pdf"
+        "pdf_url": "./docs_proyecto/ESTATUTOS_UFAAL_Formato_Institucional_Editable.pdf"
       },
       {
         "id": 2,
@@ -421,7 +421,7 @@
         "fecha": "Febrero 2023",
         "revista": "Journal of Aquatic Physical Therapy",
         "doi": "10.5678/japt.2023.112",
-        "pdf_url": "/docs/ESTATUTOS_UFAAL_Formato_Institucional_Editable.pdf"
+        "pdf_url": "./docs_proyecto/ESTATUTOS_UFAAL_Formato_Institucional_Editable.pdf"
       },
       {
         "id": 3,
@@ -430,7 +430,7 @@
         "fecha": "Noviembre 2022",
         "revista": "Documentos Oficiales UFAAL",
         "doi": "",
-        "pdf_url": "/docs/ESTATUTOS_UFAAL_Formato_Institucional_Editable.pdf"
+        "pdf_url": "./docs_proyecto/ESTATUTOS_UFAAL_Formato_Institucional_Editable.pdf"
       }
     ]
   },
@@ -440,21 +440,21 @@
     "imagenes": [
       {
         "id": 1,
-        "url": "/images/home.jpeg",
+        "url": "./images/home.jpeg",
         "titulo": "Práctica Clínica",
         "descripcion": "Sesión de Ai Chi Clínico reralizada por miembros de la Unión",
         "categoria": "formacion"
       },
       {
         "id": 2,
-        "url": "/images/Gemini_Generated_Image_k22j0ik22j0ik22j.png",
+        "url": "./images/Gemini_Generated_Image_k22j0ik22j0ik22j.png",
         "titulo": "Investigación",
         "descripcion": "Análisis y recolección de datos científicos",
         "categoria": "investigacion"
       },
       {
         "id": 3,
-        "url": "/images/LOGO.jpeg",
+        "url": "./images/LOGO.jpeg",
         "titulo": "Identidad UFAAL",
         "descripcion": "Nuestra marca representa la unión regional",
         "categoria": "eventos"
@@ -495,15 +495,15 @@
     "logos": [
       {
         "nombre": "World Physiotherapy",
-        "url": "/images/world-physiotherapy-congress.jpg"
+        "url": "./images/world-physiotherapy-congress.jpg"
       },
       {
         "nombre": "IOAPT",
-        "url": "/images/ioapt.png"
+        "url": "./images/ioapt.png"
       },
       {
         "nombre": "UFAAL",
-        "url": "/images/ufal.png"
+        "url": "./images/ufal.png"
       }
     ]
   },

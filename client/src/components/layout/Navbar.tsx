@@ -70,7 +70,7 @@ export function Navbar({ data }: { data?: any }) {
                     >
                         <a href="#/inicio" className="flex items-center justify-center bg-white/90 backdrop-blur-sm rounded-2xl p-2.5 shadow-md border border-gray-100 transition-all hover:shadow-lg hover:-translate-y-0.5">
                             <img
-                                src="/images/ufal.png?v=3"
+                                src="./images/ufal.png?v=3"
                                 alt="Logo UFAAL"
                                 className="h-14 w-auto object-contain"
                             />
@@ -98,7 +98,7 @@ export function Navbar({ data }: { data?: any }) {
                 <div className="lg:hidden flex items-center bg-white rounded-2xl p-1.5 shadow-sm">
                     <a href="#inicio">
                         <img
-                            src="/images/ufal.png?v=3"
+                            src="./images/ufal.png?v=3"
                             alt="Logo UFAAL"
                             className="h-10 w-auto object-contain"
                         />

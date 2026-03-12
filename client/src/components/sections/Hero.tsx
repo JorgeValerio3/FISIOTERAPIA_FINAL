@@ -9,7 +9,7 @@ export function Hero({ data }: { data: any }) {
             {/* Background Image Placeholder */}
             <div className="absolute inset-0 z-0">
                 <img
-                    src="/images/home.jpeg"
+                    src="./images/home.jpeg"
                     alt="Terapia Acuática"
                     className="w-full h-full object-cover"
                 />

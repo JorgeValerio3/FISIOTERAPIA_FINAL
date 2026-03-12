@@ -15,7 +15,7 @@ export function Footer({ data }: { data: any }) {
                     <div className="lg:col-span-2">
                         <div className="flex items-center gap-2 group mb-6">
                             <img
-                                src="/images/logo.svg"
+                                src="./images/logo.svg"
                                 alt="Logo UFAAL"
                                 className="h-14 w-auto object-contain brightness-0 invert opacity-90 hover:opacity-100 transition-opacity"
                                 loading="lazy"
