@@ -95,4 +95,4 @@ El sitio está configurado para desplegarse automáticamente en **GitHub Pages**
 - **Email:** ufaal2020@gmail.com
 - **Web:** [UFAAL Sede Virtual](https://ufaal.org) (En construcción)
 
-© 2024 UFAAL. Todos los derechos reservados.
+© 2026 UFAAL. Todos los derechos reservados.
