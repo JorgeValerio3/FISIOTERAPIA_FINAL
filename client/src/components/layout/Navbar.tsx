@@ -4,22 +4,23 @@ import { clsx } from 'clsx';
 import { twMerge } from 'tailwind-merge';
 
 const navItems = [
-    { label: 'Inicio', href: '#inicio' },
-    { label: 'Quiénes Somos', href: '#quienes-somos' },
-    { label: 'Organización', href: '#organizacion' },
-    { label: 'Países Miembros', href: '#paises' },
-    { label: 'Galería', href: '#galeria' },
-    { label: 'Actividades', href: '#actividades' },
-    { label: 'Formación', href: '#formacion' },
-    { label: 'Investigación', href: '#investigacion' },
-    { label: 'Noticias', href: '#noticias' },
-    { label: 'Afiliación', href: '#afiliacion' },
-    { label: 'Contacto', href: '#contacto' },
+    { label: 'Inicio', href: '#/inicio' },
+    { label: 'Quiénes Somos', href: '#/quienes-somos' },
+    { label: 'Organización', href: '#/organizacion' },
+    { label: 'Países Miembros', href: '#/paises' },
+    { label: 'Galería', href: '#/galeria' },
+    { label: 'Formación', href: '#/formacion' },
+    { label: 'Investigación', href: '#/investigacion' },
+    { label: 'Noticias', href: '#/noticias' },
+    { label: 'Afiliación', href: '#/afiliacion' },
+    { label: 'Contacto', href: '#/contacto' },
 ];
 
-export function Navbar() {
+export function Navbar({ data }: { data?: any }) {
     const [isScrolled, setIsScrolled] = useState(false);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+    const items = data?.items || navItems;
 
     useEffect(() => {
         const handleScroll = () => {
@@ -46,7 +47,7 @@ export function Navbar() {
                 <div className="hidden lg:flex items-center justify-center w-full gap-8 z-10">
                     {/* Left Items */}
                     <div className="flex flex-1 justify-end items-center gap-6">
-                        {navItems.slice(0, 6).map((item) => (
+                        {items.slice(0, Math.ceil(items.length / 2)).map((item: any) => (
                             <a
                                 key={item.label}
                                 href={item.href}
@@ -67,7 +68,7 @@ export function Navbar() {
                             isScrolled ? "scale-90" : "scale-100"
                         )}
                     >
-                        <a href="#inicio" className="flex items-center justify-center bg-white/90 backdrop-blur-sm rounded-2xl p-2.5 shadow-md border border-gray-100 transition-all hover:shadow-lg hover:-translate-y-0.5">
+                        <a href="#/inicio" className="flex items-center justify-center bg-white/90 backdrop-blur-sm rounded-2xl p-2.5 shadow-md border border-gray-100 transition-all hover:shadow-lg hover:-translate-y-0.5">
                             <img
                                 src="/images/ufal.png?v=3"
                                 alt="Logo UFAAL"
@@ -78,7 +79,7 @@ export function Navbar() {
 
                     {/* Right Items */}
                     <div className="flex flex-1 justify-start items-center gap-6">
-                        {navItems.slice(6).map((item) => (
+                        {items.slice(Math.ceil(items.length / 2)).map((item: any) => (
                             <a
                                 key={item.label}
                                 href={item.href}
@@ -120,7 +121,7 @@ export function Navbar() {
             {/* Mobile Nav */}
             {isMobileMenuOpen && (
                 <div className="absolute top-full left-0 w-full bg-white shadow-lg border-b border-gray-100 lg:hidden flex flex-col p-4 gap-4 pb-8">
-                    {navItems.map((item) => (
+                    {items.map((item: any) => (
                         <a
                             key={item.label}
                             href={item.href}

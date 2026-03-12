@@ -15,7 +15,7 @@ export function Noticias({ data }: { data: any }) {
 
     const getImageUrl = (url: string) => {
         if (!url) return "https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&q=80&w=800";
-        return url.startsWith('http') || url.startsWith('/') ? url : `http://localhost:5000${url}`;
+        return url.startsWith('http') || url.startsWith('/') ? url : `/${url}`;
     };
 
     const news = (data.articulos || []).map((item: any, index: number) => ({

@@ -13,7 +13,7 @@ export function Organizacion({ data }: { data: any }) {
 
     const handleDownload = () => {
         if (data.estatutos_pdf) {
-            window.open(data.estatutos_pdf.startsWith('http') || data.estatutos_pdf.startsWith('/') ? data.estatutos_pdf : `http://localhost:5000${data.estatutos_pdf}`, '_blank', 'noopener,noreferrer');
+            window.open(data.estatutos_pdf.startsWith('http') || data.estatutos_pdf.startsWith('/') ? data.estatutos_pdf : `/${data.estatutos_pdf}`, '_blank', 'noopener,noreferrer');
         } else {
             console.error("No se encontró el PDF de estatutos");
         }

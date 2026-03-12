@@ -53,7 +53,7 @@ export function Investigacion({ data }: { data: any }) {
                                             <button 
                                                 onClick={() => {
                                                     const url = articulo.pdf_url;
-                                                    const finalUrl = url.startsWith('http') || url.startsWith('/') ? url : `http://localhost:5000${url}`;
+                                                    const finalUrl = url.startsWith('http') || url.startsWith('/') ? url : `/${url}`;
                                                     window.open(finalUrl, '_blank');
                                                 }}
                                                 className="flex items-center gap-2 text-ufaal-blue font-bold text-sm hover:text-ufaal-blue-light transition-colors"

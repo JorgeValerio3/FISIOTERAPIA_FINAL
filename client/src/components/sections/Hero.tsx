@@ -35,7 +35,7 @@ export function Hero({ data }: { data: any }) {
                 <FadeIn delay={0.6} direction="up">
                     <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
                         <a
-                            href="#quienes-somos"
+                            href="#/quienes-somos"
                             className="px-8 py-3.5 rounded-full bg-white text-ufaal-blue font-medium hover:bg-gray-50 transition-colors shadow-lg hover:shadow-xl w-full sm:w-auto"
                         >
                             {data.cta_primario}
@@ -56,7 +56,7 @@ export function Hero({ data }: { data: any }) {
 
             {/* Scroll indicator */}
             <div className="absolute bottom-10 left-1/2 -translate-x-1/2 z-10 animate-bounce">
-                <a href="#quienes-somos" className="p-3 bg-white/10 rounded-full backdrop-blur-sm border border-white/20 text-white flex items-center justify-center hover:bg-white/20 transition-colors transition-opacity opacity-70 hover:opacity-100">
+                <a href="#/quienes-somos" className="p-3 bg-white/10 rounded-full backdrop-blur-sm border border-white/20 text-white flex items-center justify-center hover:bg-white/20 transition-colors transition-opacity opacity-70 hover:opacity-100">
                     <ArrowDown className="w-5 h-5" />
                 </a>
             </div>

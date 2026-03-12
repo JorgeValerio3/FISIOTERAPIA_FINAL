@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { 
     LayoutDashboard, LogOut, Save, Image as ImageIcon, Users, Activity, Search,
-    Newspaper, CheckCircle2, Home, Globe, BookOpen, UserPlus, Phone
+    Newspaper, CheckCircle2, Home, Globe, BookOpen, UserPlus
 } from 'lucide-react';
 import { HeroForm } from './sections/HeroForm';
 import { OrganizacionForm } from './sections/OrganizacionForm';

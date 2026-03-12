@@ -1,18 +1,12 @@
-const API_URL = 'http://localhost:5000/api/admin';
+import contentData from '../data/content.json';
 
 export const getContent = async () => {
-    try {
-        const response = await fetch(`${API_URL}/content`);
-        if (!response.ok) throw new Error('Error al obtener contenido');
-        return await response.json();
-    } catch (error) {
-        console.error(error);
-        return null;
-    }
+    return contentData;
 };
 
 export const getUploadUrl = (path: string) => {
     if (!path) return '';
     if (path.startsWith('http')) return path;
-    return `http://localhost:5000${path}`;
+    // For static deployment, uploads are in the public/uploads folder
+    return path; 
 };

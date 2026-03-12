@@ -1,11 +1,55 @@
 {
+  "navbar": {
+    "items": [
+      {
+        "label": "Inicio",
+        "href": "#/inicio"
+      },
+      {
+        "label": "Quiénes Somos",
+        "href": "#/quienes-somos"
+      },
+      {
+        "label": "Organización",
+        "href": "#/organizacion"
+      },
+      {
+        "label": "Países Miembros",
+        "href": "#/paises"
+      },
+      {
+        "label": "Galería",
+        "href": "#/galeria"
+      },
+      {
+        "label": "Formación",
+        "href": "#/formacion"
+      },
+      {
+        "label": "Investigación",
+        "href": "#/investigacion"
+      },
+      {
+        "label": "Noticias",
+        "href": "#/noticias"
+      },
+      {
+        "label": "Afiliación",
+        "href": "#/afiliacion"
+      },
+      {
+        "label": "Contacto",
+        "href": "#/contacto"
+      }
+    ]
+  },
   "hero": {
     "subtitulo": "Unidad de Fisioterapia Acuática",
     "titulo_principal": "Revolucionando la Terapia en el Agua",
     "descripcion": "Somos la red líder de profesionales en fisioterapia acuática de Latinoamérica.",
     "video_id": "8zR4z8C5XjU",
     "cta_primario": "Afiliarme Ahora",
-    "cta_secundario": "Ver Actividades",
+    "cta_secundario": "Ver Países Miembros",
     "estadisticas": [
       {
         "valor": "+15",
@@ -65,7 +109,7 @@
         }
       ]
     },
-    "imagen_destacada": "/uploads/portada_quienes_somos.jpg"
+    "imagen_destacada": "/images/home.jpeg"
   },
   "organizacion": {
     "titulo": "Estructura Organizativa",
@@ -157,12 +201,8 @@
         "cargo": "Delegada Nacional",
         "contacto": "fabianagiannini@gmail.com",
         "descripcion": "Lider regional en fisioterapia acuatica, comprometida con la excelencia y la formacion continua.",
-        "imagen": "/uploads/1773285650588-265982634.png",
-        "galeria": [
-          null,
-          null,
-          "/uploads/1773285659842-814705322.png"
-        ]
+        "imagen": "",
+        "galeria": []
       },
       {
         "id": "bo",
@@ -173,7 +213,7 @@
         "cargo": "Delegada Nacional",
         "contacto": "adri18.af@gmail.com",
         "descripcion": "",
-        "imagen": "https://randomuser.me/api/portraits/women/12.jpg",
+        "imagen": "",
         "galeria": []
       },
       {
@@ -185,7 +225,7 @@
         "cargo": "Delegada Nacional",
         "contacto": "kesiamesc@bol.com.br",
         "descripcion": "",
-        "imagen": "https://randomuser.me/api/portraits/women/32.jpg",
+        "imagen": "/images/kesya_castro.jpeg",
         "galeria": []
       },
       {
@@ -197,7 +237,7 @@
         "cargo": "Delegada Nacional",
         "contacto": "garavena@hotmail.com",
         "descripcion": "",
-        "imagen": "https://randomuser.me/api/portraits/women/91.jpg",
+        "imagen": "",
         "galeria": []
       },
       {
@@ -257,7 +297,7 @@
         "cargo": "Delegada Nacional",
         "contacto": "in_fisiotheros@hotmail.com",
         "descripcion": "",
-        "imagen": "https://randomuser.me/api/portraits/women/46.jpg",
+        "imagen": "",
         "galeria": []
       },
       {
@@ -281,7 +321,7 @@
         "cargo": "Delegada Nacional",
         "contacto": "",
         "descripcion": "",
-        "imagen": "",
+        "imagen": "/images/nohely_rodriguez.jpeg",
         "galeria": []
       },
       {
@@ -293,7 +333,7 @@
         "cargo": "Delegada Nacional",
         "contacto": "yarahumaran@gmail.com",
         "descripcion": "",
-        "imagen": "https://randomuser.me/api/portraits/women/25.jpg",
+        "imagen": "/images/yara_humaran.jpeg",
         "galeria": []
       },
       {
@@ -305,7 +345,7 @@
         "cargo": "Delegado Nacional",
         "contacto": "Edgar1967arias@gmail.com",
         "descripcion": "",
-        "imagen": "https://randomuser.me/api/portraits/men/55.jpg",
+        "imagen": "/images/edgard_ricardo.jpeg",
         "galeria": []
       },
       {
@@ -317,7 +357,7 @@
         "cargo": "Delegada Nacional",
         "contacto": "noel.fisio@yahoo.com",
         "descripcion": "",
-        "imagen": "https://randomuser.me/api/portraits/women/62.jpg",
+        "imagen": "",
         "galeria": []
       },
       {
@@ -329,47 +369,8 @@
         "cargo": "Delegada Nacional",
         "contacto": "Paoguevaram89@gmail.com",
         "descripcion": "",
-        "imagen": "https://randomuser.me/api/portraits/women/89.jpg",
+        "imagen": "",
         "galeria": []
-      }
-    ]
-  },
-  "actividades": {
-    "titulo": "Nuestras Actividades",
-    "descripcion": "Descubre las iniciativas y programas que promovemos",
-    "items": [
-      {
-        "id": 1,
-        "titulo": "Congreso Latinoamericano Bi-Anual",
-        "categoria": "Eventos",
-        "descripcion": "El encuentro más grande de especialistas en medio acuático, con talleres pre-congreso y ponencias internacionales.",
-        "fecha": "Próxima edición: 2024",
-        "icono": "calendario",
-        "pais": "RD"
-      },
-      {
-        "id": 2,
-        "titulo": "Comités de Investigación",
-        "categoria": "Ciencia",
-        "descripcion": "Grupos de trabajo multicéntricos dedicados a publicar evidencia sobre los beneficios del agua en distintas patologías.",
-        "fecha": "Reuniones Mensuales",
-        "icono": "ciencia"
-      },
-      {
-        "id": 3,
-        "titulo": "Certificación en Técnicas Acuáticas",
-        "categoria": "Educación",
-        "descripcion": "Programas estandarizados para avalar competencias profesionales en métodos como Halliwick, Bad Ragaz o Watsu.",
-        "fecha": "Inscripciones Abiertas",
-        "icono": "educacion"
-      },
-      {
-        "id": 4,
-        "titulo": "Foro Regional Online",
-        "categoria": "Networking",
-        "descripcion": "Sesiones virtuales bimensuales para discutir casos clínicos complejos y compartir resoluciones terapéuticas.",
-        "fecha": "Bimensual",
-        "icono": "redes"
       }
     ]
   },
@@ -411,7 +412,7 @@
         "fecha": "Octubre 2023",
         "revista": "Revista Latinoamericana de Fisioterapia",
         "doi": "10.1234/rlf.2023.045",
-        "pdf_url": "/docs/ejemplo_articulo_1.pdf"
+        "pdf_url": "/docs/ESTATUTOS_UFAAL_Formato_Institucional_Editable.pdf"
       },
       {
         "id": 2,
@@ -420,7 +421,7 @@
         "fecha": "Febrero 2023",
         "revista": "Journal of Aquatic Physical Therapy",
         "doi": "10.5678/japt.2023.112",
-        "pdf_url": "/docs/ejemplo_articulo_2.pdf"
+        "pdf_url": "/docs/ESTATUTOS_UFAAL_Formato_Institucional_Editable.pdf"
       },
       {
         "id": 3,
@@ -429,7 +430,7 @@
         "fecha": "Noviembre 2022",
         "revista": "Documentos Oficiales UFAAL",
         "doi": "",
-        "pdf_url": "/docs/consenso_contraindicaciones_2022.pdf"
+        "pdf_url": "/docs/ESTATUTOS_UFAAL_Formato_Institucional_Editable.pdf"
       }
     ]
   },
@@ -439,87 +440,31 @@
     "imagenes": [
       {
         "id": 1,
-        "url": "https://images.unsplash.com/photo-1543857778-c4a1a3e0b2eb?q=80&w=1000&auto=format&fit=crop",
+        "url": "/images/home.jpeg",
         "titulo": "Práctica Clínica",
-        "descripcion": "Sesión de Ai Chi Clínico en Sao Paulo, Brasil",
+        "descripcion": "Sesión de Ai Chi Clínico reralizada por miembros de la Unión",
         "categoria": "formacion"
       },
       {
-        "id": 3,
-        "url": "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?q=80&w=1000&auto=format&fit=crop",
-        "titulo": "Trabajo en Equipo",
-        "descripcion": "Taller de integración terapéutica infantil",
-        "categoria": "formacion"
-      },
-      {
-        "id": 4,
-        "url": "https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?q=80&w=1000&auto=format&fit=crop",
-        "titulo": "Investigación Práctica",
-        "descripcion": "Análisis biomecánico en medio acuático, Chile",
+        "id": 2,
+        "url": "/images/Gemini_Generated_Image_k22j0ik22j0ik22j.png",
+        "titulo": "Investigación",
+        "descripcion": "Análisis y recolección de datos científicos",
         "categoria": "investigacion"
       },
       {
-        "id": 6,
-        "url": "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=1000&auto=format&fit=crop",
-        "titulo": "Certificación Halliwick",
-        "descripcion": "Nuevo grupo de profesionales certificados",
-        "categoria": "formacion"
-      },
-      {
-        "id": 1773286602030,
-        "url": "/uploads/1773286672019-351357625.png",
-        "titulo": "Prueba Galeria",
-        "descripcion": "",
+        "id": 3,
+        "url": "/images/LOGO.jpeg",
+        "titulo": "Identidad UFAAL",
+        "descripcion": "Nuestra marca representa la unión regional",
         "categoria": "eventos"
-      },
-      {
-        "id": 1773286926174,
-        "url": "/uploads/1773286945063-928162300.png",
-        "titulo": "n b bvbkjbjk",
-        "descripcion": "",
-        "categoria": ""
-      },
-      {
-        "id": 1773286928292,
-        "url": "/uploads/1773286937378-607756003.png",
-        "titulo": "hohkhlkl",
-        "descripcion": "",
-        "categoria": ""
       }
     ]
   },
   "noticias": {
     "titulo": "Últimas Noticias",
     "descripcion": "Mantente informado sobre las novedades de la Fisioterapia Acuática en la región",
-    "articulos": [
-      {
-        "id": 1,
-        "titulo": "Apertura de Convocatoria para el Congreso UFAAL 2024",
-        "fecha": "15 Mayo, 2024",
-        "extracto": "Se abre el plazo para la presentación de resúmenes de investigación para nuestro próximo encuentro bi-anual. Los tópicos principales este año incluirán neuro-rehabilitación pediátrica y abordaje temprano en lesionados medulares.",
-        "imagen": "https://images.unsplash.com/photo-1540575467063-178a50c2df87?q=80&w=800&auto=format&fit=crop",
-        "autor": "Comité Organizador",
-        "url_externa": "#"
-      },
-      {
-        "id": 2,
-        "titulo": "Nuevo Convenio de Colaboración Internacional",
-        "fecha": "02 Abril, 2024",
-        "extracto": "La UFAAL ha firmado un histórico acuerdo marco con las principales asociaciones europeas para el intercambio de docentes y acceso preferencial a certificaciones internacionales para todos los miembros activos.",
-        "imagen": "https://images.unsplash.com/photo-1552502808-7bb79e5e78ea?q=80&w=800&auto=format&fit=crop",
-        "autor": "Secretaría General",
-        "url_externa": "#"
-      },
-      {
-        "id": 3,
-        "titulo": "Resultados del Primer Censo Latinoamericano de Instalaciones",
-        "fecha": "20 Marzo, 2024",
-        "extracto": "Publicamos los resultados de nuestra investigación demográfica sobre la distribución e infraestructura de piscinas con fines terapéuticos en la región andina y el cono sur, identificando áreas críticas de desarrollo.",
-        "imagen": "https://images.unsplash.com/photo-1576089155708-3165b6eb9319?q=80&w=800&auto=format&fit=crop",
-        "autor": "Dpto. de Investigación",
-        "url_externa": "#"
-      }
-    ]
+    "articulos": []
   },
   "afiliacion": {
     "titulo": "Alianzas Estratégicas",
@@ -549,24 +494,16 @@
     "titulo": "Nuestros Aliados y Colaboradores",
     "logos": [
       {
-        "nombre": "Universidad Nacional",
-        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/Escudo_de_la_Universidad_Nacional_Aut%C3%B3noma_de_M%C3%A9xico.svg/200px-Escudo_de_la_Universidad_Nacional_Aut%C3%B3noma_de_M%C3%A9xico.svg.png"
+        "nombre": "World Physiotherapy",
+        "url": "/images/world-physiotherapy-congress.jpg"
       },
       {
-        "nombre": "Asociación Brasileña",
-        "url": "https://placeholder.com/wp-content/uploads/2018/10/placeholder.com-logo1.png"
+        "nombre": "IOAPT",
+        "url": "/images/ioapt.png"
       },
       {
-        "nombre": "Colegio de Kinesiólogos",
-        "url": "https://placeholder.com/wp-content/uploads/2018/10/placeholder.com-logo1.png"
-      },
-      {
-        "nombre": "Sociedad de Fisiatría",
-        "url": "https://placeholder.com/wp-content/uploads/2018/10/placeholder.com-logo1.png"
-      },
-      {
-        "nombre": "Ministerio de Salud",
-        "url": "https://placeholder.com/wp-content/uploads/2018/10/placeholder.com-logo1.png"
+        "nombre": "UFAAL",
+        "url": "/images/ufal.png"
       }
     ]
   },
@@ -575,19 +512,19 @@
     "enlaces": [
       {
         "titulo": "Quiénes Somos",
-        "url": "#quienes-somos"
+        "url": "#/quienes-somos"
       },
       {
         "titulo": "Organización",
-        "url": "#organizacion"
+        "url": "#/organizacion"
       },
       {
         "titulo": "Formación",
-        "url": "#formacion"
+        "url": "#/formacion"
       },
       {
         "titulo": "Contacto",
-        "url": "#contacto"
+        "url": "#/contacto"
       }
     ],
     "copyright": "2024 UFAAL. Todos los derechos reservados."

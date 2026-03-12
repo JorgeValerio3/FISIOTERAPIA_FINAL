@@ -130,13 +130,24 @@ export function Paises({ data }: { data: any }) {
 
                                     <div className="flex flex-col md:flex-row gap-6 mb-8 items-start">
                                         <div className="relative shrink-0">
-                                            <img
-                                                src={getUploadUrl(selectedCountry.imagen) || `https://ui-avatars.com/api/?name=${selectedCountry.representante}&background=random`}
-                                                alt={selectedCountry.representante}
-                                                className="w-32 h-32 md:w-36 md:h-36 rounded-2xl object-cover border-4 border-white shadow-md relative z-10 bg-white cursor-zoom-in hover:scale-105 transition-transform"
-                                                loading="lazy"
-                                                onClick={() => setFullscreenImg(getUploadUrl(selectedCountry.imagen) || `https://ui-avatars.com/api/?name=${selectedCountry.representante}&background=random`)}
-                                            />
+                                            {selectedCountry.imagen ? (
+                                                <img
+                                                    src={getUploadUrl(selectedCountry.imagen)}
+                                                    alt={selectedCountry.representante}
+                                                    className="w-32 h-32 md:w-36 md:h-36 rounded-2xl object-cover border-4 border-white shadow-md relative z-10 bg-white cursor-zoom-in hover:scale-105 transition-transform"
+                                                    loading="lazy"
+                                                    onClick={() => setFullscreenImg(getUploadUrl(selectedCountry.imagen))}
+                                                />
+                                            ) : (
+                                                <div className="w-32 h-32 md:w-36 md:h-36 rounded-2xl bg-gradient-to-br from-ufaal-blue to-ufaal-blue-light border-4 border-white shadow-md relative z-10 flex items-center justify-center text-white text-3xl font-bold uppercase tracking-widest">
+                                                    {(selectedCountry.representante || '??')
+                                                        .split(' ')
+                                                        .filter(Boolean)
+                                                        .map((n: string) => n[0])
+                                                        .slice(0, 2)
+                                                        .join('')}
+                                                </div>
+                                            )}
                                             <div className="absolute -bottom-2 -right-2 w-10 h-10 bg-ufaal-blue rounded-xl flex items-center justify-center border-2 border-white shadow-lg z-20">
                                                 <img
                                                     src={`https://flagcdn.com/w40/${selectedCountry.id}.png`}
