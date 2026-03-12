@@ -29,10 +29,12 @@ jobs:
       - name: Setup Pages
         uses: actions/configure-pages@v5
       
+      - name: Check directory
+        run: ls -R ./docs
+      
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          # Toma el contenido exacto de la carpeta docs en la raiz
           path: './docs'
       
       - name: Deploy to GitHub Pages
