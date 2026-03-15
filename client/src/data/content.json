@@ -2,12 +2,12 @@
   "navbar": {
     "items": [
       {
-        "label": "Inicio",
-        "href": "#/inicio"
-      },
-      {
         "label": "Quiénes Somos",
         "href": "#/quienes-somos"
+      },
+      {
+        "label": "Historia",
+        "href": "#/historia"
       },
       {
         "label": "Organización",
@@ -16,10 +16,6 @@
       {
         "label": "Países Miembros",
         "href": "#/paises"
-      },
-      {
-        "label": "Galería",
-        "href": "#/galeria"
       },
       {
         "label": "Formación",
@@ -34,12 +30,12 @@
         "href": "#/noticias"
       },
       {
-        "label": "Afiliación",
-        "href": "#/afiliacion"
+        "label": "Contacto",
+        "href": "#/contacto-directo"
       },
       {
-        "label": "Contacto",
-        "href": "#/contacto"
+        "label": "Galería",
+        "href": "#/galeria"
       }
     ]
   },
@@ -111,78 +107,84 @@
     },
     "imagen_destacada": "./images/home.jpeg"
   },
+  "historia": {
+    "titulo": "Nuestra Historia",
+    "subtitulo": "Unión de Fisioterapia Acuática de América Latina (UFAAL)",
+    "descripcion": [
+      "La Unión de Fisioterapia Acuática de América Latina (UFAAL) surge como una iniciativa regional destinada a fortalecer la integración, representación y desarrollo de la fisioterapia acuática en los países de América Latina, particularmente en la comunidad profesional hispanohablante.",
+      "El origen de este proceso se vincula con la creación de la International Organisation of Aquatic Physiotherapists (IOAPT), grupo de interés reconocido dentro de World Physiotherapy, cuyo objetivo es promover el avance de la fisioterapia acuática a nivel global.",
+      "Al conocer la formación de esta organización internacional, la fisioterapeuta chilena Gloria Aravena identificó una oportunidad histórica para que los profesionales de América Latina participaran activamente en este espacio de reconocimiento científico y profesional.",
+      "Motivada por esta visión, y con el apoyo del Colegio de Kinesiólogos de Chile, inició en el año 2020 un proceso de articulación regional orientado a convocar profesionales y representantes de distintos países de América Latina interesados en fortalecer la disciplina.",
+      "Posteriormente, en 2023, Gloria Aravena fue elegida Vicepresidenta de la IOAPT, consolidando la presencia de la región en el liderazgo internacional junto a líderes como Karen Morales (México) y Yara Humarán (Puerto Rico).",
+      "Hoy, UFAAL representa un espacio de encuentro y crecimiento colectivo, donde profesionales de distintos países se unen con un propósito común: avanzar juntos desde América Latina hacia el mundo, fortaleciendo la fisioterapia acuática como una disciplina científica, terapéutica y humana al servicio de la salud y la rehabilitación."
+    ],
+    "imagen": "./images/historia_aquatic.png"
+  },
   "organizacion": {
-    "titulo": "Estructura Organizativa",
-    "descripcion": "Transparencia Institucional y Liderazgo Académico",
+    "titulo": "ÁREA DE GESTIÓN",
+    "descripcion": "Estructura funcional y equipos de trabajo",
     "estatutos_pdf": "./docs_proyecto/ESTATUTOS_UFAAL_Formato_Institucional_Editable.pdf",
     "secciones": [
       {
-        "title": "Comité Directivo",
+        "title": "Eje 1: Investigación Científica y Desarrollo",
         "members": [
           {
-            "name": "Dr. Carlos Silva",
-            "role": "Presidente",
-            "country": "Brasil"
+            "name": "María Noel",
+            "role": "Coordinador"
           },
           {
-            "name": "Lic. María Gómez",
-            "role": "Vicepresidenta",
-            "country": "Colombia"
-          },
-          {
-            "name": "Lic. Javier López",
-            "role": "Secretario General",
-            "country": "México"
+            "name": "Edgar Ricardo Arias",
+            "role": "Miembro"
           }
         ]
       },
       {
-        "title": "Fundadores",
+        "title": "Eje 2: Académico y de Formación",
         "members": [
           {
-            "name": "Dra. Ana Reyes",
-            "role": "Miembro Honorario",
-            "country": "Argentina"
+            "name": "Fabiana Giannini",
+            "role": "Coordinador"
           },
           {
-            "name": "Lic. Roberto Paz",
-            "role": "Miembro Honorario",
-            "country": "Chile"
+            "name": "Andrea Brenes",
+            "role": "Miembro"
+          },
+          {
+            "name": "Kesia Madeiros Silva",
+            "role": "Miembro"
+          },
+          {
+            "name": "Adriano Valeria",
+            "role": "Miembro"
+          },
+          {
+            "name": "Karen Morales Soler",
+            "role": "Miembro"
           }
         ]
       },
       {
-        "title": "Coordinadores Académicos",
+        "title": "Eje 3: Comunicación, Medios y Plataforma Web",
         "members": [
           {
-            "name": "Lic. Pedro Suárez",
-            "role": "Investigación",
-            "country": "Perú"
+            "name": "Yara Humaran",
+            "role": "Líder"
           },
           {
-            "name": "Dra. Elena Costa",
-            "role": "Educación Continua",
-            "country": "Uruguay"
-          }
-        ]
-      },
-      {
-        "title": "Coordinaciones Regionales",
-        "members": [
-          {
-            "name": "Región Andina",
-            "role": "Representante Zonal",
-            "country": ""
+            "name": "Edgar Ricardo Arias",
+            "role": "Coordinador página web"
           },
           {
-            "name": "Cono Sur",
-            "role": "Representante Zonal",
-            "country": ""
+            "name": "María Noel",
+            "role": "Miembro"
           },
           {
-            "name": "Centroamérica",
-            "role": "Representante Zonal",
-            "country": ""
+            "name": "Nohely Rodriguez",
+            "role": "Miembro"
+          },
+          {
+            "name": "Paola Guevara",
+            "role": "Miembro"
           }
         ]
       }
@@ -257,11 +259,11 @@
         "nombre": "Costa Rica",
         "latitud": 9.748917,
         "longitud": -83.753428,
-        "representante": "Jessie Montes de Oca",
+        "representante": "Andrea Brenes",
         "cargo": "Delegada Nacional",
         "contacto": "",
-        "descripcion": "",
-        "imagen": "",
+        "descripcion": "Licenciada en Terapia Física de la Universidad Santa Paula, Costa Rica. Monography for Licentiate in Physical Therapy.AQUATIC THERAPY EFFECT ON TREATMENT FOR PATIENTS WITH PARKINSON. University Santa Paula, Costa Rica. 2024.Master in Health and Sports Science, Athletic division Máster in Sports. Universidad de Tsukuba, Japón. Graduation thesis: COMPARISON OF MUSCULAR ACTIVATION ON LAND AND IN WATER WITH ELECTROMYOGRAPHY. University of Tsukuba, Japan. 2003.Máster en Ciencias de la Salud y Movimiento Humano Univerdad Nacional de Costa Rica. Postgraduate Studies System National University, Costa Rica. Graduation work for a Master's degree professional modality. EFFECT OF WALKING IN THE SWIMMING POOL ON THE GAIT PATTERN AND QUALITY OF LIFE IN PATIENTS WITH PARKINSON'S DISEASE. 2018.",
+        "imagen": "./images/brenes.jpeg",
         "galeria": []
       },
       {
@@ -296,7 +298,7 @@
         "representante": "Karen Morales Soler",
         "cargo": "Delegada Nacional",
         "contacto": "in_fisiotheros@hotmail.com",
-        "descripcion": "Licenciada en Terapia Física de la Universidad Santa Paula, Costa Rica. Monography for Licentiate in Physical Therapy.AQUATIC THERAPY EFFECT ON TREATMENT FOR PATIENTS WITH PARKINSON. University Santa Paula, Costa Rica. 2024.Master in Health and Sports Science, Athletic division Máster in Sports. Universidad de Tsukuba, Japón. Graduation thesis: COMPARISON OF MUSCULAR ACTIVATION ON LAND AND IN WATER WITH ELECTROMYOGRAPHY. University of Tsukuba, Japan. 2003.Máster en Ciencias de la Salud y Movimiento Humano Univerdad Nacional de Costa Rica.Postgraduate Studies System National University, Costa Rica. Graduation work for a Master's degree professional modality. EFFECT OF WALKING IN THE SWIMMING POOL ON THE GAIT PATTERN AND QUALITY OF LIFE IN PATIENTS WITH PARKINSON'S DISEASE. 2018",
+        "descripcion": "Vicepresidenta de la International Organisation of Aquatic Physiotherapists (IOAPT). Especialista en Fisioterapia Acuática con amplia trayectoria en la integración regional.",
         "imagen": "./images/karen_morales.jpeg",
         "galeria": []
       },
@@ -375,64 +377,31 @@
     ]
   },
   "formacion": {
-    "titulo": "Ruta de Formación",
-    "descripcion": "Un camino estructurado hacia la excelencia profesional en el medio acuático",
-    "niveles": [
+    "titulo": "Área de Gestión: Información y Objetivos",
+    "descripcion": "Nuestros ejes de trabajo estratégico y sus metas",
+    "ejes": [
       {
-        "id": "basico",
-        "titulo": "Nivel Básico: Inmersión",
-        "descripcion": "Fundamentos hidrodinámicos y principios de la flotación aplicados a la rehabilitación.",
-        "duracion": "40 horas",
-        "requisitos": "Estudiantes de último año o titulados"
+        "id": "eje1",
+        "titulo": "Investigación Científica y Desarrollo",
+        "descripcion": "Equipo de investigación, evaluación y publicación de trabajos."
       },
       {
-        "id": "intermedio",
-        "titulo": "Nivel Intermedio: Terapia Acuática Específica",
-        "descripcion": "Manejo de patologías ortopédicas y neurológicas comunes en piscinas terapéuticas.",
-        "duracion": "80 horas",
-        "requisitos": "Certificación Nivel Básico"
+        "id": "eje2",
+        "titulo": "Académico y de Formación",
+        "descripcion": "Crear el equipo docente y desarrollar programas de capacitación por niveles (Los programas de capacitación están a cargo de Kesia Madeiros Silva)."
       },
       {
-        "id": "avanzado",
-        "titulo": "Nivel Avanzado: Técnicas Especiales",
-        "descripcion": "Profundización en métodos específicos (Halliwick, Ai Chi, Watsu Clínico) y prescripción avanzada del ejercicio.",
-        "duracion": "120 horas",
-        "requisitos": "Certificación Nivel Intermedio y práctica clínica demostrable"
+        "id": "eje3",
+        "titulo": "Comunicación, Medios y Plataforma Web",
+        "descripcion": "Desarrollo de medios de difusión y gestión de la página web."
       }
     ]
   },
   "investigacion": {
-    "titulo": "Investigación y Publicaciones",
-    "descripcion": "Nuestra base de evidencia científica para respaldar intervenciones en el medio acuático",
-    "articulos": [
-      {
-        "id": 1,
-        "titulo": "Efectos de la Terapia Acuática en Pacientes con Fibromialgia: Una Revisión Sistemática",
-        "autores": "Dr. Carlos Silva, Lic. María Gómez",
-        "fecha": "Octubre 2023",
-        "revista": "Revista Latinoamericana de Fisioterapia",
-        "doi": "10.1234/rlf.2023.045",
-        "pdf_url": "./docs_proyecto/ESTATUTOS_UFAAL_Formato_Institucional_Editable.pdf"
-      },
-      {
-        "id": 2,
-        "titulo": "Protocolo de Ai-Chi Clínico para la Mejora del Equilibrio en Adultos Mayores",
-        "autores": "Lic. Pedro Suárez, Dra. Elena Costa",
-        "fecha": "Febrero 2023",
-        "revista": "Journal of Aquatic Physical Therapy",
-        "doi": "10.5678/japt.2023.112",
-        "pdf_url": "./docs_proyecto/ESTATUTOS_UFAAL_Formato_Institucional_Editable.pdf"
-      },
-      {
-        "id": 3,
-        "titulo": "Consenso Regional sobre Contraindicaciones Absolutas y Relativas en Hidroterapia",
-        "autores": "Comité Científico UFAAL",
-        "fecha": "Noviembre 2022",
-        "revista": "Documentos Oficiales UFAAL",
-        "doi": "",
-        "pdf_url": "./docs_proyecto/ESTATUTOS_UFAAL_Formato_Institucional_Editable.pdf"
-      }
-    ]
+    "titulo": "Área de Investigación",
+    "descripcion": "Descarga de documentos oficiales y publicaciones científicas.",
+    "estatutos_pdf": "./docs_proyecto/ESTATUTOS_UFAAL_Formato_Institucional_Editable.pdf",
+    "articulos": []
   },
   "galeria": {
     "titulo": "Galería de Actividades",
@@ -447,17 +416,52 @@
       },
       {
         "id": 2,
-        "url": "./images/Gemini_Generated_Image_k22j0ik22j0ik22j.png",
-        "titulo": "Investigación",
-        "descripcion": "Análisis y recolección de datos científicos",
-        "categoria": "investigacion"
+        "url": "./images/world-physiotherapy-congress.jpg",
+        "titulo": "World Physiotherapy Congress",
+        "descripcion": "Participación institucional en el congreso mundial",
+        "categoria": "eventos"
       },
       {
         "id": 3,
-        "url": "./images/LOGO.jpeg",
-        "titulo": "Identidad UFAAL",
-        "descripcion": "Nuestra marca representa la unión regional",
-        "categoria": "eventos"
+        "url": "./images/nohely_rodriguez.jpeg",
+        "titulo": "Liderazgo Regional - Perú",
+        "descripcion": "Representación de la fisioterapia acuática en Perú",
+        "categoria": "liderazgo"
+      },
+      {
+        "id": 4,
+        "url": "./images/edgard_ricardo.jpeg",
+        "titulo": "Liderazgo Regional - R. Dominicana",
+        "descripcion": "Impulsando la disciplina en el Caribe",
+        "categoria": "liderazgo"
+      },
+      {
+        "id": 5,
+        "url": "./images/karen_morales.jpeg",
+        "titulo": "Liderazgo Regional - México",
+        "descripcion": "Coordinación internacional desde México",
+        "categoria": "liderazgo"
+      },
+      {
+        "id": 6,
+        "url": "./images/yara_humaran.jpeg",
+        "titulo": "Liderazgo Regional - Puerto Rico",
+        "descripcion": "Gestión de plataformas y comunicación",
+        "categoria": "liderazgo"
+      },
+      {
+        "id": 7,
+        "url": "./images/kesya_castro.jpeg",
+        "titulo": "Liderazgo Regional - Brasil",
+        "descripcion": "Trayectoria y excelencia en Brasil",
+        "categoria": "liderazgo"
+      },
+      {
+        "id": 8,
+        "url": "./images/brenes.jpeg",
+        "titulo": "Liderazgo Regional - Costa Rica",
+        "descripcion": "Investigación y desarrollo en Costa Rica",
+        "categoria": "liderazgo"
       }
     ]
   },
@@ -482,21 +486,16 @@
     "titulo": "Contacto Directo",
     "descripcion": "Estamos a su disposición para consultas institucionales.",
     "email": "ufaal2020@gmail.com",
-    "telefono": "+1 (555) 123-4567",
-    "direccion": "Sede Virtual Regional, Ciudad de México, LATAM",
+    "telefono": "+1 (809) 303-9190",
     "redes_sociales": {
-      "facebook": "https://facebook.com/ufaal",
-      "instagram": "https://instagram.com/ufaal",
-      "linkedin": "https://linkedin.com/company/ufaal"
+      "facebook": "#",
+      "instagram": "#",
+      "linkedin": "#"
     }
   },
   "colaboradores": {
     "titulo": "Nuestros Aliados y Colaboradores",
     "logos": [
-      {
-        "nombre": "World Physiotherapy",
-        "url": "./images/world-physiotherapy-congress.jpg"
-      },
       {
         "nombre": "IOAPT",
         "url": "./images/ioapt.png"
@@ -504,29 +503,59 @@
       {
         "nombre": "UFAAL",
         "url": "./images/ufal.png"
+      },
+      {
+        "nombre": "World Physiotherapy",
+        "url": "./images/logo.svg"
       }
     ]
   },
   "footer": {
     "descripcion": "La mayor red de profesionales de Fisioterapia Acuática en Latinoamérica. Comprometidos con el desarrollo académico y la excelencia terapéutica.",
-    "enlaces": [
+    "enlaces_rapidos": [
       {
         "titulo": "Quiénes Somos",
         "url": "#/quienes-somos"
+      },
+      {
+        "titulo": "Historia",
+        "url": "#/historia"
       },
       {
         "titulo": "Organización",
         "url": "#/organizacion"
       },
       {
+        "titulo": "Países Miembros",
+        "url": "#/paises"
+      },
+      {
         "titulo": "Formación",
         "url": "#/formacion"
       },
       {
-        "titulo": "Contacto",
+        "titulo": "Investigación",
+        "url": "#/investigacion"
+      }
+    ],
+    "recursos": [
+      {
+        "titulo": "Políticas de Privacidad",
+        "url": "#/privacidad"
+      },
+      {
+        "titulo": "Términos y Condiciones",
+        "url": "#/terminos"
+      },
+      {
+        "titulo": "Preguntas Frecuentes (FAQ)",
+        "url": "#/faq"
+      },
+      {
+        "titulo": "Soporte / Contacto",
         "url": "#/contacto"
       }
     ],
-    "copyright": "2024 UFAAL. Todos los derechos reservados."
+    "copyright_text": "Unión de Fisioterapia Acuática de América Latina (UFAAL). Todos los derechos reservados."
   }
 }

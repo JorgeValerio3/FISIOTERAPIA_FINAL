@@ -7,7 +7,7 @@ export function Contacto({ data }: { data: any }) {
     const correo = data.email || 'ufaal2020@gmail.com';
 
     return (
-        <section id="contacto" className="py-24 bg-white relative">
+        <section id="contacto-directo" className="py-24 bg-white relative">
             <div className="absolute top-0 right-0 w-1/2 h-full bg-ufaal-gray z-0 hidden lg:block"></div>
 
             <div className="max-w-7xl mx-auto px-6 relative z-10">
@@ -35,7 +35,7 @@ export function Contacto({ data }: { data: any }) {
                                 {/* FormSubmit Configuration */}
                                 <input type="hidden" name="_subject" value="Nuevo contacto desde Landing Page UFAAL" />
                                 <input type="hidden" name="_template" value="table" />
-                                <input type="hidden" name="_next" value={window.location.href} />
+                                <input type="hidden" name="_next" value={window.location.origin} />
 
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                     <div className="space-y-2">

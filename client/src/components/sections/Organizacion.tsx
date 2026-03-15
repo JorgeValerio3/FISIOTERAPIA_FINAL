@@ -1,5 +1,5 @@
 import { FadeIn } from '../ui/FadeIn';
-import { Download, Users, Award, MapPin, ShieldCheck } from 'lucide-react';
+import { Users, Award, MapPin, ShieldCheck } from 'lucide-react';
 
 export function Organizacion({ data }: { data: any }) {
     if (!data) return null;
@@ -11,13 +11,7 @@ export function Organizacion({ data }: { data: any }) {
         <MapPin className="w-6 h-6 text-white" />
     ];
 
-    const handleDownload = () => {
-        if (data.estatutos_pdf) {
-            window.open(data.estatutos_pdf.startsWith('http') || data.estatutos_pdf.startsWith('/') ? data.estatutos_pdf : `/${data.estatutos_pdf}`, '_blank', 'noopener,noreferrer');
-        } else {
-            console.error("No se encontró el PDF de estatutos");
-        }
-    };
+
 
     return (
         <section id="organizacion" className="py-24 bg-ufaal-gray">
@@ -35,7 +29,7 @@ export function Organizacion({ data }: { data: any }) {
                     </FadeIn>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
                     {data.secciones?.map((section: any, index: number) => (
                         <FadeIn key={section.title || index} delay={0.2 + (index * 0.1)} direction="up">
                             <div className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden h-full flex flex-col">
@@ -65,24 +59,7 @@ export function Organizacion({ data }: { data: any }) {
                     ))}
                 </div>
 
-                <FadeIn delay={0.6} direction="up">
-                    <div className="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 flex flex-col md:flex-row items-center justify-between gap-6 overflow-hidden relative group">
-                        <div className="absolute inset-0 bg-ufaal-blue/5 transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-500 ease-out"></div>
-                        <div className="z-10 text-center md:text-left">
-                            <h3 className="text-2xl font-bold text-ufaal-blue mb-2">Estatutos Oficiales</h3>
-                            <p className="text-gray-600 font-light max-w-md">
-                                Conoce los reglamentos, objetivos y responsabilidades de nuestra organización.
-                            </p>
-                        </div>
-                        <button
-                            onClick={handleDownload}
-                            className="z-10 px-8 py-3.5 bg-ufaal-blue text-white rounded-full font-medium hover:bg-ufaal-blue-light transition-all flex items-center gap-2 shadow-lg hover:shadow-xl shrink-0"
-                        >
-                            <Download className="w-5 h-5" />
-                            Descargar Estatutos (PDF)
-                        </button>
-                    </div>
-                </FadeIn>
+
 
             </div>
         </section>

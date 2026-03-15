@@ -1,8 +1,9 @@
 import { useEffect } from 'react';
 import { HashRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
-import { Navbar } from './components/layout/Navbar';
+import { Layout } from './components/layout/Layout';
 import { Hero } from './components/sections/Hero';
 import { QuienesSomos } from './components/sections/QuienesSomos';
+import { Historia } from './components/sections/Historia';
 import { Organizacion } from './components/sections/Organizacion';
 import { Paises } from './components/sections/Paises';
 import { Formacion } from './components/sections/Formacion';
@@ -11,22 +12,24 @@ import { Galeria } from './components/sections/Galeria';
 import { Noticias } from './components/sections/Noticias';
 import { Afiliacion } from './components/sections/Afiliacion';
 import { Contacto } from './components/sections/Contacto';
-import { Colaboradores } from './components/sections/Colaboradores';
-import { Footer } from './components/layout/Footer';
 import contentData from './data/content.json';
+
+// Pages
+import Privacidad from './pages/Privacidad';
+import Terminos from './pages/Terminos';
+import FAQ from './pages/FAQ';
+import ContactoPage from './pages/ContactoPage';
 
 function ScrollToHash() {
   const { pathname } = useLocation();
 
   useEffect(() => {
     const id = pathname.replace('/', '');
-    if (id) {
+    if (id && id !== 'privacidad' && id !== 'terminos' && id !== 'faq' && id !== 'contacto-soporte') {
       const element = document.getElementById(id);
       if (element) {
         element.scrollIntoView({ behavior: 'smooth' });
       }
-    } else {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
     }
   }, [pathname]);
 
@@ -35,33 +38,35 @@ function ScrollToHash() {
 
 function LandingPage() {
   return (
-    <div className="min-h-screen bg-ufaal-gray font-sans selection:bg-ufaal-blue selection:text-white">
+    <>
       <ScrollToHash />
-      <Navbar data={contentData.navbar} />
-      <main>
-        <Hero data={contentData.hero} />
-        <QuienesSomos data={contentData.quienes_somos} />
-        <Organizacion data={contentData.organizacion} />
-        <Paises data={contentData.paises} />
-        <Formacion data={contentData.formacion} />
-        <Investigacion data={contentData.investigacion} />
-        <Galeria data={contentData.galeria} />
-        <Noticias data={contentData.noticias} />
-        <Afiliacion data={contentData.afiliacion} />
-        <Contacto data={contentData.contacto} />
-      </main>
-      <Colaboradores data={contentData.colaboradores} />
-      <Footer data={contentData.footer} />
-    </div>
+      <Hero data={contentData.hero} />
+      <QuienesSomos data={contentData.quienes_somos} />
+      <Historia data={contentData.historia} />
+      <Organizacion data={contentData.organizacion} />
+      <Paises data={contentData.paises} />
+      <Formacion data={contentData.formacion} />
+      <Investigacion data={contentData.investigacion} />
+      <Galeria data={contentData.galeria} />
+      <Noticias data={contentData.noticias} />
+      <Afiliacion data={contentData.afiliacion} />
+      <Contacto data={contentData.contacto} />
+    </>
   );
 }
 
 function App() {
   return (
     <Router>
-      <Routes>
-        <Route path="*" element={<LandingPage />} />
-      </Routes>
+      <Layout>
+        <Routes>
+          <Route path="/privacidad" element={<Privacidad />} />
+          <Route path="/terminos" element={<Terminos />} />
+          <Route path="/faq" element={<FAQ />} />
+          <Route path="/contacto" element={<ContactoPage />} />
+          <Route path="*" element={<LandingPage />} />
+        </Routes>
+      </Layout>
     </Router>
   );
 }

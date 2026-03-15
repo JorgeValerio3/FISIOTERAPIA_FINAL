@@ -1,37 +1,48 @@
+import { Facebook, Instagram, Linkedin, Globe, Mail } from 'lucide-react';
 
-
-export function Footer({ data }: { data: any }) {
+export function Footer({ data, contactData }: { data: any, contactData?: any }) {
     const currentYear = new Date().getFullYear();
     if (!data) return null;
 
-    const enlacesRapidos = (data.enlaces || []).slice(0, 4);
-    const recursos = (data.enlaces || []).slice(4);
+    // Redes sociales desde contactData o data.contacto (depende de cómo se pase el prop)
+    const socialLinks = contactData?.redes_sociales || data.redes_sociales || {};
 
     return (
-        <footer className="bg-ufaal-blue pt-20 pb-10 border-t border-ufaal-blue-light/30">
-            <div className="max-w-7xl mx-auto px-6">
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+        <footer className="bg-ufaal-blue pt-20 pb-10 border-t border-ufaal-blue-light/20 relative overflow-hidden">
+            {/* Elemento Decorativo de Fondo */}
+            <div className="absolute top-0 right-0 w-96 h-96 bg-blue-500/5 rounded-full -mr-48 -mt-48 blur-3xl"></div>
+            
+            <div className="max-w-7xl mx-auto px-6 relative z-10">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 mb-20">
 
-                    <div className="lg:col-span-2">
-                        <div className="flex items-center gap-2 group mb-6">
+                    {/* Columna 1: Logo e Identidad */}
+                    <div className="space-y-6">
+                        <div className="flex items-center gap-2 group">
                             <img
                                 src="./images/logo.svg"
                                 alt="Logo UFAAL"
-                                className="h-14 w-auto object-contain brightness-0 invert opacity-90 hover:opacity-100 transition-opacity"
+                                className="h-16 w-auto object-contain brightness-0 invert opacity-100 transition-all duration-300 group-hover:scale-105"
                                 loading="lazy"
                             />
                         </div>
-                        <p className="text-gray-300 font-light leading-relaxed max-w-sm">
+                        <p className="text-gray-400 font-light leading-relaxed text-sm">
                             {data.descripcion}
                         </p>
+                        <div className="flex items-center gap-2 text-ufaal-blue-light border border-ufaal-blue-light/30 bg-ufaal-blue-light/5 px-4 py-2 rounded-lg w-fit">
+                            <Globe className="w-4 h-4" />
+                            <span className="text-xs font-medium uppercase tracking-wider">América Latina</span>
+                        </div>
                     </div>
 
+                    {/* Columna 2: Navegación */}
                     <div>
-                        <h4 className="text-white font-bold mb-6">Enlaces Rápidos</h4>
-                        <ul className="space-y-4">
-                            {enlacesRapidos.map((link: any, idx: number) => (
+                        <h4 className="text-white font-bold mb-8 text-lg flex items-center gap-2">
+                             Enlaces Rápidos
+                        </h4>
+                        <ul className="grid grid-cols-1 gap-4">
+                            {(data.enlaces_rapidos || []).map((link: any, idx: number) => (
                                 <li key={idx}>
-                                    <a href={link.url} className="text-gray-300 hover:text-white transition-colors text-sm font-light">
+                                    <a href={link.url} className="text-gray-400 hover:text-white transition-all duration-300 text-sm font-light hover:pl-2 inline-block">
                                         {link.titulo}
                                     </a>
                                 </li>
@@ -39,28 +50,76 @@ export function Footer({ data }: { data: any }) {
                         </ul>
                     </div>
 
+                    {/* Columna 3: Recursos Institucionales */}
                     <div>
-                        <h4 className="text-white font-bold mb-6">Recursos</h4>
+                        <h4 className="text-white font-bold mb-8 text-lg">Recursos</h4>
                         <ul className="space-y-4">
-                            {recursos.map((link: any, idx: number) => (
+                            {(data.recursos || []).map((link: any, idx: number) => (
                                 <li key={idx}>
-                                    <a href={link.url} className="text-gray-300 hover:text-white transition-colors text-sm font-light">
+                                    <a href={link.url} className="text-gray-400 hover:text-white transition-all duration-300 text-sm font-light hover:pl-2 inline-block">
                                         {link.titulo}
                                     </a>
                                 </li>
                             ))}
                         </ul>
+                    </div>
+
+                    {/* Columna 4: Presencial Digital */}
+                    <div className="space-y-8">
+                        <div>
+                            <h4 className="text-white font-bold mb-6 text-lg">Síguenos</h4>
+                            <div className="flex gap-3">
+                                {socialLinks.facebook && (
+                                    <a href={socialLinks.facebook} target="_blank" rel="noopener noreferrer" 
+                                       className="p-3 bg-white/5 hover:bg-white/10 rounded-xl text-gray-400 hover:text-white transition-all border border-white/5 active:scale-95"
+                                       title="Facebook">
+                                        <Facebook className="w-5 h-5" />
+                                    </a>
+                                )}
+                                {socialLinks.instagram && (
+                                    <a href={socialLinks.instagram} target="_blank" rel="noopener noreferrer" 
+                                       className="p-3 bg-white/5 hover:bg-white/10 rounded-xl text-gray-400 hover:text-white transition-all border border-white/5 active:scale-95"
+                                       title="Instagram">
+                                        <Instagram className="w-5 h-5" />
+                                    </a>
+                                )}
+                                {socialLinks.linkedin && (
+                                    <a href={socialLinks.linkedin} target="_blank" rel="noopener noreferrer" 
+                                       className="p-3 bg-white/5 hover:bg-white/10 rounded-xl text-gray-400 hover:text-white transition-all border border-white/5 active:scale-95"
+                                       title="LinkedIn">
+                                        <Linkedin className="w-5 h-5" />
+                                    </a>
+                                )}
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <h4 className="text-white text-xs font-bold uppercase tracking-widest mb-4 opacity-50">Contacto Institucional</h4>
+                            <a href="mailto:ufaal2020@gmail.com" className="group flex items-center gap-3 text-gray-400 hover:text-white transition-colors bg-white/5 p-4 rounded-2xl border border-white/5">
+                                <div className="p-2 bg-ufaal-blue-light/20 rounded-lg text-ufaal-blue-light group-hover:bg-ufaal-blue-light group-hover:text-white transition-all">
+                                    <Mail className="w-4 h-4" />
+                                </div>
+                                <span className="text-sm font-light truncate tracking-wide">ufaal2020@gmail.com</span>
+                            </a>
+                        </div>
                     </div>
 
                 </div>
 
-                <div className="border-t border-ufaal-blue-light/30 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
-                    <p className="text-gray-400 text-sm font-light">
-                        &copy; {currentYear} {data.copyright || "Unión de Fisioterapia Acuática de América Latina. Todos los derechos reservados."}
-                    </p>
-                    <p className="text-gray-400 text-sm font-light flex items-center gap-1">
-                        Subgrupo reconocido por OIAPT / World Physiotherapy
-                    </p>
+                {/* Sub-footer: Copyright y Reconocimiento */}
+                <div className="border-t border-white/5 pt-10 mt-10 flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left">
+                    <div className="space-y-1">
+                        <p className="text-gray-500 text-sm font-light">
+                            &copy; {currentYear} {data.copyright_text}
+                        </p>
+                    </div>
+                    
+                    <div className="flex items-center gap-4 py-2 px-6 bg-white/5 rounded-full border border-white/5">
+                        <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+                        <p className="text-gray-400 text-xs font-medium tracking-tight">
+                            Subgrupo reconocido por IOAPT / World Physiotherapy
+                        </p>
+                    </div>
                 </div>
             </div>
         </footer>
