@@ -39,25 +39,25 @@ export function Navbar() {
         <nav
             className={twMerge(
                 clsx(
-                    'fixed top-0 w-full z-50 transition-all duration-500 ease-in-out px-6',
+                    'fixed top-0 w-full z-50 transition-all duration-500 ease-in-out px-6 nav-container',
                     forceSolid
-                        ? 'bg-ufaal-white/95 backdrop-blur-md shadow-sm border-b border-gray-100 py-4'
-                        : 'bg-transparent py-6 md:py-10'
+                        ? 'bg-ufaal-white/95 backdrop-blur-md shadow-md border-b border-gray-100 py-2'
+                        : 'bg-transparent py-4 md:py-8'
                 )
             )}
         >
             <div className="max-w-7xl mx-auto flex items-center justify-between w-full relative">
 
                 {/* Desktop Nav */}
-                <div className="hidden lg:flex items-center justify-center w-full gap-8 z-10">
+                <div className="hidden lg:grid grid-cols-3 items-center w-full z-10">
                     {/* Left Items */}
-                    <div className="flex flex-1 justify-end items-center gap-6">
-                        {items.slice(0, Math.ceil(items.length / 2)).map((item: any) => (
+                    <div className="flex justify-end items-center gap-6 pr-8">
+                        {items.slice(0, 4).map((item: any) => (
                             <a
                                 key={item.label}
                                 href={item.href}
                                 className={clsx(
-                                    "text-sm font-medium transition-colors hover:text-ufaal-blue whitespace-nowrap",
+                                    "text-[13px] lg:text-sm font-medium transition-colors hover:text-ufaal-blue whitespace-nowrap",
                                     forceSolid ? "text-gray-600" : "text-gray-200 hover:text-white"
                                 )}
                             >
@@ -69,10 +69,10 @@ export function Navbar() {
                     {/* Center Logo */}
                     <div
                         className={clsx(
-                            "flex items-center justify-center shrink-0 transition-all duration-700 ease-in-out",
+                            "flex items-center justify-center transition-all duration-700 ease-in-out",
                             forceSolid 
                                 ? "opacity-100 translate-y-0 scale-100" 
-                                : "opacity-0 -translate-y-8 scale-90 pointer-events-none"
+                                : "opacity-0 -translate-y-4 scale-90 pointer-events-none"
                         )}
                     >
                         <a
@@ -80,35 +80,35 @@ export function Navbar() {
                             className="flex items-center justify-center transition-all duration-500 rounded-2xl p-2 bg-transparent"
                         >
                             <img
-                                src="./images/ufal.png?v=3"
+                                src="./images/logo_sin_fondo.png?v=3"
                                 alt="Logo UFAAL"
                                 className={clsx(
                                     "transition-all duration-500 object-contain mix-blend-multiply brightness-110",
-                                    forceSolid ? "h-12" : "h-16 md:h-20 lg:h-24"
+                                    forceSolid ? "h-28" : "h-32 md:h-36 lg:h-40"
                                 )}
                             />
                         </a>
                     </div>
 
                     {/* Right Items */}
-                    <div className="flex flex-1 justify-start items-center gap-6">
-                        {items.slice(Math.ceil(items.length / 2)).map((item: any) => (
+                    <div className="flex justify-start items-center gap-6 pl-8">
+                        {items.slice(4).map((item: any) => (
                             <a
                                 key={item.label}
                                 href={item.href}
                                 className={clsx(
-                                    "text-sm font-medium transition-colors hover:text-ufaal-blue whitespace-nowrap",
+                                    "text-[13px] lg:text-sm font-medium transition-colors hover:text-ufaal-blue whitespace-nowrap",
                                     forceSolid ? "text-gray-600" : "text-gray-200 hover:text-white"
                                 )}
                             >
                                 {item.label}
                             </a>
                         ))}
-                    </div>
 
-                    {/* Language Selector Desktop */}
-                    <div className="absolute right-0 top-1/2 -translate-y-1/2">
-                        <LanguageSelector isScrolled={forceSolid} />
+                        {/* Language Selector Desktop (In-flow) */}
+                        <div className="ml-2 lg:ml-4">
+                            <LanguageSelector isScrolled={forceSolid} />
+                        </div>
                     </div>
                 </div>
 
@@ -119,9 +119,9 @@ export function Navbar() {
                 )}>
                     <a href="#/inicio">
                         <img
-                            src="./images/ufal.png?v=3"
+                            src="./images/logo_sin_fondo.png?v=3"
                             alt="Logo UFAAL"
-                            className="h-18 w-auto object-contain transition-all duration-500 mix-blend-multiply brightness-110"
+                            className="h-24 w-auto object-contain transition-all duration-500 mix-blend-multiply brightness-110"
                         />
                     </a>
                 </div>

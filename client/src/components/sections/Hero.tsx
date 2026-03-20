@@ -25,12 +25,12 @@ export function Hero({ data: _data }: { data?: any }) {
                 <img
                     src="./images/home2.jpg"
                     alt="Terapia Acuática"
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-cover hero-bg-image"
                 />
                 <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/30 to-black/10"></div>
             </div>
 
-            <div className="relative z-10 text-center px-4 max-w-4xl mx-auto mt-36 md:mt-48">
+            <div className="relative z-10 text-center px-4 max-w-4xl mx-auto mt-12 md:mt-48">
                 <FadeIn delay={0.1} direction="down">
                     <div 
                         className="flex justify-center mb-8 drop-shadow-2xl transition-all duration-300 ease-out"
@@ -41,9 +41,9 @@ export function Hero({ data: _data }: { data?: any }) {
                         }}
                     >
                         <img 
-                            src="./images/ufal.png" 
+                            src="./images/logo_sin_fondo.png" 
                             alt="Logo UFAAL" 
-                            className="h-32 md:h-48 lg:h-64 w-auto object-contain brightness-110 contrast-125"
+                            className="h-64 md:h-72 lg:h-80 w-auto object-contain brightness-110 contrast-125"
                         />
                     </div>
                 </FadeIn>
@@ -80,21 +80,24 @@ export function Hero({ data: _data }: { data?: any }) {
 
                 <FadeIn delay={0.6} direction="up">
                     <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-                        <a
-                            href="#/quienes-somos"
+                        <button
+                            onClick={() => document.getElementById('quienes-somos')?.scrollIntoView({ behavior: 'smooth' })}
                             className="px-8 py-3.5 rounded-full bg-white text-ufaal-blue font-medium hover:bg-gray-50 transition-colors shadow-lg hover:shadow-xl w-full sm:w-auto"
                         >
                             {t('hero.cta_primario')}
-                        </a>
+                        </button>
                     </div>
                 </FadeIn>
             </div>
 
             {/* Scroll indicator */}
             <div className="absolute bottom-10 left-1/2 -translate-x-1/2 z-10 animate-bounce">
-                <a href="#/quienes-somos" className="p-3 bg-white/10 rounded-full backdrop-blur-sm border border-white/20 text-white flex items-center justify-center hover:bg-white/20 transition-colors transition-opacity opacity-70 hover:opacity-100">
+                <button 
+                    onClick={() => document.getElementById('quienes-somos')?.scrollIntoView({ behavior: 'smooth' })}
+                    className="p-3 bg-white/10 rounded-full backdrop-blur-sm border border-white/20 text-white flex items-center justify-center hover:bg-white/20 transition-colors transition-opacity opacity-70 hover:opacity-100"
+                >
                     <ArrowDown className="w-5 h-5" />
-                </a>
+                </button>
             </div>
         </section>
     );

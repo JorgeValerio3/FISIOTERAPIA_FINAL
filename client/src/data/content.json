@@ -117,7 +117,7 @@
       "Posteriormente, en 2023, Gloria Aravena fue elegida Vicepresidenta de la IOAPT, consolidando la presencia de la región en el liderazgo internacional junto a líderes como Karen Morales (México) y Yara Humarán (Puerto Rico).",
       "Hoy, UFAAL representa un espacio de encuentro y crecimiento colectivo, donde profesionales de distintos países se unen con un propósito común: avanzar juntos desde América Latina hacia el mundo, fortaleciendo la fisioterapia acuática como una disciplina científica, terapéutica y humana al servicio de la salud y la rehabilitación."
     ],
-    "imagen": "./images/historia_aquatic.png"
+    "imagen": "./images/imagen_historia.jpg"
   },
   "organizacion": {
     "titulo": "ÁREA DE GESTIÓN",
@@ -508,7 +508,7 @@
       },
       {
         "nombre": "UFAAL",
-        "url": "./images/ufal.png"
+        "url": "./images/logo_sin_fondo.png"
       },
       {
         "nombre": "World Physiotherapy",
