@@ -6,7 +6,7 @@ import { twMerge } from 'tailwind-merge';
 import { useI18n } from '../../contexts/I18nContext';
 import { LanguageSelector } from '../ui/LanguageSelector';
 
-export function Navbar({ data }: { data?: any }) {
+export function Navbar() {
     const { t } = useI18n();
     const location = useLocation();
     const [isScrolled, setIsScrolled] = useState(false);

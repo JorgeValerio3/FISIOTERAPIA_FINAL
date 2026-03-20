@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { useI18n } from '../../contexts/I18nContext';
 import { Globe, ChevronDown } from 'lucide-react';
 import { clsx } from 'clsx';
@@ -24,8 +24,6 @@ export function LanguageSelector({ isScrolled }: { isScrolled: boolean }) {
     document.addEventListener('mousedown', handleClickOutside);
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
-
-  const selectedLang = languages.find(l => l.code === currentLang) || languages[0];
 
   return (
     <div className="relative" ref={dropdownRef}>
