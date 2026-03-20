@@ -69,8 +69,10 @@ export function Navbar() {
                     {/* Center Logo */}
                     <div
                         className={clsx(
-                            "flex items-center justify-center shrink-0 transition-all duration-700",
-                            forceSolid ? "scale-100" : "scale-105 lg:scale-[1.2] xl:scale-[1.3]"
+                            "flex items-center justify-center shrink-0 transition-all duration-700 ease-in-out",
+                            forceSolid 
+                                ? "opacity-100 translate-y-0 scale-100" 
+                                : "opacity-0 -translate-y-8 scale-90 pointer-events-none"
                         )}
                     >
                         <a
@@ -111,7 +113,10 @@ export function Navbar() {
                 </div>
 
                 {/* Mobile Logo & Spacer */}
-                <div className="lg:hidden flex items-center transition-all duration-500 p-2 rounded-2xl bg-white/5 backdrop-blur-sm border border-white/10">
+                <div className={clsx(
+                    "lg:hidden flex items-center transition-all duration-500 p-2 rounded-2xl bg-white/5 backdrop-blur-sm border border-white/10",
+                    forceSolid ? "opacity-100 scale-100" : "opacity-0 scale-95 pointer-events-none"
+                )}>
                     <a href="#/inicio">
                         <img
                             src="./images/ufal.png?v=3"

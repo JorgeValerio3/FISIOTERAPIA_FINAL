@@ -53,21 +53,33 @@ function LandingPage() {
   );
 }
 
-import { I18nProvider } from './contexts/I18nContext';
+import { I18nProvider, useI18n } from './contexts/I18nContext';
+import { GlobalLoader } from './components/ui/GlobalLoader';
+
+function MainContent() {
+  const { isLoading } = useI18n();
+
+  return (
+    <>
+      {isLoading && <GlobalLoader />}
+      <Layout>
+        <Routes>
+          <Route path="/privacidad" element={<Privacidad />} />
+          <Route path="/terminos" element={<Terminos />} />
+          <Route path="/faq" element={<FAQ />} />
+          <Route path="/contacto" element={<ContactoPage />} />
+          <Route path="*" element={<LandingPage />} />
+        </Routes>
+      </Layout>
+    </>
+  );
+}
 
 function App() {
   return (
     <Router>
       <I18nProvider>
-        <Layout>
-          <Routes>
-            <Route path="/privacidad" element={<Privacidad />} />
-            <Route path="/terminos" element={<Terminos />} />
-            <Route path="/faq" element={<FAQ />} />
-            <Route path="/contacto" element={<ContactoPage />} />
-            <Route path="*" element={<LandingPage />} />
-          </Routes>
-        </Layout>
+        <MainContent />
       </I18nProvider>
     </Router>
   );

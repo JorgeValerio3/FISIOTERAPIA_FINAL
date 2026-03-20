@@ -45,7 +45,6 @@
     "descripcion": "Somos la red líder de profesionales en fisioterapia acuática de Latinoamérica.",
     "video_id": "8zR4z8C5XjU",
     "cta_primario": "Ver Sobre Nosotros",
-    "cta_secundario": "Nuestra Red Regional",
     "estadisticas": [
       {
         "valor": "+15",
@@ -462,6 +461,13 @@
         "titulo": "Liderazgo Regional - Costa Rica",
         "descripcion": "Investigación y desarrollo en Costa Rica",
         "categoria": "liderazgo"
+      },
+      {
+        "id": 9,
+        "url": "./images/home2.jpg",
+        "titulo": "Sesión de Rehabilitación",
+        "descripcion": "Desarrollo de técnicas avanzadas en el medio acuático",
+        "categoria": "formacion"
       }
     ]
   },

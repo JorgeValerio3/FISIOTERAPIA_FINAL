@@ -1,16 +1,29 @@
+import { useState, useEffect } from 'react';
 import { useI18n } from '../../contexts/I18nContext';
 import { FadeIn } from '../ui/FadeIn';
 import { ArrowDown } from 'lucide-react';
+import { Skeleton } from '../ui/Skeleton';
 
 export function Hero({ data: _data }: { data?: any }) {
-    const { t } = useI18n();
+    const { t, isLoading } = useI18n();
+
+    const [scrollPos, setScrollPos] = useState(0);
+    useEffect(() => {
+        const handleScroll = () => setScrollPos(window.scrollY);
+        window.addEventListener('scroll', handleScroll, { passive: true });
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, []);
+
+    const logoOpacity = Math.max(0, 1 - scrollPos / 200);
+    const logoScale = Math.max(0.8, 1 - scrollPos / 500);
+    const logoTranslate = scrollPos * 0.2;
 
     return (
         <section id="inicio" className="relative min-h-screen flex items-center justify-center bg-ufaal-blue overflow-hidden">
             {/* Background Image Placeholder */}
             <div className="absolute inset-0 z-0">
                 <img
-                    src="./images/home.jpeg"
+                    src="./images/home2.jpg"
                     alt="Terapia Acuática"
                     className="w-full h-full object-cover"
                 />
@@ -18,19 +31,51 @@ export function Hero({ data: _data }: { data?: any }) {
             </div>
 
             <div className="relative z-10 text-center px-4 max-w-4xl mx-auto mt-36 md:mt-48">
+                <FadeIn delay={0.1} direction="down">
+                    <div 
+                        className="flex justify-center mb-8 drop-shadow-2xl transition-all duration-300 ease-out"
+                        style={{ 
+                            opacity: logoOpacity,
+                            transform: `scale(${logoScale}) translateY(${logoTranslate}px)`,
+                            filter: `blur(${scrollPos / 50}px)`
+                        }}
+                    >
+                        <img 
+                            src="./images/ufal.png" 
+                            alt="Logo UFAAL" 
+                            className="h-32 md:h-48 lg:h-64 w-auto object-contain brightness-110 contrast-125"
+                        />
+                    </div>
+                </FadeIn>
+
                 <FadeIn delay={0.2} direction="up">
-                    <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white tracking-tight mb-6">
-                        {t('hero.titulo')}
+                    <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white tracking-tight mb-6 min-h-[1.2em]">
+                        {isLoading ? (
+                            <Skeleton className="h-12 md:h-16 lg:h-20 w-3/4 mx-auto bg-white/20" />
+                        ) : (
+                            t('hero.titulo')
+                        )}
                     </h1>
                 </FadeIn>
 
                 <FadeIn delay={0.4} direction="up">
-                    <p className="text-lg md:text-xl text-gray-200 mb-6 max-w-2xl mx-auto font-light leading-relaxed">
-                        {t('hero.subtitulo')}
-                    </p>
-                    <p className="text-base text-gray-300 mb-10 max-w-2xl mx-auto">
-                        {t('hero.descripcion')}
-                    </p>
+                    <div className="space-y-4 mb-10">
+                        {isLoading ? (
+                            <>
+                                <Skeleton className="h-6 w-1/2 mx-auto bg-white/20" />
+                                <Skeleton className="h-4 w-2/3 mx-auto bg-white/20" />
+                            </>
+                        ) : (
+                            <>
+                                <p className="text-lg md:text-xl text-gray-200 max-w-2xl mx-auto font-light leading-relaxed">
+                                    {t('hero.subtitulo')}
+                                </p>
+                                <p className="text-base text-gray-300 max-w-2xl mx-auto">
+                                    {t('hero.descripcion')}
+                                </p>
+                            </>
+                        )}
+                    </div>
                 </FadeIn>
 
                 <FadeIn delay={0.6} direction="up">
@@ -41,14 +86,6 @@ export function Hero({ data: _data }: { data?: any }) {
                         >
                             {t('hero.cta_primario')}
                         </a>
-                        <a
-                                href="https://youtube.com/watch?v=8zR4z8C5XjU"
-                                target="_blank"
-                                rel="noreferrer"
-                                className="px-8 py-3.5 rounded-full bg-transparent border border-white/30 text-white font-medium hover:bg-white/10 transition-colors w-full sm:w-auto"
-                            >
-                                {t('hero.cta_secundario')}
-                            </a>
                     </div>
                 </FadeIn>
             </div>

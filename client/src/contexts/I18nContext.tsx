@@ -57,10 +57,10 @@ export const I18nProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
       if (result?.[k] !== undefined) {
         result = result[k];
       } else {
-        return key; 
+        return isLoading ? "" : key; 
       }
     }
-    return result;
+    return isLoading ? "" : result;
   };
 
   return (
