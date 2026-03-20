@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
 import { clsx } from 'clsx';
@@ -12,7 +12,7 @@ export function Navbar() {
     const [isScrolled, setIsScrolled] = useState(false);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     
-    const items = [
+    const items = React.useMemo(() => [
         { label: t('navbar.quienes_somos'), href: '#/quienes-somos' },
         { label: t('navbar.historia'), href: '#/historia' },
         { label: t('navbar.organizacion'), href: '#/organizacion' },
@@ -22,7 +22,7 @@ export function Navbar() {
         { label: t('navbar.noticias'), href: '#/noticias' },
         { label: t('navbar.contacto'), href: '#/contacto-directo' },
         { label: t('navbar.galeria'), href: '#/galeria' },
-    ];
+    ], [t]);
     const isSubPage = ['/privacidad', '/terminos', '/faq', '/contacto'].includes(location.pathname);
     const forceSolid = isSubPage || isScrolled;
 
@@ -39,7 +39,7 @@ export function Navbar() {
         <nav
             className={twMerge(
                 clsx(
-                    'fixed top-0 w-full z-50 transition-all duration-500 ease-in-out px-6 nav-container',
+                    'fixed top-0 w-full z-50 px-6 nav-container',
                     forceSolid
                         ? 'bg-ufaal-white/95 backdrop-blur-md shadow-md border-b border-gray-100 py-2'
                         : 'bg-transparent py-4 md:py-8'
@@ -49,15 +49,15 @@ export function Navbar() {
             <div className="max-w-7xl mx-auto flex items-center justify-between w-full relative">
 
                 {/* Desktop Nav */}
-                <div className="hidden lg:grid grid-cols-3 items-center w-full z-10">
+                <div className="hidden lg:flex items-center justify-center w-full z-10">
                     {/* Left Items */}
-                    <div className="flex justify-end items-center gap-6 pr-8">
-                        {items.slice(0, 4).map((item: any) => (
+                    <div className="flex-none w-[460px] flex justify-end items-center gap-3 xl:gap-4">
+                        {items.slice(0, 5).map((item: any) => (
                             <a
-                                key={item.label}
+                                key={item.href}
                                 href={item.href}
                                 className={clsx(
-                                    "text-[13px] lg:text-sm font-medium transition-colors hover:text-ufaal-blue whitespace-nowrap",
+                                    "text-[12px] xl:text-[13px] font-medium transition-colors hover:text-ufaal-blue whitespace-nowrap",
                                     forceSolid ? "text-gray-600" : "text-gray-200 hover:text-white"
                                 )}
                             >
@@ -66,38 +66,38 @@ export function Navbar() {
                         ))}
                     </div>
 
-                    {/* Center Logo */}
+                    {/* Center Logo - Fixed Width Spacer */}
                     <div
                         className={clsx(
-                            "flex items-center justify-center transition-all duration-700 ease-in-out",
+                            "flex-none w-[180px] xl:w-[220px] flex items-center justify-center",
                             forceSolid 
-                                ? "opacity-100 translate-y-0 scale-100" 
-                                : "opacity-0 -translate-y-4 scale-90 pointer-events-none"
+                                ? "opacity-100 scale-100" 
+                                : "opacity-0 scale-90 pointer-events-none"
                         )}
                     >
                         <a
                             href="#/inicio"
-                            className="flex items-center justify-center transition-all duration-500 rounded-2xl p-2 bg-transparent"
+                            className="flex items-center justify-center rounded-2xl p-2 bg-transparent"
                         >
                             <img
                                 src="./images/logo_sin_fondo.png?v=3"
                                 alt="Logo UFAAL"
                                 className={clsx(
-                                    "transition-all duration-500 object-contain mix-blend-multiply brightness-110",
-                                    forceSolid ? "h-28" : "h-32 md:h-36 lg:h-40"
+                                    "object-contain mix-blend-multiply brightness-110",
+                                    forceSolid ? "h-20 xl:h-24" : "h-28 xl:h-32"
                                 )}
                             />
                         </a>
                     </div>
 
                     {/* Right Items */}
-                    <div className="flex justify-start items-center gap-6 pl-8">
-                        {items.slice(4).map((item: any) => (
+                    <div className="flex-none w-[460px] flex justify-start items-center gap-3 pl-4">
+                        {items.slice(5).map((item: any) => (
                             <a
-                                key={item.label}
+                                key={item.href}
                                 href={item.href}
                                 className={clsx(
-                                    "text-[13px] lg:text-sm font-medium transition-colors hover:text-ufaal-blue whitespace-nowrap",
+                                    "text-[12px] xl:text-[13px] font-medium transition-colors hover:text-ufaal-blue whitespace-nowrap",
                                     forceSolid ? "text-gray-600" : "text-gray-200 hover:text-white"
                                 )}
                             >
@@ -106,7 +106,7 @@ export function Navbar() {
                         ))}
 
                         {/* Language Selector Desktop (In-flow) */}
-                        <div className="ml-2 lg:ml-4">
+                        <div className="ml-2">
                             <LanguageSelector isScrolled={forceSolid} />
                         </div>
                     </div>
@@ -147,7 +147,7 @@ export function Navbar() {
                 <div className="absolute top-full left-0 w-full bg-white shadow-lg border-b border-gray-100 lg:hidden flex flex-col p-4 gap-4 pb-8">
                     {items.map((item: any) => (
                         <a
-                            key={item.label}
+                            key={item.href}
                             href={item.href}
                             className="text-gray-800 text-sm font-medium hover:text-ufaal-blue hover:bg-gray-50 p-2 rounded-md"
                             onClick={() => setIsMobileMenuOpen(false)}
