@@ -1,8 +1,10 @@
 import { FadeIn } from '../components/ui/FadeIn';
 import { Mail, Phone, Clock, Send } from 'lucide-react';
+import { useI18n } from '../contexts/I18nContext';
 import contentData from '../data/content.json';
 
 export default function ContactoPage() {
+    const { t } = useI18n();
     const { contacto } = contentData;
 
     return (
@@ -12,7 +14,7 @@ export default function ContactoPage() {
             
             <div className="max-w-7xl mx-auto px-6 relative z-10">
                 <FadeIn direction="up">
-                    <h1 className="text-4xl md:text-5xl font-bold text-ufaal-blue mb-8 tracking-tight">Soporte y Contacto</h1>
+                    <h1 className="text-4xl md:text-5xl font-bold text-ufaal-blue mb-8 tracking-tight">{t('contacto.titulo')}</h1>
                     <div className="w-24 h-1 bg-ufaal-blue-light rounded-full mb-12"></div>
                 </FadeIn>
 
@@ -22,7 +24,7 @@ export default function ContactoPage() {
                     <div className="space-y-12">
                         <FadeIn delay={0.1} direction="right">
                             <p className="text-gray-600 text-lg font-light leading-relaxed mb-12 max-w-xl">
-                                Estamos a su disposición para resolver cualquier duda institucional, académica o técnica. Nuestro equipo le responderá a la brevedad posible.
+                                {t('contacto.descripcion')}
                             </p>
 
                             <div className="space-y-8">
@@ -31,11 +33,11 @@ export default function ContactoPage() {
                                         <Mail className="w-6 h-6" />
                                     </div>
                                     <div>
-                                        <h4 className="text-lg font-bold text-ufaal-text">Canal Oficial</h4>
+                                        <h4 className="text-lg font-bold text-ufaal-text">{t('contacto.info_canal')}</h4>
                                         <a href={`mailto:${contacto.email}`} className="text-gray-600 hover:text-ufaal-blue transition-colors font-light text-lg">
                                             {contacto.email}
                                         </a>
-                                        <p className="text-sm text-ufaal-blue-light font-medium mt-1 uppercase tracking-wider">Respuesta en menos de 24h</p>
+                                        <p className="text-sm text-ufaal-blue-light font-medium mt-1 uppercase tracking-wider">{t('contacto.info_respuesta')}</p>
                                     </div>
                                 </div>
 
@@ -44,22 +46,20 @@ export default function ContactoPage() {
                                         <Phone className="w-6 h-6" />
                                     </div>
                                     <div>
-                                        <h4 className="text-lg font-bold text-ufaal-text">Atención Telefónica</h4>
+                                        <h4 className="text-lg font-bold text-ufaal-text">{t('contacto.info_telefono')}</h4>
                                         <p className="text-gray-600 font-light text-lg">{contacto.telefono}</p>
                                         <div className="flex items-center gap-2 mt-1 text-gray-400">
                                             <Clock className="w-4 h-4" />
-                                            <span className="text-sm">9:00 AM - 6:00 PM (GMT-6)</span>
+                                            <span className="text-sm">{t('contacto.info_horario')}</span>
                                         </div>
                                     </div>
                                 </div>
-
-
                             </div>
 
                             <div className="mt-12 p-8 bg-ufaal-blue/5 border border-ufaal-blue-light/10 rounded-3xl">
-                                <h5 className="font-bold text-ufaal-blue mb-2">Afiliaciones Internacionales</h5>
+                                <h5 className="font-bold text-ufaal-blue mb-2">{t('contacto.afiliaciones_titulo')}</h5>
                                 <p className="text-sm text-gray-500 font-light">
-                                    Para consultas específicas sobre la World Physiotherapy o la IOAPT, nuestro equipo puede orientarlo sobre los procesos de validación regional.
+                                    {t('contacto.afiliaciones_desc')}
                                 </p>
                             </div>
                         </FadeIn>
@@ -69,7 +69,7 @@ export default function ContactoPage() {
                     <div className="relative">
                         <FadeIn delay={0.3} direction="left">
                             <div className="bg-white p-8 md:p-12 rounded-[2.5rem] shadow-2xl shadow-black/5 border border-gray-100 relative">
-                                <h3 className="text-2xl font-bold text-ufaal-text mb-8">Formulario de Soporte</h3>
+                                <h3 className="text-2xl font-bold text-ufaal-text mb-8">{t('contacto.form_titulo')}</h3>
                                 
                                 <form action={`https://formsubmit.co/${contacto.email}`} method="POST" className="space-y-6">
                                     <input type="hidden" name="_subject" value="Solicitud de Soporte UFAAL" />
@@ -77,48 +77,48 @@ export default function ContactoPage() {
                                     <input type="hidden" name="_next" value={window.location.origin} />
                                     
                                     <div className="space-y-2">
-                                        <label className="text-sm font-semibold text-gray-700 ml-1">Nombre Completo</label>
+                                        <label className="text-sm font-semibold text-gray-700 ml-1">{t('contacto.form_nombre')}</label>
                                         <input
                                             type="text"
                                             name="name"
                                             required
-                                            placeholder="Ej: Dr. Julian Rodriguez"
+                                            placeholder={t('contacto.form_nombre_placeholder')}
                                             className="w-full px-5 py-4 bg-gray-50 border border-transparent rounded-2xl focus:bg-white focus:border-ufaal-blue-light/50 focus:ring-4 focus:ring-ufaal-blue-light/5 outline-none transition-all placeholder-gray-400"
                                         />
                                     </div>
 
                                     <div className="space-y-2">
-                                        <label className="text-sm font-semibold text-gray-700 ml-1">Correo Electrónico</label>
+                                        <label className="text-sm font-semibold text-gray-700 ml-1">{t('contacto.form_email')}</label>
                                         <input
                                             type="email"
                                             name="email"
                                             required
-                                            placeholder="ejemplo@organizacion.org"
+                                            placeholder={t('contacto.form_email_placeholder')}
                                             className="w-full px-5 py-4 bg-gray-50 border border-transparent rounded-2xl focus:bg-white focus:border-ufaal-blue-light/50 focus:ring-4 focus:ring-ufaal-blue-light/5 outline-none transition-all placeholder-gray-400"
                                         />
                                     </div>
 
                                     <div className="space-y-2">
-                                        <label className="text-sm font-semibold text-gray-700 ml-1">Asunto</label>
+                                        <label className="text-sm font-semibold text-gray-700 ml-1">{t('contacto.form_asunto')}</label>
                                         <select 
                                             name="subject"
                                             className="w-full px-5 py-4 bg-gray-50 border border-transparent rounded-2xl focus:bg-white focus:border-ufaal-blue-light/50 focus:ring-4 focus:ring-ufaal-blue-light/5 outline-none transition-all"
                                         >
-                                            <option>Soporte Técnico</option>
-                                            <option>Consultas sobre Afiliación</option>
-                                            <option>Programas de Formación</option>
-                                            <option>Investigación y Publicaciones</option>
-                                            <option>Otros</option>
+                                            <option>{t('contacto.asuntos.soporte')}</option>
+                                            <option>{t('contacto.asuntos.afiliacion')}</option>
+                                            <option>{t('contacto.asuntos.formacion')}</option>
+                                            <option>{t('contacto.asuntos.investigacion')}</option>
+                                            <option>{t('contacto.asuntos.otros')}</option>
                                         </select>
                                     </div>
 
                                     <div className="space-y-2">
-                                        <label className="text-sm font-semibold text-gray-700 ml-1">Mensaje</label>
+                                        <label className="text-sm font-semibold text-gray-700 ml-1">{t('contacto.form_mensaje')}</label>
                                         <textarea
                                             name="message"
                                             rows={5}
                                             required
-                                            placeholder="Detalle su consulta para que podamos ayudarle..."
+                                            placeholder={t('contacto.form_mensaje_placeholder')}
                                             className="w-full px-5 py-4 bg-gray-50 border border-transparent rounded-2xl focus:bg-white focus:border-ufaal-blue-light/50 focus:ring-4 focus:ring-ufaal-blue-light/5 outline-none transition-all resize-none placeholder-gray-400"
                                         ></textarea>
                                     </div>
@@ -127,7 +127,7 @@ export default function ContactoPage() {
                                         type="submit"
                                         className="w-full py-4 bg-ufaal-blue text-white rounded-2xl font-bold hover:bg-ufaal-blue-light transition-all flex items-center justify-center gap-3 shadow-lg hover:shadow-xl active:scale-95"
                                     >
-                                        <Send className="w-5 h-5" /> Enviar Solicitud
+                                        <Send className="w-5 h-5" /> {t('contacto.form_enviar')}
                                     </button>
                                 </form>
                             </div>

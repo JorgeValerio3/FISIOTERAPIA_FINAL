@@ -40,12 +40,12 @@
     ]
   },
   "hero": {
-    "subtitulo": "Unidad de Fisioterapia Acuática",
-    "titulo_principal": "Revolucionando la Terapia en el Agua",
+    "subtitulo": "",
+    "titulo_principal": "UFAAL",
     "descripcion": "Somos la red líder de profesionales en fisioterapia acuática de Latinoamérica.",
     "video_id": "8zR4z8C5XjU",
-    "cta_primario": "Afiliarme Ahora",
-    "cta_secundario": "Ver Países Miembros",
+    "cta_primario": "Ver Sobre Nosotros",
+    "cta_secundario": "Nuestra Red Regional",
     "estadisticas": [
       {
         "valor": "+15",
@@ -203,7 +203,7 @@
         "cargo": "Delegada Nacional",
         "contacto": "fabianagiannini@gmail.com",
         "descripcion": "Lider regional en fisioterapia acuatica, comprometida con la excelencia y la formacion continua.",
-        "imagen": "",
+        "imagen": "./images/Fabiana_giannini.jpeg",
         "galeria": []
       },
       {
@@ -239,7 +239,7 @@
         "cargo": "Delegada Nacional",
         "contacto": "garavena@hotmail.com",
         "descripcion": "",
-        "imagen": "",
+        "imagen": "./images/Gloria_aravena.jpeg",
         "galeria": []
       },
       {
@@ -371,7 +371,7 @@
         "cargo": "Delegada Nacional",
         "contacto": "Paoguevaram89@gmail.com",
         "descripcion": "",
-        "imagen": "",
+        "imagen": "./images/Paola_Guevara.jpeg",
         "galeria": []
       }
     ]
@@ -489,7 +489,7 @@
     "telefono": "+1 (809) 303-9190",
     "redes_sociales": {
       "facebook": "#",
-      "instagram": "#",
+      "instagram": "https://www.instagram.com/Ufaal.Latam",
       "linkedin": "#"
     }
   },

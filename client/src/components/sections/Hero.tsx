@@ -1,8 +1,9 @@
+import { useI18n } from '../../contexts/I18nContext';
 import { FadeIn } from '../ui/FadeIn';
 import { ArrowDown } from 'lucide-react';
 
-export function Hero({ data }: { data: any }) {
-    if (!data) return null;
+export function Hero({ data: _data }: { data?: any }) {
+    const { t } = useI18n();
 
     return (
         <section id="inicio" className="relative min-h-screen flex items-center justify-center bg-ufaal-blue overflow-hidden">
@@ -16,19 +17,19 @@ export function Hero({ data }: { data: any }) {
                 <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/30 to-black/10"></div>
             </div>
 
-            <div className="relative z-10 text-center px-4 max-w-4xl mx-auto mt-20">
+            <div className="relative z-10 text-center px-4 max-w-4xl mx-auto mt-36 md:mt-48">
                 <FadeIn delay={0.2} direction="up">
                     <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white tracking-tight mb-6">
-                        {data.titulo_principal}
+                        {t('hero.titulo')}
                     </h1>
                 </FadeIn>
 
                 <FadeIn delay={0.4} direction="up">
                     <p className="text-lg md:text-xl text-gray-200 mb-6 max-w-2xl mx-auto font-light leading-relaxed">
-                        {data.subtitulo}
+                        {t('hero.subtitulo')}
                     </p>
                     <p className="text-base text-gray-300 mb-10 max-w-2xl mx-auto">
-                        {data.descripcion}
+                        {t('hero.descripcion')}
                     </p>
                 </FadeIn>
 
@@ -38,18 +39,16 @@ export function Hero({ data }: { data: any }) {
                             href="#/quienes-somos"
                             className="px-8 py-3.5 rounded-full bg-white text-ufaal-blue font-medium hover:bg-gray-50 transition-colors shadow-lg hover:shadow-xl w-full sm:w-auto"
                         >
-                            {data.cta_primario}
+                            {t('hero.cta_primario')}
                         </a>
-                        {data.video_id && (
-                            <a
-                                href={`https://youtube.com/watch?v=${data.video_id}`}
+                        <a
+                                href="https://youtube.com/watch?v=8zR4z8C5XjU"
                                 target="_blank"
                                 rel="noreferrer"
                                 className="px-8 py-3.5 rounded-full bg-transparent border border-white/30 text-white font-medium hover:bg-white/10 transition-colors w-full sm:w-auto"
                             >
-                                {data.cta_secundario}
+                                {t('hero.cta_secundario')}
                             </a>
-                        )}
                     </div>
                 </FadeIn>
             </div>

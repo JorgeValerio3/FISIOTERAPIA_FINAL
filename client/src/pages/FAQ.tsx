@@ -2,29 +2,8 @@ import { useState } from 'react';
 import { FadeIn } from '../components/ui/FadeIn';
 import { ChevronDown, HelpCircle } from 'lucide-react';
 import { clsx } from 'clsx';
+import { useI18n } from '../contexts/I18nContext';
 
-const faqs = [
-    {
-        question: "¿Cómo puedo afiliarme a UFAAL?",
-        answer: "La afiliación se realiza a través de los delegados nacionales de cada país. Puede contactar al representante de su región en la sección de 'Países Miembros' o enviarnos un correo electrónico a ufaal2020@gmail.com solicitando información sobre los requisitos específicos para su país."
-    },
-    {
-        question: "¿UFAAL ofrece certificaciones internacionales?",
-        answer: "Sí, UFAAL, en colaboración con el área de Formación y docentes internacionales certificados, organiza programas de capacitación por niveles. Estas formaciones están alineadas con los estándares de la IOAPT y World Physiotherapy."
-    },
-    {
-        question: "¿Tienen convenios con universidades?",
-        answer: "Actualmente trabajamos en estrecha colaboración con diversas instituciones académicas líderes en América Latina para promover la investigación y la inclusión de la fisioterapia acuática en los planes de estudio de pregrado y posgrado."
-    },
-    {
-        question: "¿Quiénes pueden participar en los congresos de UFAAL?",
-        answer: "Nuestros eventos están abiertos a fisioterapeutas, kinesiólogos, estudiantes de último año y profesionales de la salud interesados en la rehabilitación acuática. Los miembros afiliados disfrutan de beneficios y descuentos exclusivos en las inscripciones."
-    },
-    {
-        question: "¿Cómo puedo publicar una investigación en su repositorio?",
-        answer: "Si usted tiene un trabajo de investigación original relacionado con la fisioterapia acuática, puede enviarlo a nuestro Eje de Investigación Científica para revisión. Una vez validado por el comité, podrá ser publicado en nuestra plataforma digital."
-    }
-];
 
 function AccordionItem({ question, answer, isOpen, onClick }: { question: string, answer: string, isOpen: boolean, onClick: () => void }) {
     return (
@@ -53,7 +32,10 @@ function AccordionItem({ question, answer, isOpen, onClick }: { question: string
 }
 
 export default function FAQ() {
+    const { t } = useI18n();
     const [openIndex, setOpenIndex] = useState<number | null>(0);
+
+    const faqKeys = ['p1', 'p2', 'p3', 'p4', 'p5'];
 
     return (
         <div className="pt-32 pb-24 bg-white">
@@ -63,21 +45,21 @@ export default function FAQ() {
                         <div className="p-3 bg-ufaal-blue/5 rounded-2xl text-ufaal-blue">
                             <HelpCircle className="w-8 h-8" />
                         </div>
-                        <h1 className="text-4xl md:text-5xl font-bold text-ufaal-blue tracking-tight">Preguntas Frecuentes</h1>
+                        <h1 className="text-4xl md:text-5xl font-bold text-ufaal-blue tracking-tight">{t('faq.titulo')}</h1>
                     </div>
                     <div className="w-24 h-1 bg-ufaal-blue-light rounded-full mb-12"></div>
                     <p className="text-gray-600 text-lg font-light mb-12">
-                        Resolvemos tus dudas principales sobre nuestra organización, procesos de calidad y participación regional.
+                        {t('faq.descripcion')}
                     </p>
                 </FadeIn>
 
                 <FadeIn delay={0.2} direction="up" className="bg-ufaal-gray/30 rounded-3xl p-8 md:p-12 border border-gray-100">
                     <div className="divide-y divide-gray-100">
-                        {faqs.map((faq, index) => (
+                        {faqKeys.map((key, index) => (
                             <AccordionItem
                                 key={index}
-                                question={faq.question}
-                                answer={faq.answer}
+                                question={t(`faq.preguntas.${key}.q`)}
+                                answer={t(`faq.preguntas.${key}.a`)}
                                 isOpen={openIndex === index}
                                 onClick={() => setOpenIndex(openIndex === index ? null : index)}
                             />
@@ -87,15 +69,15 @@ export default function FAQ() {
 
                 <FadeIn delay={0.4} direction="up" className="mt-16 text-center">
                     <div className="bg-ufaal-blue p-10 rounded-3xl text-white shadow-xl">
-                        <h3 className="text-2xl font-bold mb-4">¿No encuentras lo que buscas?</h3>
+                        <h3 className="text-2xl font-bold mb-4">{t('faq.no_encuentras')}</h3>
                         <p className="text-blue-100 font-light mb-8 max-w-lg mx-auto">
-                            Nuestro equipo de soporte está listo para ayudarte con cualquier consulta adicional que tengas.
+                            {t('faq.soporte_desc')}
                         </p>
                         <a 
                             href="#/contacto" 
                             className="inline-block px-10 py-4 bg-white text-ufaal-blue rounded-full font-bold hover:bg-gray-100 transition-all shadow-lg active:scale-95"
                         >
-                            Contactar Soporte
+                            {t('faq.contactar_soporte')}
                         </a>
                     </div>
                 </FadeIn>

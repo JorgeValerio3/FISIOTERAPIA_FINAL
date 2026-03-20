@@ -1,6 +1,8 @@
 import { FadeIn } from '../ui/FadeIn';
+import { useI18n } from '../../contexts/I18nContext';
 
 export function Historia({ data }: { data: any }) {
+    const { t } = useI18n();
     if (!data) return null;
 
     return (
@@ -12,18 +14,20 @@ export function Historia({ data }: { data: any }) {
                         <div className="relative">
                             <div className="absolute -top-4 -left-4 w-24 h-24 bg-ufaal-blue/5 rounded-full blur-2xl"></div>
                             <h2 className="text-3xl md:text-5xl font-bold text-ufaal-blue mb-4 tracking-tight">
-                                {data.titulo}
+                                {t('navbar.historia')}
                             </h2>
                             <h3 className="text-xl font-semibold text-ufaal-blue-light mb-8">
-                                {data.subtitulo}
+                                {t('historia.subtitulo') || 'Uniendo voluntades por la fisioterapia acuática'}
                             </h3>
                             
                             <div className="space-y-6">
-                                {data.descripcion.map((parrafo: string, index: number) => (
+                                {Array.isArray(t('historia.descripcion')) ? (t('historia.descripcion') as unknown as string[]).map((parrafo: string, index: number) => (
                                     <p key={index} className="text-gray-600 font-light text-lg leading-relaxed">
                                         {parrafo}
                                     </p>
-                                ))}
+                                )) : (
+                                    <p className="text-gray-600 font-light text-lg leading-relaxed">{t('historia.descripcion')}</p>
+                                )}
                             </div>
                         </div>
                     </FadeIn>

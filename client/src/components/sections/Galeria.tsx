@@ -3,14 +3,16 @@ import { FadeIn } from '../ui/FadeIn';
 import { AnimatePresence, motion } from 'framer-motion';
 import { X } from 'lucide-react';
 import { getUploadUrl } from '../../services/api';
+import { useI18n } from '../../contexts/I18nContext';
 
-export function Galeria({ data }: { data: any }) {
-    if (!data) return null;
+export function Galeria({ data: _data }: { data?: any }) {
+    const { t } = useI18n();
+    if (!_data) return null;
 
-    const rawImages = data.imagenes || [];
+    const rawImages = _data.imagenes || [];
     const images = rawImages.map((img: any) => ({
         src: getUploadUrl(img.url),
-        alt: img.alt || img.titulo || "Imagen de galería",
+        alt: img.alt || img.titulo || t('galeria.fallback_alt'),
         type: img.tipo || "square"
     }));
 
@@ -34,7 +36,7 @@ export function Galeria({ data }: { data: any }) {
 
                 <div className="text-center mb-16">
                     <FadeIn direction="up">
-                        <h2 className="text-3xl md:text-5xl font-bold text-ufaal-blue mb-6 tracking-tight">{data.titulo}</h2>
+                        <h2 className="text-3xl md:text-5xl font-bold text-ufaal-blue mb-6 tracking-tight">{t('galeria.titulo')}</h2>
                         <div className="w-24 h-1 bg-ufaal-blue-light mx-auto rounded-full mb-6"></div>
                     </FadeIn>
                 </div>
@@ -49,7 +51,7 @@ export function Galeria({ data }: { data: any }) {
                             >
                                 <div className="absolute inset-0 bg-ufaal-blue/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10 flex items-center justify-center">
                                     <span className="text-white text-sm font-semibold bg-ufaal-blue px-6 py-2.5 rounded-full transform translate-y-4 group-hover:translate-y-0 transition-all duration-300 shadow-lg">
-                                        Ver Imagen
+                                        {t('galeria.ver_imagen')}
                                     </span>
                                 </div>
                                 <img
@@ -66,7 +68,7 @@ export function Galeria({ data }: { data: any }) {
 
                 {images.length === 0 && (
                     <div className="text-center py-20">
-                        <p className="text-gray-500 text-lg">No hay imágenes en la galería actualmente.</p>
+                        <p className="text-gray-500 text-lg">{t('galeria.sin_imagenes')}</p>
                     </div>
                 )}
 
@@ -100,7 +102,7 @@ export function Galeria({ data }: { data: any }) {
                             className="relative z-10 max-w-7xl max-h-[90vh] w-full flex items-center justify-center pointer-events-none"
                         >
                             <img
-                                src={selectedImage.src.replace('&w=800', '').replace('&w=600', '').replace('&w=500', '')} // Remove resize params for full resolution if possible in unsplash
+                                src={selectedImage.src.replace('&w=800', '').replace('&w=600', '').replace('&w=500', '')}
                                 alt={selectedImage.alt}
                                 className="max-w-full max-h-[90vh] object-contain rounded-md shadow-2xl pointer-events-auto"
                                 loading="lazy"

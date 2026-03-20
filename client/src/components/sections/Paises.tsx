@@ -14,8 +14,11 @@ L.Icon.Default.mergeOptions({
     shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-shadow.png',
 });
 
-export function Paises({ data }: { data: any }) {
-    const paisesLista = data?.paises_lista || [];
+import { useI18n } from '../../contexts/I18nContext';
+
+export function Paises({ data: _data }: { data?: any }) {
+    const { t } = useI18n();
+    const paisesLista = _data?.paises_lista || [];
     const [selectedCountry, setSelectedCountry] = useState<any>(null);
     const [fullscreenImg, setFullscreenImg] = useState<string | null>(null);
 
@@ -35,7 +38,7 @@ export function Paises({ data }: { data: any }) {
         return () => { document.body.style.overflow = 'unset'; };
     }, [fullscreenImg]);
 
-    if (!data || paisesLista.length === 0 || !selectedCountry) return null;
+    if (!_data || paisesLista.length === 0 || !selectedCountry) return null;
 
     return (
         <section id="paises" className="py-24 bg-white">
@@ -43,10 +46,10 @@ export function Paises({ data }: { data: any }) {
 
                 <div className="text-center mb-16">
                     <FadeIn direction="up">
-                        <h2 className="text-3xl md:text-5xl font-bold text-ufaal-blue mb-6 tracking-tight">{data.titulo}</h2>
+                        <h2 className="text-3xl md:text-5xl font-bold text-ufaal-blue mb-6 tracking-tight">{t('paises.titulo')}</h2>
                         <div className="w-24 h-1 bg-ufaal-blue-light mx-auto rounded-full mb-6"></div>
                         <p className="text-gray-600 font-light max-w-2xl mx-auto text-lg">
-                            {data.descripcion}
+                            {t('paises.descripcion')}
                         </p>
                     </FadeIn>
                 </div>
@@ -83,9 +86,9 @@ export function Paises({ data }: { data: any }) {
                                                         className="w-full h-full object-cover"
                                                     />
                                                 </div>
-                                                <p className="font-bold text-ufaal-blue mt-1 leading-tight">{country.nombre}</p>
+                                                <p className="font-bold text-ufaal-blue mt-1 leading-tight">{t(`paises_nombres.${country.id}`) || country.nombre}</p>
                                                 <p className="text-xs text-ufaal-text font-semibold">{country.representante}</p>
-                                                <p className="text-[10px] text-gray-500 mt-1 cursor-pointer underline hover:text-ufaal-blue-light" onClick={() => setSelectedCountry(country)}>Ver perfil en panel</p>
+                                                <p className="text-[10px] text-gray-500 mt-1 cursor-pointer underline hover:text-ufaal-blue-light" onClick={() => setSelectedCountry(country)}>{t('paises.ver_perfil')}</p>
                                             </div>
                                         </Popup>
                                     </Marker>
@@ -118,12 +121,12 @@ export function Paises({ data }: { data: any }) {
                                                     className="w-full h-full object-cover"
                                                 />
                                             </div>
-                                            <h3 className="text-3xl font-bold text-ufaal-blue tracking-tight">{selectedCountry.nombre}</h3>
+                                            <h3 className="text-3xl font-bold text-ufaal-blue tracking-tight">{t(`paises_nombres.${selectedCountry.id}`) || selectedCountry.nombre}</h3>
                                         </div>
 
                                         {/* Insignia Técnica (Empresarial) */}
                                         <div className="hidden sm:flex flex-col items-end">
-                                            <span className="text-[10px] uppercase tracking-widest font-bold text-ufaal-blue-light/60 mb-1">Miembro Regional</span>
+                                            <span className="text-[10px] uppercase tracking-widest font-bold text-ufaal-blue-light/60 mb-1">{t('paises.miembro_regional')}</span>
                                             <div className="h-0.5 w-12 bg-gradient-to-r from-transparent to-ufaal-blue-light/40"></div>
                                         </div>
                                     </div>
@@ -157,8 +160,10 @@ export function Paises({ data }: { data: any }) {
                                             </div>
                                         </div>
                                         <div className="flex-1">
-                                            <h4 className="text-xl font-bold text-ufaal-text mb-1">{selectedCountry.representante || "Representante por definir"}</h4>
-                                            <p className="text-sm font-medium text-ufaal-blue-light mb-2">{selectedCountry.cargo}</p>
+                                            <h4 className="text-xl font-bold text-ufaal-text mb-1">{selectedCountry.representante || t('paises.por_definir')}</h4>
+                                            <p className="text-sm font-medium text-ufaal-blue-light mb-2">
+                                                {t(`roles.${(selectedCountry.cargo || '').toLowerCase().replace(/ /g, '_').normalize("NFD").replace(/[\u0300-\u036f]/g, "")}`) || selectedCountry.cargo}
+                                            </p>
                                             {selectedCountry.contacto && (
                                                 <a 
                                                     href={`mailto:${selectedCountry.contacto}`} 
@@ -178,7 +183,7 @@ export function Paises({ data }: { data: any }) {
 
                                     {/* Gallery of dynamic activities (Max 5) */}
                                     <div className="mb-4">
-                                        <h5 className="text-xs font-semibold text-gray-500 mb-3 uppercase tracking-wider">Actividades en {selectedCountry.nombre}</h5>
+                                        <h5 className="text-xs font-semibold text-gray-500 mb-3 uppercase tracking-wider">{t('paises.actividades_en')} {t(`paises_nombres.${selectedCountry.id}`) || selectedCountry.nombre}</h5>
                                         <div className="grid grid-cols-5 gap-2">
                                             {selectedCountry.galeria && selectedCountry.galeria.filter(Boolean).length > 0 ? (
                                                 selectedCountry.galeria.filter(Boolean).slice(0, 5).map((img: string, i: number) => (
@@ -193,7 +198,7 @@ export function Paises({ data }: { data: any }) {
                                             ) : (
                                                 <div className="col-span-5 py-8 border-2 border-dashed border-gray-200 rounded-xl flex flex-col items-center justify-center bg-gray-50/50">
                                                     <ImageIcon className="w-6 h-6 text-gray-300 mb-2" />
-                                                    <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest">Sin registro de actividades</p>
+                                                    <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest">{t('paises.sin_actividades')}</p>
                                                 </div>
                                             )}
                                         </div>
@@ -202,7 +207,7 @@ export function Paises({ data }: { data: any }) {
 
                                 {/* Switcher para móvil - Lista rápida de botones */}
                                 <div className="mt-8 pt-6 border-t border-gray-200">
-                                    <p className="text-xs text-center text-gray-500 mb-4 font-medium uppercase tracking-widest">Selecciona otro país</p>
+                                    <p className="text-xs text-center text-gray-500 mb-4 font-medium uppercase tracking-widest">{t('paises.selecciona_pais')}</p>
                                     <div className="flex flex-wrap gap-2 justify-center">
                                         {paisesLista.map((c: any) => (
                                             <button
@@ -218,7 +223,7 @@ export function Paises({ data }: { data: any }) {
                                                     className="w-5 h-3.5 object-cover rounded-[1px] shadow-sm"
                                                     alt=""
                                                 />
-                                                {c.nombre}
+                                                {t(`paises_nombres.${c.id}`) || c.nombre}
                                             </button>
                                         ))}
                                     </div>

@@ -3,27 +3,28 @@ import { useLocation } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
 import { clsx } from 'clsx';
 import { twMerge } from 'tailwind-merge';
-
-const navItems = [
-    { label: 'Quiénes Somos', href: '#/quienes-somos' },
-    { label: 'Historia', href: '#/historia' },
-    { label: 'Organización', href: '#/organizacion' },
-    { label: 'Países Miembros', href: '#/paises' },
-    { label: 'Formación', href: '#/formacion' },
-    { label: 'Investigación', href: '#/investigacion' },
-    { label: 'Noticias', href: '#/noticias' },
-    { label: 'Contacto', href: '#/contacto-directo' },
-    { label: 'Galería', href: '#/galeria' },
-];
+import { useI18n } from '../../contexts/I18nContext';
+import { LanguageSelector } from '../ui/LanguageSelector';
 
 export function Navbar({ data }: { data?: any }) {
+    const { t } = useI18n();
     const location = useLocation();
     const [isScrolled, setIsScrolled] = useState(false);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-
+    
+    const items = [
+        { label: t('navbar.quienes_somos'), href: '#/quienes-somos' },
+        { label: t('navbar.historia'), href: '#/historia' },
+        { label: t('navbar.organizacion'), href: '#/organizacion' },
+        { label: t('navbar.paises'), href: '#/paises' },
+        { label: t('navbar.formacion'), href: '#/formacion' },
+        { label: t('navbar.investigacion'), href: '#/investigacion' },
+        { label: t('navbar.noticias'), href: '#/noticias' },
+        { label: t('navbar.contacto'), href: '#/contacto-directo' },
+        { label: t('navbar.galeria'), href: '#/galeria' },
+    ];
     const isSubPage = ['/privacidad', '/terminos', '/faq', '/contacto'].includes(location.pathname);
     const forceSolid = isSubPage || isScrolled;
-    const items = data?.items || navItems;
 
     useEffect(() => {
         const handleScroll = () => {
@@ -41,7 +42,7 @@ export function Navbar({ data }: { data?: any }) {
                     'fixed top-0 w-full z-50 transition-all duration-500 ease-in-out px-6',
                     forceSolid
                         ? 'bg-ufaal-white/95 backdrop-blur-md shadow-sm border-b border-gray-100 py-4'
-                        : 'bg-transparent py-8'
+                        : 'bg-transparent py-6 md:py-10'
                 )
             )}
         >
@@ -68,20 +69,20 @@ export function Navbar({ data }: { data?: any }) {
                     {/* Center Logo */}
                     <div
                         className={clsx(
-                            "flex items-center justify-center shrink-0 transition-all duration-500",
-                            forceSolid ? "scale-90" : "scale-100"
+                            "flex items-center justify-center shrink-0 transition-all duration-700",
+                            forceSolid ? "scale-100" : "scale-105 lg:scale-[1.2] xl:scale-[1.3]"
                         )}
                     >
-                        <a 
-                            href="#/inicio" 
-                            className="flex items-center justify-center transition-all duration-500 rounded-2xl p-2 bg-transparent shadow-none border-transparent"
+                        <a
+                            href="#/inicio"
+                            className="flex items-center justify-center transition-all duration-500 rounded-2xl p-2 bg-transparent"
                         >
                             <img
                                 src="./images/ufal.png?v=3"
                                 alt="Logo UFAAL"
                                 className={clsx(
                                     "transition-all duration-500 object-contain mix-blend-multiply brightness-110",
-                                    forceSolid ? "h-12" : "h-16"
+                                    forceSolid ? "h-12" : "h-16 md:h-20 lg:h-24"
                                 )}
                             />
                         </a>
@@ -102,30 +103,38 @@ export function Navbar({ data }: { data?: any }) {
                             </a>
                         ))}
                     </div>
+
+                    {/* Language Selector Desktop */}
+                    <div className="absolute right-0 top-1/2 -translate-y-1/2">
+                        <LanguageSelector isScrolled={forceSolid} />
+                    </div>
                 </div>
 
                 {/* Mobile Logo & Spacer */}
-                <div className="lg:hidden flex items-center transition-all duration-500 p-1.5 rounded-2xl bg-transparent">
+                <div className="lg:hidden flex items-center transition-all duration-500 p-2 rounded-2xl bg-white/5 backdrop-blur-sm border border-white/10">
                     <a href="#/inicio">
                         <img
                             src="./images/ufal.png?v=3"
                             alt="Logo UFAAL"
-                            className="h-10 w-auto object-contain transition-all duration-500 mix-blend-multiply brightness-110"
+                            className="h-18 w-auto object-contain transition-all duration-500 mix-blend-multiply brightness-110"
                         />
                     </a>
                 </div>
 
                 {/* Mobile menu button */}
-                <button
-                    className="lg:hidden p-2 ml-auto z-10"
-                    onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                >
-                    {isMobileMenuOpen ? (
-                        <X className={clsx("w-6 h-6", forceSolid ? "text-ufaal-blue" : "text-white")} />
-                    ) : (
-                        <Menu className={clsx("w-6 h-6", forceSolid ? "text-ufaal-blue" : "text-white")} />
-                    )}
-                </button>
+                <div className="lg:hidden flex items-center gap-4 ml-auto">
+                    <LanguageSelector isScrolled={forceSolid} />
+                    <button
+                        className="p-2 z-10"
+                        onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                    >
+                        {isMobileMenuOpen ? (
+                            <X className={clsx("w-6 h-6", forceSolid ? "text-ufaal-blue" : "text-white")} />
+                        ) : (
+                            <Menu className={clsx("w-6 h-6", forceSolid ? "text-ufaal-blue" : "text-white")} />
+                        )}
+                    </button>
+                </div>
             </div>
 
             {/* Mobile Nav */}

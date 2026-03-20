@@ -3,8 +3,11 @@ import { FadeIn } from '../ui/FadeIn';
 import { ArrowRight, Bell, Calendar, X, ChevronRight, LinkIcon } from 'lucide-react';
 import { AnimatePresence, motion } from 'framer-motion';
 
-export function Noticias({ data }: { data: any }) {
-    if (!data) return null;
+import { useI18n } from '../../contexts/I18nContext';
+
+export function Noticias({ data: _data }: { data?: any }) {
+    const { t } = useI18n();
+    if (!_data) return null;
 
     
     const getTypeIcon = (category: string) => {
@@ -18,9 +21,9 @@ export function Noticias({ data }: { data: any }) {
         return url.startsWith('http') || url.startsWith('/') ? url : `/${url}`;
     };
 
-    const news = (data.articulos || []).map((item: any, index: number) => ({
+    const news = (_data.articulos || []).map((item: any, index: number) => ({
         id: item.id || index,
-        type: item.categoria || "Noticia",
+        type: item.categoria || t('noticias.categoria_noticia'),
         typeIcon: getTypeIcon(item.categoria),
         title: item.titulo,
         date: item.fecha,
@@ -51,10 +54,10 @@ export function Noticias({ data }: { data: any }) {
                 <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
                     <div className="max-w-2xl">
                         <FadeIn direction="up">
-                            <h2 className="text-3xl md:text-5xl font-bold text-ufaal-blue mb-6 tracking-tight">{data.titulo}</h2>
+                            <h2 className="text-3xl md:text-5xl font-bold text-ufaal-blue mb-6 tracking-tight">{t('noticias.titulo')}</h2>
                             <div className="w-24 h-1 bg-ufaal-blue-light rounded-full mb-6"></div>
                             <p className="text-gray-600 font-light text-lg leading-relaxed">
-                                {data.descripcion}
+                                {t('noticias.descripcion')}
                             </p>
                         </FadeIn>
                     </div>
@@ -64,7 +67,7 @@ export function Noticias({ data }: { data: any }) {
                                 onClick={() => setShowAllNews(true)}
                                 className="text-ufaal-blue font-semibold flex items-center gap-2 hover:text-ufaal-blue-light transition-colors group"
                             >
-                                Ver todas las noticias
+                                {t('noticias.ver_todas')}
                                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                             </button>
                         </FadeIn>
@@ -100,7 +103,7 @@ export function Noticias({ data }: { data: any }) {
 
                                     <div className="mt-auto">
                                         <span className="text-ufaal-blue-light text-sm font-semibold flex items-center gap-1.5 group/link">
-                                            Leer más
+                                            {t('noticias.leer_mas')}
                                             <ArrowRight className="w-4 h-4 group-hover/link:translate-x-1 transition-transform" />
                                         </span>
                                     </div>
@@ -112,7 +115,7 @@ export function Noticias({ data }: { data: any }) {
 
                 {news.length === 0 && (
                     <div className="text-center py-20">
-                        <p className="text-gray-500 text-lg">No hay noticias publicadas en este momento.</p>
+                        <p className="text-gray-500 text-lg">{t('noticias.sin_noticias')}</p>
                     </div>
                 )}
 
@@ -123,7 +126,7 @@ export function Noticias({ data }: { data: any }) {
                             onClick={() => setShowAllNews(true)}
                             className="bg-white border border-gray-200 text-ufaal-blue px-6 py-3 rounded-full shadow-sm font-semibold flex items-center gap-2 hover:bg-gray-50 transition-colors group"
                         >
-                            Ver todas las noticias
+                            {t('noticias.ver_todas')}
                             <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                         </button>
                     </div>
@@ -182,7 +185,7 @@ export function Noticias({ data }: { data: any }) {
                                     {selectedNews.link && (
                                         <a href={selectedNews.link} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 bg-ufaal-blue text-white px-6 py-3 rounded-full hover:bg-ufaal-blue-light transition-colors font-medium">
                                             <LinkIcon className="w-4 h-4" />
-                                            Ver artículo completo externo
+                                            {t('noticias.leer_articulo_externo')}
                                         </a>
                                     )}
                                 </div>
@@ -203,12 +206,12 @@ export function Noticias({ data }: { data: any }) {
                         className="fixed inset-0 z-[100] bg-ufaal-gray overflow-y-auto w-full h-full"
                     >
                         <div className="bg-white py-6 px-6 sm:px-12 shadow-sm sticky top-0 z-20 flex justify-between items-center border-b border-gray-100">
-                            <h2 className="text-2xl font-bold text-ufaal-blue">Archivo de Noticias</h2>
+                            <h2 className="text-2xl font-bold text-ufaal-blue">{t('noticias.archivo_titulo')}</h2>
                             <button
                                 onClick={() => setShowAllNews(false)}
                                 className="text-gray-500 hover:text-ufaal-blue hover:bg-gray-100 p-2 rounded-full transition-colors flex items-center gap-2"
                             >
-                                <span className="font-semibold text-sm hidden sm:block">Volver</span>
+                                <span className="font-semibold text-sm hidden sm:block">{t('common.volver')}</span>
                                 <X className="w-6 h-6" />
                             </button>
                         </div>
@@ -244,7 +247,7 @@ export function Noticias({ data }: { data: any }) {
                                             </p>
                                             <div className="mt-auto flex justify-end">
                                                 <span className="text-ufaal-blue-light font-semibold flex items-center gap-1.5 group-hover:underline">
-                                                    Leer artículo completo
+                                                    {t('noticias.leer_articulo_completo')}
                                                     <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                                                 </span>
                                             </div>
@@ -254,7 +257,7 @@ export function Noticias({ data }: { data: any }) {
                             </div>
 
                             <div className="mt-16 text-center">
-                                <p className="text-gray-400">Has llegado al final del archivo.</p>
+                                <p className="text-gray-400">{t('noticias.fin_archivo')}</p>
                             </div>
                         </div>
                     </motion.div>

@@ -1,12 +1,14 @@
 import { FadeIn } from '../ui/FadeIn';
 import { FileText, Download, ShieldCheck } from 'lucide-react';
+import { useI18n } from '../../contexts/I18nContext';
 
-export function Investigacion({ data }: { data: any }) {
-    if (!data) return null;
+export function Investigacion({ data: _data }: { data?: any }) {
+    const { t } = useI18n();
+    if (!_data) return null;
 
     const handleDownloadEstatutos = () => {
-        if (data.estatutos_pdf) {
-            window.open(data.estatutos_pdf.startsWith('http') || data.estatutos_pdf.startsWith('/') ? data.estatutos_pdf : `/${data.estatutos_pdf}`, '_blank', 'noopener,noreferrer');
+        if (_data.estatutos_pdf) {
+            window.open(_data.estatutos_pdf.startsWith('http') || _data.estatutos_pdf.startsWith('/') ? _data.estatutos_pdf : `/${_data.estatutos_pdf}`, '_blank', 'noopener,noreferrer');
         }
     };
 
@@ -17,17 +19,17 @@ export function Investigacion({ data }: { data: any }) {
                 <div className="flex flex-col lg:flex-row justify-between items-center mb-16 gap-8">
                     <div className="max-w-2xl text-center lg:text-left">
                         <FadeIn direction="up">
-                            <h2 className="text-3xl md:text-5xl font-bold text-ufaal-blue mb-6 tracking-tight">{data.titulo}</h2>
+                            <h2 className="text-3xl md:text-5xl font-bold text-ufaal-blue mb-6 tracking-tight">{t('investigacion.titulo')}</h2>
                             <div className="w-24 h-1 bg-ufaal-blue-light rounded-full mb-6 mx-auto lg:mx-0"></div>
                             <p className="text-gray-600 font-light text-lg leading-relaxed">
-                                {data.descripcion}
+                                {t('investigacion.descripcion')}
                             </p>
                         </FadeIn>
                     </div>
                 </div>
 
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
-                    {/* Statutes Card - Now the main focus if articles are empty */}
+                    {/* Statutes Card */}
                     <FadeIn direction="up" delay={0.2}>
                         <div className="bg-white p-10 rounded-3xl shadow-sm border border-gray-100 flex flex-col md:flex-row items-center gap-8 group hover:shadow-xl transition-all duration-500 overflow-hidden relative">
                             <div className="absolute top-0 right-0 w-32 h-32 bg-ufaal-blue/5 rounded-full -mr-16 -mt-16 blur-3xl group-hover:bg-ufaal-blue/10 transition-colors"></div>
@@ -36,17 +38,17 @@ export function Investigacion({ data }: { data: any }) {
                                 <ShieldCheck className="w-10 h-10" />
                             </div>
 
-                            <div className="flex-1 text-center md:text-left relative z-10">
-                                <h3 className="text-2xl font-bold text-ufaal-blue mb-3">Estatutos Oficiales</h3>
+                             <div className="flex-1 text-center md:text-left relative z-10">
+                                <h3 className="text-2xl font-bold text-ufaal-blue mb-3">{t('investigacion.estatutos_titulo')}</h3>
                                 <p className="text-gray-600 font-light mb-6">
-                                    Consulta los lineamientos éticos, reglamentos y objetivos institucionales que rigen nuestra unión regional.
+                                    {t('investigacion.estatutos_desc')}
                                 </p>
                                 <button
                                     onClick={handleDownloadEstatutos}
                                     className="px-8 py-3 bg-ufaal-blue text-white rounded-full font-bold hover:bg-ufaal-blue-light transition-all flex items-center gap-2 shadow-lg hover:shadow-xl group-hover:-translate-y-1 transform duration-300"
                                 >
                                     <Download className="w-5 h-5" />
-                                    Descargar PDF
+                                    {t('investigacion.descargar_pdf')}
                                 </button>
                             </div>
                         </div>
@@ -58,24 +60,13 @@ export function Investigacion({ data }: { data: any }) {
                             <div className="p-4 bg-gray-100 rounded-2xl text-gray-400 mb-4">
                                 <FileText className="w-8 h-8" />
                             </div>
-                            <h3 className="text-xl font-bold text-gray-400 mb-2">Próximas Publicaciones</h3>
+                            <h3 className="text-xl font-bold text-gray-400 mb-2">{t('investigacion.proximas_pub_titulo')}</h3>
                             <p className="text-gray-400 font-light max-w-xs">
-                                Estamos consolidando los proyectos de investigación de nuestros países miembros.
+                                {t('investigacion.proximas_pub_desc')}
                             </p>
                         </div>
                     </FadeIn>
                 </div>
-
-                {/* Articles grid (kept for future scale but empty now) */}
-                {data.articulos && data.articulos.length > 0 && (
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                        {data.articulos.map((_: any, index: number) => (
-                            <FadeIn key={index} delay={0.3} direction="up" children={undefined}>
-                                {/* Article card logic here if needed later */}
-                            </FadeIn>
-                        ))}
-                    </div>
-                )}
             </div>
         </section>
     );

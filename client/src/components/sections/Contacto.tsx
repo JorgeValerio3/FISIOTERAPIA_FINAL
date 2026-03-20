@@ -1,10 +1,13 @@
 import { FadeIn } from '../ui/FadeIn';
-import { Mail, Send, Facebook, Instagram } from 'lucide-react';
+import { Mail, Send, Facebook, Instagram, Linkedin } from 'lucide-react';
+import { useI18n } from '../../contexts/I18nContext';
 
-export function Contacto({ data }: { data: any }) {
-    if (!data) return null;
+export function Contacto({ data: _data }: { data?: any }) {
+    const { t } = useI18n();
+    if (!_data) return null;
 
-    const correo = data.email || 'ufaal2020@gmail.com';
+    const correo = _data.email || 'ufaal2020@gmail.com';
+    const redes = _data.redes_sociales || {};
 
     return (
         <section id="contacto-directo" className="py-24 bg-white relative">
@@ -14,10 +17,10 @@ export function Contacto({ data }: { data: any }) {
 
                 <div className="text-center mb-16 lg:text-left">
                     <FadeIn direction="up">
-                        <h2 className="text-3xl md:text-5xl font-bold text-ufaal-blue mb-6 tracking-tight">{data.titulo}</h2>
+                        <h2 className="text-3xl md:text-5xl font-bold text-ufaal-blue mb-6 tracking-tight">{t('contacto.titulo')}</h2>
                         <div className="w-24 h-1 bg-ufaal-blue-light mx-auto lg:mx-0 rounded-full mb-6"></div>
                         <p className="text-gray-600 font-light text-lg">
-                            {data.descripcion}
+                            {t('contacto.descripcion')}
                         </p>
                     </FadeIn>
                 </div>
@@ -29,7 +32,7 @@ export function Contacto({ data }: { data: any }) {
                         <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-ufaal-blue via-ufaal-blue-light to-blue-300"></div>
 
                         <FadeIn delay={0.2} direction="right">
-                            <h3 className="text-2xl font-bold text-ufaal-text mb-8">Envíanos un mensaje</h3>
+                            <h3 className="text-2xl font-bold text-ufaal-text mb-8">{t('contacto.form_titulo') || 'Envíanos un mensaje'}</h3>
 
                             <form action={`https://formsubmit.co/${correo}`} method="POST" className="space-y-6">
                                 {/* FormSubmit Configuration */}
@@ -39,62 +42,62 @@ export function Contacto({ data }: { data: any }) {
 
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                     <div className="space-y-2">
-                                        <label htmlFor="name" className="text-sm font-medium text-gray-700">Nombre completo</label>
+                                        <label htmlFor="name" className="text-sm font-medium text-gray-700">{t('contacto.form_nombre')}</label>
                                         <input
                                             type="text"
                                             id="name"
                                             name="nombre"
                                             required
                                             className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-ufaal-blue-light/20 focus:border-ufaal-blue-light outline-none transition-all placeholder-gray-400"
-                                            placeholder="Ej. Dra. Elena Silva"
+                                            placeholder={t('contacto.form_nombre_placeholder')}
                                         />
                                     </div>
                                     <div className="space-y-2">
-                                        <label htmlFor="email" className="text-sm font-medium text-gray-700">Correo electrónico</label>
+                                        <label htmlFor="email" className="text-sm font-medium text-gray-700">{t('contacto.form_email')}</label>
                                         <input
                                             type="email"
                                             id="email"
                                             name="email"
                                             required
                                             className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-ufaal-blue-light/20 focus:border-ufaal-blue-light outline-none transition-all placeholder-gray-400"
-                                            placeholder="ejemplo@institucion.org"
+                                            placeholder={t('contacto.form_email_placeholder')}
                                         />
                                     </div>
                                 </div>
 
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                     <div className="space-y-2">
-                                        <label htmlFor="phone" className="text-sm font-medium text-gray-700">Teléfono (WhatsApp)</label>
+                                        <label htmlFor="phone" className="text-sm font-medium text-gray-700">{t('contacto.form_telefono')}</label>
                                         <input
                                             type="tel"
                                             id="phone"
                                             name="telefono"
                                             className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-ufaal-blue-light/20 focus:border-ufaal-blue-light outline-none transition-all placeholder-gray-400"
-                                            placeholder="Ej. +52 55 1234 5678"
+                                            placeholder={t('contacto.form_telefono_placeholder')}
                                         />
                                     </div>
                                     <div className="space-y-2">
-                                        <label htmlFor="subject" className="text-sm font-medium text-gray-700">Asunto</label>
+                                        <label htmlFor="subject" className="text-sm font-medium text-gray-700">{t('contacto.form_asunto')}</label>
                                         <input
                                             type="text"
                                             id="subject"
                                             name="asunto"
                                             required
                                             className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-ufaal-blue-light/20 focus:border-ufaal-blue-light outline-none transition-all placeholder-gray-400"
-                                            placeholder="Consulta sobre tratamiento"
+                                            placeholder={t('contacto.form_asunto_placeholder')}
                                         />
                                     </div>
                                 </div>
 
                                 <div className="space-y-2">
-                                    <label htmlFor="message" className="text-sm font-medium text-gray-700">Mensaje</label>
+                                    <label htmlFor="message" className="text-sm font-medium text-gray-700">{t('contacto.form_mensaje')}</label>
                                     <textarea
                                         id="message"
                                         name="mensaje"
                                         rows={5}
                                         required
                                         className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-ufaal-blue-light/20 focus:border-ufaal-blue-light outline-none transition-all resize-none placeholder-gray-400"
-                                        placeholder="Desarrolla tu consulta aquí..."
+                                        placeholder={t('contacto.form_mensaje_placeholder')}
                                     ></textarea>
                                 </div>
 
@@ -102,7 +105,7 @@ export function Contacto({ data }: { data: any }) {
                                     type="submit"
                                     className="w-full sm:w-auto px-8 py-3.5 bg-ufaal-blue text-white rounded-xl font-medium hover:bg-ufaal-blue-light transition-all flex items-center justify-center gap-2 shadow-md hover:shadow-lg disabled:opacity-70 disabled:cursor-not-allowed"
                                 >
-                                    <Send className="w-5 h-5" /> Enviar Mensaje
+                                    <Send className="w-5 h-5" /> {t('contacto.enviar_mensaje')}
                                 </button>
                             </form>
                         </FadeIn>
@@ -118,32 +121,50 @@ export function Contacto({ data }: { data: any }) {
                                         <Mail className="w-6 h-6" />
                                     </div>
                                     <div>
-                                        <h4 className="text-lg font-bold text-ufaal-text mb-1">Correo Electrónico</h4>
+                                        <h4 className="text-lg font-bold text-ufaal-text mb-1">{t('contacto.info_email')}</h4>
                                         <a href={`mailto:${correo}`} className="text-gray-600 hover:text-ufaal-blue transition-colors font-light">
                                             {correo}
                                         </a>
-                                        <p className="text-gray-500 text-sm mt-1">Lunes a Viernes - Horario hábil</p>
+                                        <p className="text-gray-500 text-sm mt-1">{t('contacto.info_horario')}</p>
                                     </div>
                                 </div>
                             </div>
 
                             <div>
-                                <h4 className="text-lg font-bold text-ufaal-text mb-6">Redes Sociales</h4>
+                                <h4 className="text-lg font-bold text-ufaal-text mb-6">{t('contacto.redes_sociales')}</h4>
                                 <div className="flex gap-4">
-                                    {data.facebook && (
-                                        <a href={data.facebook} target="_blank" rel="noopener noreferrer" className="p-3 bg-white rounded-full text-gray-500 hover:text-white hover:bg-[#1877F2] transition-colors shadow-sm border border-gray-100">
+                                    {redes.facebook && redes.facebook !== "#" && (
+                                        <a href={redes.facebook} target="_blank" rel="noopener noreferrer" className="p-3 bg-white rounded-full text-gray-500 hover:text-white hover:bg-[#1877F2] transition-colors shadow-sm border border-gray-100" title="Facebook">
                                             <Facebook className="w-6 h-6" />
                                         </a>
                                     )}
-                                    {data.instagram && (
-                                        <a href={data.instagram} target="_blank" rel="noopener noreferrer" className="p-3 bg-white rounded-full text-gray-500 hover:text-white hover:bg-[#E4405F] transition-colors shadow-sm border border-gray-100">
+                                    {redes.instagram && redes.instagram !== "#" && (
+                                        <a href={redes.instagram} target="_blank" rel="noopener noreferrer" className="p-3 bg-white rounded-full text-gray-500 hover:text-white hover:bg-[#E4405F] transition-colors shadow-sm border border-gray-100" title="Instagram">
                                             <Instagram className="w-6 h-6" />
                                         </a>
                                     )}
-                                    {(!data.facebook && !data.instagram) && (
-                                        <span className="text-gray-400 text-sm">No hay redes sociales configuradas.</span>
+                                    {redes.linkedin && redes.linkedin !== "#" && (
+                                        <a href={redes.linkedin} target="_blank" rel="noopener noreferrer" className="p-3 bg-white rounded-full text-gray-500 hover:text-white hover:bg-[#0A66C2] transition-colors shadow-sm border border-gray-100" title="LinkedIn">
+                                            <Linkedin className="w-6 h-6" />
+                                        </a>
+                                    )}
+                                    {(!redes.facebook || redes.facebook === "#") && (!redes.instagram || redes.instagram === "#") && (!redes.linkedin || redes.linkedin === "#") && (
+                                        <span className="text-gray-400 text-sm italic">{t('contacto.proximamente') || 'Próximamente en redes sociales'}</span>
                                     )}
                                 </div>
+                                {redes.instagram && redes.instagram.includes('instagram.com/') && (
+                                    <div className="mt-8 pt-6 border-t border-gray-100/50">
+                                        <p className="text-[10px] font-bold text-gray-400 mb-2 uppercase tracking-[0.2em]">{t('contacto.insta_oficial')}</p>
+                                        <a 
+                                            href={redes.instagram} 
+                                            target="_blank" 
+                                            rel="noopener noreferrer" 
+                                            className="text-ufaal-blue font-bold hover:text-ufaal-blue-light transition-colors text-lg flex items-center gap-2"
+                                        >
+                                            <span className="text-ufaal-blue-light">@</span>{redes.instagram.split('instagram.com/')[1].split('/')[0]}
+                                        </a>
+                                    </div>
+                                )}
                             </div>
 
                         </FadeIn>

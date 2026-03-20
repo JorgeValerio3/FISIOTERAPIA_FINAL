@@ -1,11 +1,12 @@
 import { Facebook, Instagram, Linkedin, Globe, Mail } from 'lucide-react';
+import { useI18n } from '../../contexts/I18nContext';
 
-export function Footer({ data, contactData }: { data: any, contactData?: any }) {
+export function Footer({ data: _data, contactData }: { data?: any, contactData?: any }) {
+    const { t } = useI18n();
     const currentYear = new Date().getFullYear();
-    if (!data) return null;
-
-    // Redes sociales desde contactData o data.contacto (depende de cómo se pase el prop)
-    const socialLinks = contactData?.redes_sociales || data.redes_sociales || {};
+    
+    // Redes sociales desde contactData o _data.contacto
+    const socialLinks = contactData?.redes_sociales || _data?.redes_sociales || {};
 
     return (
         <footer className="bg-ufaal-blue pt-20 pb-10 border-t border-ufaal-blue-light/20 relative overflow-hidden">
@@ -26,21 +27,28 @@ export function Footer({ data, contactData }: { data: any, contactData?: any }) 
                             />
                         </div>
                         <p className="text-gray-400 font-light leading-relaxed text-sm">
-                            {data.descripcion}
+                            {t('footer.descripcion')}
                         </p>
                         <div className="flex items-center gap-2 text-ufaal-blue-light border border-ufaal-blue-light/30 bg-ufaal-blue-light/5 px-4 py-2 rounded-lg w-fit">
                             <Globe className="w-4 h-4" />
-                            <span className="text-xs font-medium uppercase tracking-wider">América Latina</span>
+                            <span className="text-xs font-medium uppercase tracking-wider">{t('footer.region')}</span>
                         </div>
                     </div>
 
                     {/* Columna 2: Navegación */}
                     <div>
                         <h4 className="text-white font-bold mb-8 text-lg flex items-center gap-2">
-                             Enlaces Rápidos
+                             {t('footer.enlaces_rapidos')}
                         </h4>
                         <ul className="grid grid-cols-1 gap-4">
-                            {(data.enlaces_rapidos || []).map((link: any, idx: number) => (
+                            {[
+                                { titulo: t('navbar.quienes_somos'), url: '#/quienes-somos' },
+                                { titulo: t('navbar.historia'), url: '#/historia' },
+                                { titulo: t('navbar.organizacion'), url: '#/organizacion' },
+                                { titulo: t('navbar.paises'), url: '#/paises' },
+                                { titulo: t('navbar.formacion'), url: '#/formacion' },
+                                { titulo: t('navbar.investigacion'), url: '#/investigacion' }
+                            ].map((link: any, idx: number) => (
                                 <li key={idx}>
                                     <a href={link.url} className="text-gray-400 hover:text-white transition-all duration-300 text-sm font-light hover:pl-2 inline-block">
                                         {link.titulo}
@@ -50,11 +58,15 @@ export function Footer({ data, contactData }: { data: any, contactData?: any }) 
                         </ul>
                     </div>
 
-                    {/* Columna 3: Recursos Institucionales */}
                     <div>
-                        <h4 className="text-white font-bold mb-8 text-lg">Recursos</h4>
+                        <h4 className="text-white font-bold mb-8 text-lg">{t('footer.recursos')}</h4>
                         <ul className="space-y-4">
-                            {(data.recursos || []).map((link: any, idx: number) => (
+                            {[
+                                { titulo: t('faq.titulo') || 'FAQ', url: '#/faq' },
+                                { titulo: t('privacidad.titulo'), url: '#/privacidad' },
+                                { titulo: t('terminos.titulo'), url: '#/terminos' },
+                                { titulo: t('navbar.contacto') || 'Contacto', url: '#/contacto' }
+                            ].map((link: any, idx: number) => (
                                 <li key={idx}>
                                     <a href={link.url} className="text-gray-400 hover:text-white transition-all duration-300 text-sm font-light hover:pl-2 inline-block">
                                         {link.titulo}
@@ -64,26 +76,25 @@ export function Footer({ data, contactData }: { data: any, contactData?: any }) 
                         </ul>
                     </div>
 
-                    {/* Columna 4: Presencial Digital */}
                     <div className="space-y-8">
                         <div>
-                            <h4 className="text-white font-bold mb-6 text-lg">Síguenos</h4>
+                            <h4 className="text-white font-bold mb-6 text-lg">{t('footer.siguenos')}</h4>
                             <div className="flex gap-3">
-                                {socialLinks.facebook && (
+                                {socialLinks.facebook && socialLinks.facebook !== "#" && (
                                     <a href={socialLinks.facebook} target="_blank" rel="noopener noreferrer" 
                                        className="p-3 bg-white/5 hover:bg-white/10 rounded-xl text-gray-400 hover:text-white transition-all border border-white/5 active:scale-95"
                                        title="Facebook">
                                         <Facebook className="w-5 h-5" />
                                     </a>
                                 )}
-                                {socialLinks.instagram && (
+                                {socialLinks.instagram && socialLinks.instagram !== "#" && (
                                     <a href={socialLinks.instagram} target="_blank" rel="noopener noreferrer" 
                                        className="p-3 bg-white/5 hover:bg-white/10 rounded-xl text-gray-400 hover:text-white transition-all border border-white/5 active:scale-95"
                                        title="Instagram">
                                         <Instagram className="w-5 h-5" />
                                     </a>
                                 )}
-                                {socialLinks.linkedin && (
+                                {socialLinks.linkedin && socialLinks.linkedin !== "#" && (
                                     <a href={socialLinks.linkedin} target="_blank" rel="noopener noreferrer" 
                                        className="p-3 bg-white/5 hover:bg-white/10 rounded-xl text-gray-400 hover:text-white transition-all border border-white/5 active:scale-95"
                                        title="LinkedIn">
@@ -94,7 +105,7 @@ export function Footer({ data, contactData }: { data: any, contactData?: any }) 
                         </div>
                         
                         <div>
-                            <h4 className="text-white text-xs font-bold uppercase tracking-widest mb-4 opacity-50">Contacto Institucional</h4>
+                            <h4 className="text-white text-xs font-bold uppercase tracking-widest mb-4 opacity-50">{t('footer.contacto_institucional')}</h4>
                             <a href="mailto:ufaal2020@gmail.com" className="group flex items-center gap-3 text-gray-400 hover:text-white transition-colors bg-white/5 p-4 rounded-2xl border border-white/5">
                                 <div className="p-2 bg-ufaal-blue-light/20 rounded-lg text-ufaal-blue-light group-hover:bg-ufaal-blue-light group-hover:text-white transition-all">
                                     <Mail className="w-4 h-4" />
@@ -110,14 +121,14 @@ export function Footer({ data, contactData }: { data: any, contactData?: any }) 
                 <div className="border-t border-white/5 pt-10 mt-10 flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left">
                     <div className="space-y-1">
                         <p className="text-gray-500 text-sm font-light">
-                            &copy; {currentYear} {data.copyright_text}
+                            &copy; {currentYear} {t('footer.copyright_text')}
                         </p>
                     </div>
                     
                     <div className="flex items-center gap-4 py-2 px-6 bg-white/5 rounded-full border border-white/5">
                         <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
                         <p className="text-gray-400 text-xs font-medium tracking-tight">
-                            Subgrupo reconocido por IOAPT / World Physiotherapy
+                            {t('footer.reconocimiento')}
                         </p>
                     </div>
                 </div>

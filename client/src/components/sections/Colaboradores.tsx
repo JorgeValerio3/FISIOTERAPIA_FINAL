@@ -1,6 +1,8 @@
 import { FadeIn } from '../ui/FadeIn';
+import { useI18n } from '../../contexts/I18nContext';
 
 export function Colaboradores({ data }: { data: any }) {
+    const { t } = useI18n();
     if (!data) return null;
 
     const colaboradores = data.logos || [];
@@ -11,7 +13,7 @@ export function Colaboradores({ data }: { data: any }) {
 
                 <FadeIn direction="up">
                     <h2 className="text-3xl md:text-5xl font-bold text-ufaal-blue mb-4 tracking-tight">
-                        {data.titulo}
+                        {t('colaboradores.titulo')}
                     </h2>
                     <div className="w-24 h-1 bg-ufaal-blue-light mx-auto rounded-full mb-16"></div>
                 </FadeIn>

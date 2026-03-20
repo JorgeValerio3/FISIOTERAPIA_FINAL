@@ -10,7 +10,6 @@ import { Formacion } from './components/sections/Formacion';
 import { Investigacion } from './components/sections/Investigacion';
 import { Galeria } from './components/sections/Galeria';
 import { Noticias } from './components/sections/Noticias';
-import { Afiliacion } from './components/sections/Afiliacion';
 import { Contacto } from './components/sections/Contacto';
 import contentData from './data/content.json';
 
@@ -49,24 +48,27 @@ function LandingPage() {
       <Investigacion data={contentData.investigacion} />
       <Galeria data={contentData.galeria} />
       <Noticias data={contentData.noticias} />
-      <Afiliacion data={contentData.afiliacion} />
       <Contacto data={contentData.contacto} />
     </>
   );
 }
 
+import { I18nProvider } from './contexts/I18nContext';
+
 function App() {
   return (
     <Router>
-      <Layout>
-        <Routes>
-          <Route path="/privacidad" element={<Privacidad />} />
-          <Route path="/terminos" element={<Terminos />} />
-          <Route path="/faq" element={<FAQ />} />
-          <Route path="/contacto" element={<ContactoPage />} />
-          <Route path="*" element={<LandingPage />} />
-        </Routes>
-      </Layout>
+      <I18nProvider>
+        <Layout>
+          <Routes>
+            <Route path="/privacidad" element={<Privacidad />} />
+            <Route path="/terminos" element={<Terminos />} />
+            <Route path="/faq" element={<FAQ />} />
+            <Route path="/contacto" element={<ContactoPage />} />
+            <Route path="*" element={<LandingPage />} />
+          </Routes>
+        </Layout>
+      </I18nProvider>
     </Router>
   );
 }
