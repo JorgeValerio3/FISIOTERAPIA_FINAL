@@ -47,7 +47,8 @@ export function Footer({ data: _data, contactData }: { data?: any, contactData?:
                                 { titulo: t('navbar.organizacion'), url: '#/organizacion' },
                                 { titulo: t('navbar.paises'), url: '#/paises' },
                                 { titulo: t('navbar.formacion'), url: '#/formacion' },
-                                { titulo: t('navbar.investigacion'), url: '#/investigacion' }
+                                { titulo: t('navbar.investigacion'), url: '#/investigacion' },
+                                { titulo: t('navbar.sede_virtual'), url: '#/sede-virtual' }
                             ].map((link: any, idx: number) => (
                                 <li key={idx}>
                                     <a href={link.url} className="text-gray-400 hover:text-white transition-all duration-300 text-sm font-light hover:pl-2 inline-block">

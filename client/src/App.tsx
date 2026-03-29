@@ -18,6 +18,7 @@ import Privacidad from './pages/Privacidad';
 import Terminos from './pages/Terminos';
 import FAQ from './pages/FAQ';
 import ContactoPage from './pages/ContactoPage';
+import SedeVirtual from './pages/SedeVirtual';
 
 function ScrollToHash() {
   const { pathname } = useLocation();
@@ -68,6 +69,7 @@ function MainContent() {
           <Route path="/terminos" element={<Terminos />} />
           <Route path="/faq" element={<FAQ />} />
           <Route path="/contacto" element={<ContactoPage />} />
+          <Route path="/sede-virtual" element={<SedeVirtual />} />
           <Route path="*" element={<LandingPage />} />
         </Routes>
       </Layout>

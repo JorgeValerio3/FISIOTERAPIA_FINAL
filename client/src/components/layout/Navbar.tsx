@@ -23,7 +23,7 @@ export function Navbar() {
         { label: t('navbar.contacto'), href: '#/contacto-directo' },
         { label: t('navbar.galeria'), href: '#/galeria' },
     ], [t]);
-    const isSubPage = ['/privacidad', '/terminos', '/faq', '/contacto'].includes(location.pathname);
+    const isSubPage = ['/privacidad', '/terminos', '/faq', '/contacto', '/sede-virtual'].includes(location.pathname);
     const forceSolid = isSubPage || isScrolled;
 
     useEffect(() => {

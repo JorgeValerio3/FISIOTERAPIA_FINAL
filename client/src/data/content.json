@@ -542,6 +542,10 @@
       {
         "titulo": "Investigación",
         "url": "#/investigacion"
+      },
+      {
+        "titulo": "Sede Virtual",
+        "url": "#/sede-virtual"
       }
     ],
     "recursos": [
