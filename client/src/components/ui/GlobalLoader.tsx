@@ -9,7 +9,7 @@ export function GlobalLoader() {
         {/* Logo or specialized spinner */}
         <div className="relative p-4 bg-white dark:bg-gray-900 rounded-full shadow-xl">
            <img 
-              src="./images/ufal.png" 
+              src="./images/ufaal.png" 
               alt="Loading..." 
               className="h-16 w-16 object-contain animate-pulse"
            />
