@@ -174,7 +174,7 @@ export function Paises({ data: _data }: { data?: any }) {
                                                 </a>
                                             )}
                                             {selectedCountry.descripcion && (
-                                                <p className="text-sm text-gray-600 leading-relaxed italic border-l-2 border-ufaal-blue/20 pl-4 py-1">
+                                                <p className="text-sm text-gray-600 leading-relaxed italic border-l-2 border-ufaal-blue/20 pl-4 py-1 whitespace-pre-line">
                                                     "{selectedCountry.descripcion}"
                                                 </p>
                                             )}
